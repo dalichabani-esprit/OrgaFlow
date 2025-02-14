@@ -72,7 +72,7 @@ public class demande {
                 ", description='" + description + '\'' +
                 ", demandeur_id=" + demandeur_id +
                 ", date_demande=" + date_demande +
-                ", statut='" + statut + '\'' +
+                ", stattut='" + statut + '\'' +
                 '}';
     }
 }
