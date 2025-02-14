@@ -67,12 +67,12 @@ public class demande {
     @Override
     public String toString() {
         return "demande{" +
-                "id_demande=" + id_demande +
+                "id demande=" + id_demande +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
-                ", demandeur_id=" + demandeur_id +
-                ", date_demande=" + date_demande +
-                ", stattut='" + statut + '\'' +
+                ", demandeur id=" + demandeur_id +
+                ", date demande=" + date_demande +
+                ", statut='" + statut + '\'' +
                 '}';
     }
 }
