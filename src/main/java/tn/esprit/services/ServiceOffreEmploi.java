@@ -1,7 +1,6 @@
 package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
-import tn.esprit.models.Candidat;
 import tn.esprit.models.OffreEmploi;
 import tn.esprit.utils.MyDatabase;
 
@@ -120,14 +119,14 @@ public class ServiceOffreEmploi implements IService<OffreEmploi> {
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération de l'offre : " + e.getMessage());
         }
-        return null; // Retourne null si n'existe pas
+        return null;
     }
 
     @Override
     public void delete(OffreEmploi offreEmploi) {
-        // Vérifier si le candidat existe avant de le supprimer
+        // Vérifier si l'offre existe avant de la supprimer
         if (getById(offreEmploi.getIdOffre()) == null) {
-            System.out.println("Aucune aoffre trouvée avec l'ID " + offreEmploi.getIdOffre() + ". Suppression annulée.");
+            System.out.println("Aucune offre trouvée avec l'ID " + offreEmploi.getIdOffre() + ". Suppression annulée.");
             return;
         }
 

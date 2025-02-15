@@ -16,20 +16,11 @@ public class ServiceEntretien implements IService <Entretien> {
         cnx = MyDatabase.getInstance().getCnx();
     }
 
-    //EXistance de Candidature
-    private boolean candidatureExists(int candidature_id) {
-        String qry = "SELECT COUNT(*) FROM `candidature` WHERE `id` = ?";
-        try {
-            PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setInt(1, candidature_id);
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1) > 0;
-            }
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la vérification du candidature : " + e.getMessage());
-        }
-        return false;
+    //EXistance de Candidat
+
+    private boolean candidatureExists(int candidatureID) {
+        ServiceCandidature sca = new ServiceCandidature();
+        return sca.getById(candidatureID) != null;
     }
 
     @Override
@@ -149,12 +140,12 @@ public class ServiceEntretien implements IService <Entretien> {
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération de l'entretien : " + e.getMessage());
         }
-        return null; // Retourne null si  n'existe pas
+        return null;
     }
 
     @Override
     public void delete(Entretien entretien) {
-        // Vérifier si le candidat existe avant de le supprimer
+        // Vérifier si l'entretien  existe avant de le supprimer
         if (getById(entretien.getIdEntret()) == null) {
             System.out.println("Aucun entretien trouvé avec l'ID " + entretien.getIdEntret() + ". Suppression annulée.");
             return;

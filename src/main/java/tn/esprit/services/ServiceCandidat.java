@@ -131,12 +131,12 @@ public class ServiceCandidat implements IService<Candidat> {
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération du candidat : " + e.getMessage());
         }
-        return null; // Retourne null si le candidat n'existe pas
+        return null;
     }
 
     @Override
     public void delete(Candidat candidat) {
-        // Vérifier si le candidat existe avant de le supprimer
+        // Vérifier si le candidat existe
         if (getById(candidat.getIdCandidat()) == null) {
             System.out.println("Aucun candidat trouvé avec l'ID " + candidat.getIdCandidat() + ". Suppression annulée.");
             return;

@@ -17,35 +17,16 @@ public class ServiceCandidature implements IService<Candidature> {
     }
 
     //EXistance de Candidat
+
     private boolean candidatExists(int candidatID) {
-        String qry = "SELECT COUNT(*) FROM `candidat` WHERE `id` = ?";
-        try {
-            PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setInt(1, candidatID);
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1) > 0;
-            }
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la vérification du candidat : " + e.getMessage());
-        }
-        return false;
+        ServiceCandidat sc = new ServiceCandidat();
+        return sc.getById(candidatID) != null;
     }
 
     //Offre existe
     private boolean offreExists(int offreID) {
-        String qry = "SELECT COUNT(*) FROM `offreemploi` WHERE `id` = ?";
-        try {
-            PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setInt(1, offreID);
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                return rs.getInt(1) > 0;
-            }
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la vérification de l'offre : " + e.getMessage());
-        }
-        return false;
+        ServiceOffreEmploi of = new ServiceOffreEmploi();
+        return of.getById(offreID) != null;
     }
 
 
@@ -164,12 +145,12 @@ public class ServiceCandidature implements IService<Candidature> {
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération de candidature : " + e.getMessage());
         }
-        return null; // Retourne null si  n'existe pas
+        return null;
     }
 
     @Override
     public void delete(Candidature candidature) {
-        // Vérifier si le candidat existe avant de le supprimer
+        // Vérifier si la candidature existe avant de la supprimer
         if (getById(candidature.getIdCandidature()) == null) {
             System.out.println("Aucune candidature trouvé avec l'ID " + candidature.getIdCandidature() + ". Suppression annulée.");
             return;
