@@ -10,12 +10,12 @@ public class Formation {
     private Date dateDebut;
     private Date dateFin;
     private String categorie;
-    private int idFormateur;
+    private Formateur formateur;  // Remplacer int idFormateur par un objet Formateur
 
     public Formation() {}
 
     public Formation(int idFormation, String nom, String description, int duree,
-                     Date dateDebut, Date dateFin, String categorie, int idFormateur) {
+                     Date dateDebut, Date dateFin, String categorie, Formateur formateur) {
         this.idFormation = idFormation;
         this.nom = nom;
         this.description = description;
@@ -23,32 +23,72 @@ public class Formation {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.categorie = categorie;
-        this.idFormateur = idFormateur;
+        this.formateur = formateur;
     }
 
-    public int getIdFormation() { return idFormation; }
-    public void setIdFormation(int idFormation) { this.idFormation = idFormation; }
+    public int getIdFormation() {
+        return idFormation;
+    }
 
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
+    public void setIdFormation(int idFormation) {
+        this.idFormation = idFormation;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getNom() {
+        return nom;
+    }
 
-    public int getDuree() { return duree; }
-    public void setDuree(int duree) { this.duree = duree; }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-    public Date getDateDebut() { return dateDebut; }
-    public void setDateDebut(Date dateDebut) { this.dateDebut = dateDebut; }
+    public String getDescription() {
+        return description;
+    }
 
-    public Date getDateFin() { return dateFin; }
-    public void setDateFin(Date dateFin) { this.dateFin = dateFin; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public String getCategorie() { return categorie; }
-    public void setCategorie(String categorie) { this.categorie = categorie; }
+    public int getDuree() {
+        return duree;
+    }
 
-    public int getIdFormateur() { return idFormateur; }
-    public void setIdFormateur(int idFormateur) { this.idFormateur = idFormateur; }
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public Formateur getFormateur() {
+        return formateur;
+    }
+
+    public void setFormateur(Formateur formateur) {
+        this.formateur = formateur;
+    }
 
     @Override
     public String toString() {
@@ -60,7 +100,7 @@ public class Formation {
                 ", date début=" + dateDebut +
                 ", date fin=" + dateFin +
                 ", catégorie='" + categorie + '\'' +
-                ", id formateur=" + idFormateur +
+                ", formateur=" + formateur +
                 '}';
     }
 }

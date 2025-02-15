@@ -8,8 +8,10 @@ public class Formateur {
     private String telephone;
     private String specialite;
 
+    // Constructeur par défaut
     public Formateur() {}
 
+    // Constructeur avec paramètres
     public Formateur(int idFormateur, String nom, String prenom, String email, String telephone, String specialite) {
         this.idFormateur = idFormateur;
         this.nom = nom;
@@ -19,6 +21,7 @@ public class Formateur {
         this.specialite = specialite;
     }
 
+    // Getters et Setters
     public int getIdFormateur() { return idFormateur; }
     public void setIdFormateur(int idFormateur) { this.idFormateur = idFormateur; }
 

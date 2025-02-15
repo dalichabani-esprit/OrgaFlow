@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.AjouterFormateur"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" alignment="CENTER" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50">
+        <TextField fx:id="nomField" promptText="Nom" />
+        <TextField fx:id="prenomField" promptText="Prénom" />
+        <TextField fx:id="emailField" promptText="Email" />
+        <TextField fx:id="telephoneField" promptText="Téléphone" />
+        <TextField fx:id="specialiteField" promptText="Spécialité" />
+
+        <Button text="Ajouter Formateur" onAction="#ajouterFormateur"/>
+    </VBox>
+
+</AnchorPane>

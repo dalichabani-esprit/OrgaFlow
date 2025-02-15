@@ -29,9 +29,9 @@ public class ServiceFormateur {
             if (rs.next()) {
                 formateur.setIdFormateur(rs.getInt(1));
             }
-            System.out.println("✅ Formateur ajouté avec succès !");
+            System.out.println(" Formateur ajouté avec succès !");
         } catch (SQLException e) {
-            System.out.println("❌ Erreur lors de l'ajout du formateur : " + e.getMessage());
+            System.out.println(" Erreur lors de l'ajout du formateur : " + e.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ public class ServiceFormateur {
                 formateurs.add(f);
             }
         } catch (SQLException e) {
-            System.out.println("❌ Erreur lors de la récupération des formateurs : " + e.getMessage());
+            System.out.println(" Erreur lors de la récupération des formateurs : " + e.getMessage());
         }
         return formateurs;
     }
@@ -72,12 +72,12 @@ public class ServiceFormateur {
 
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("✅ Formateur mis à jour avec succès !");
+                System.out.println(" Formateur mis à jour avec succès !");
             } else {
-                System.out.println("❌ Aucun formateur trouvé avec cet ID !");
+                System.out.println(" Aucun formateur trouvé avec cet ID !");
             }
         } catch (SQLException e) {
-            System.out.println("❌ Erreur lors de la mise à jour du formateur : " + e.getMessage());
+            System.out.println(" Erreur lors de la mise à jour du formateur : " + e.getMessage());
         }
     }
 
@@ -89,12 +89,12 @@ public class ServiceFormateur {
 
             int rowsDeleted = pstm.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("✅ Formateur supprimé avec succès !");
+                System.out.println(" Formateur supprimé avec succès !");
             } else {
-                System.out.println("❌ Aucun formateur trouvé avec cet ID !");
+                System.out.println(" Aucun formateur trouvé avec cet ID !");
             }
         } catch (SQLException e) {
-            System.out.println("❌ Erreur lors de la suppression du formateur : " + e.getMessage());
+            System.out.println(" Erreur lors de la suppression du formateur : " + e.getMessage());
         }
     }
 }
