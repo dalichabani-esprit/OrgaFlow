@@ -1,7 +1,6 @@
 package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
-import tn.esprit.models.Candidat;
 import tn.esprit.models.Candidature;
 import tn.esprit.utils.MyDatabase;
 
