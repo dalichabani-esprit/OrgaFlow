@@ -12,7 +12,7 @@ public class Main {
         ServiceUser serviceUser = new ServiceUser();
         ServiceCandidat serviceCandidat = new ServiceCandidat();
 
-        System.out.println("========== DÉMARRAGE DE L'APPLICATION ==========\n");
+        System.out.println("======== DÉMARRAGE DE L'APPLICATION ========\n");
 
         //  Ajouter un administrateur
         Admin admin = new Admin("gfdzadf", "Yarzdya", "augjfaeifmail.com", "secure123");
@@ -90,6 +90,6 @@ public class Main {
 
 
 
-        System.out.println("\n========== FIN DU PROGRAMME ==========");
+        System.out.println("\n======= FIN DU PROGRAMME ========");
     }
 }
