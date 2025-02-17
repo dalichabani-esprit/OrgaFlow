@@ -1,6 +1,8 @@
 package tn.esprit.services;
 
+import javafx.scene.control.ListView;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.Candidat;
 import tn.esprit.models.OffreEmploi;
 import tn.esprit.utils.MyDatabase;
 
@@ -51,13 +53,13 @@ public class ServiceOffreEmploi implements IService<OffreEmploi> {
 
             while (rs.next()){
                 OffreEmploi o = new OffreEmploi();
-               o.setIdOffre(rs.getInt("id"));
-               o.setTitreOffre(rs.getString("titre"));
-               o.setDescriptionOffre(rs.getString("description"));
-               o.setDepartementOffre(rs.getString("departement"));
-               o.setDate_publicationOffre(rs.getDate("date_publication"));
-               o.setDate_limiteOffre(rs.getDate("date_limite"));
-               o.setStatutOffre(rs.getString("statut"));
+                o.setIdOffre(rs.getInt("id"));
+                o.setTitreOffre(rs.getString("titre"));
+                o.setDescriptionOffre(rs.getString("description"));
+                o.setDepartementOffre(rs.getString("departement"));
+                o.setDate_publicationOffre(rs.getDate("date_publication"));
+                o.setDate_limiteOffre(rs.getDate("date_limite"));
+                o.setStatutOffre(rs.getString("statut"));
 
 
                 offreemplois.add(o);

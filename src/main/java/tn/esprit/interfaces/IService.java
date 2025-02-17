@@ -1,4 +1,7 @@
 package tn.esprit.interfaces;
+import javafx.scene.control.ListView;
+import tn.esprit.models.Candidat;
+
 import java.util.List;
 
 public interface IService<T> {

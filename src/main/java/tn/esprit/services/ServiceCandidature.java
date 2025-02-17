@@ -1,6 +1,8 @@
 package tn.esprit.services;
 
+import javafx.scene.control.ListView;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.Candidat;
 import tn.esprit.models.Candidature;
 import tn.esprit.utils.MyDatabase;
 
@@ -63,38 +65,38 @@ public class ServiceCandidature implements IService<Candidature> {
     @Override
     public List<Candidature> getAll() {
 
-            //create Qry sql
-            //execution
-            //Mapping data
+        //create Qry sql
+        //execution
+        //Mapping data
 
 
-            List<Candidature> candidatures = new ArrayList<>();
-            String qry ="SELECT * FROM `candidature`";
+        List<Candidature> candidatures = new ArrayList<>();
+        String qry ="SELECT * FROM `candidature`";
 
-            try {
-                Statement stm = cnx.createStatement();
-                ResultSet rs = stm.executeQuery(qry);
+        try {
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
 
-                while (rs.next()){
-                    Candidature ca = new Candidature();
-                    ca.setIdCandidature(rs.getInt("id"));
-                    ca.setCandidatID(rs.getInt("candidat_id"));
-                    ca.setOffreID(rs.getInt("offre_id"));
-                    ca.setStatutCandidature(rs.getString("statut"));
-                    ca.setDate_candidature(rs.getDate("date_candidature"));
-
-
-
-                    candidatures.add(ca);
-                }
+            while (rs.next()){
+                Candidature ca = new Candidature();
+                ca.setIdCandidature(rs.getInt("id"));
+                ca.setCandidatID(rs.getInt("candidat_id"));
+                ca.setOffreID(rs.getInt("offre_id"));
+                ca.setStatutCandidature(rs.getString("statut"));
+                ca.setDate_candidature(rs.getDate("date_candidature"));
 
 
 
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                candidatures.add(ca);
             }
 
-            return candidatures;
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return candidatures;
     }
 
     @Override
