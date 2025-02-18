@@ -5,7 +5,7 @@ import java.util.List;
 public interface IService<T> {
     void add(T user);
     List<T> getAll();
-    boolean update(T user);
+    void update(T user);
     void delete(T user);
     T getByIduser(int i);
 

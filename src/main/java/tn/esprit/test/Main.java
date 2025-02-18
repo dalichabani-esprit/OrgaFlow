@@ -15,13 +15,13 @@ public class Main {
         System.out.println("======== DÉMARRAGE DE L'APPLICATION ========\n");
 
         //  Ajouter un administrateur
-        Admin admin = new Admin("gfdzadf", "Yarzdya", "augjfaeifmail.com", "secure123");
+        Admin admin = new Admin("gfdzadf", "Yarzdya", "augwsddsjfaeifmail.com", "secure123");
         serviceUser.add(admin);
         System.out.println("Administrateur ajouté avec succès.\n");
 
         //  Ajouter un employé
         Employes employe = new Employes(
-                "thea", "mado", "hmad@qdeample.com", "password123",
+                "thea", "mado", "hmadcc@qdeample.com", "password123",
                 3000.0, "Finance", new Date(System.currentTimeMillis())
         );
         serviceUser.add(employe);
@@ -29,7 +29,7 @@ public class Main {
 
         //  Ajouter un candidat
         Candidat candidat = new Candidat(
-                "Bienvenu", "fqsqlomou", "h@gdadeqmail.com", "secuepass",
+                "Bienvenu", "fqsqlssomou", "h@gdaddseqmail.com", "secuepass",
                 new Date(System.currentTimeMillis()), "en attente" , "cv"
         );
         serviceUser.add(candidat);
@@ -58,7 +58,7 @@ public class Main {
         } else {
             // Si l'employé n'est pas trouvé
             System.out.println("\n Employé avec l'ID 2 non trouvé.");
-        }*/
+        }
 
 // Suppression d'un utilisateur (Employé ou Candidat)
         User userToDelete = serviceUser.getByIduser(3); // Supposons que l'utilisateur a l'ID 2
@@ -80,7 +80,7 @@ public class Main {
             }
         } else {
             System.out.println("\n Erreur : Utilisateur avec l'ID 3 non trouvé.");
-        }
+        }*/
         //  Afficher tous les utilisateurs après mise à jour et suppression
         System.out.println(" Liste des utilisateurs après modification :");
         users = serviceUser.getAll();

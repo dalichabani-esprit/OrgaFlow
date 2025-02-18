@@ -102,7 +102,7 @@ public class ServiceUser implements IService<User> {
     }
 
     @Override
-    public boolean update(User user) {
+    public void update(User user) {
         String qry = "UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, role = ?, type_utilisateur = ?, " +
                 "salaire = ?, departement = ?, dateEmbauche = ?, dateCandidature = ?, statutCandidat = ?, CvCandidat=? " +
                 "WHERE iduser = ?";
@@ -147,14 +147,12 @@ public class ServiceUser implements IService<User> {
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Mise à jour réussie pour l'utilisateur : " + user);
-                return true;
             } else {
                 System.out.println("Aucune mise à jour effectuée, ID non trouvé.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
 
