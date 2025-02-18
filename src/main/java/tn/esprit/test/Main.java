@@ -19,20 +19,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-       /* ServiceCandidat sc = new ServiceCandidat();
+        ServiceCandidat sc = new ServiceCandidat();
         //Ajouter
-        sc.add(new Candidat(DateUtils.convertStringToSqlDate("01/08/2025"),"embauché","traorrach5@gmail.com","Rachid","rachidcv.jpg","Traore",58273238));
+        sc.add(new Candidat(DateUtils.convertStringToSqlDate("01/08/2025"),"embauché","rachidcv.jpg"));
         System.out.println(sc.getAll());
-        //modifier
+       /* //modifier
         Candidat c = sc.getById(4);
         if(c != null) {
-            c.setPrenomCandidat("Aime Rachid");
+            c.setStatutCandidat("rejette");
             sc.update(c);
         }
         System.out.println(sc.getAll());
        // supprimer
         sc.delete(sc.getById(3));
-        System.out.println(sc.getAll());
+        System.out.println(sc.getAll());*/
 
    /*
         ServiceOffreEmploi so = new ServiceOffreEmploi();

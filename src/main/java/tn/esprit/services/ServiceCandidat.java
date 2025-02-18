@@ -22,16 +22,12 @@ public class ServiceCandidat implements IService<Candidat> {
 
         //create Qry SQL
         //execute Qry
-        String qry ="INSERT INTO `candidat`(`nom`, `prenom`, `email`,`telephone`,`cv`,`date_inscription`,`statut`) VALUES (?,?,?,?,?,?,?)";
+        String qry ="INSERT INTO `candidat`(`cv`,`date_inscription`,`statut`) VALUES (?,?,?)";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setString(1,candidat.getNomCandidat());
-            pstm.setString(2, candidat.getPrenomCandidat());
-            pstm.setString(3,candidat.getEmailCandidat());
-            pstm.setInt(4,candidat.getTelephoneCandidat());
-            pstm.setString(5,candidat.getCvCandidat());
-            pstm.setDate(6,candidat.getDateCandidat());
-            pstm.setString(7,candidat.getStatutCandidat());
+            pstm.setString(1,candidat.getCvCandidat());
+            pstm.setDate(2,candidat.getDateCandidat());
+            pstm.setString(3,candidat.getStatutCandidat());
 
             pstm.executeUpdate();
         } catch (SQLException e) {
@@ -57,10 +53,6 @@ public class ServiceCandidat implements IService<Candidat> {
             while (rs.next()){
                 Candidat c = new Candidat();
                 c.setIdCandidat(rs.getInt("id"));
-                c.setNomCandidat(rs.getString("nom"));
-                c.setPrenomCandidat(rs.getString("prenom"));
-                c.setEmailCandidat(rs.getString("email"));
-                c.setTelephoneCandidat(rs.getInt("telephone"));
                 c.setCvCandidat(rs.getString("cv"));
                 c.setDateCandidat(rs.getDate("date_inscription"));
                 c.setStatutCandidat(rs.getString("statut"));
@@ -80,18 +72,14 @@ public class ServiceCandidat implements IService<Candidat> {
 
     @Override
     public void update(Candidat candidat) {
-        String qry = "UPDATE `candidat` SET `nom` = ?, `prenom` = ?, `email` = ?, `telephone` = ?, `cv` = ?, `date_inscription` = ?, `statut` = ? WHERE `id` = ?";
+        String qry = "UPDATE `candidat` SET  `cv` = ?, `date_inscription` = ?, `statut` = ? WHERE `id` = ?";
 
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
-            pstm.setString(1, candidat.getNomCandidat());
-            pstm.setString(2, candidat.getPrenomCandidat());
-            pstm.setString(3, candidat.getEmailCandidat());
-            pstm.setInt(4, candidat.getTelephoneCandidat());
-            pstm.setString(5, candidat.getCvCandidat());
-            pstm.setDate(6, candidat.getDateCandidat());
-            pstm.setString(7, candidat.getStatutCandidat());
-            pstm.setInt(8, candidat.getIdCandidat()); // L'ID pour identifier le candidat
+            pstm.setString(1, candidat.getCvCandidat());
+            pstm.setDate(2, candidat.getDateCandidat());
+            pstm.setString(3, candidat.getStatutCandidat());
+            pstm.setInt(4, candidat.getIdCandidat()); // L'ID pour identifier le candidat
 
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {
@@ -119,10 +107,6 @@ public class ServiceCandidat implements IService<Candidat> {
             if (rs.next()) {
                 Candidat c = new Candidat();
                 c.setIdCandidat(rs.getInt("id"));
-                c.setNomCandidat(rs.getString("nom"));
-                c.setPrenomCandidat(rs.getString("prenom"));
-                c.setEmailCandidat(rs.getString("email"));
-                c.setTelephoneCandidat(rs.getInt("telephone"));
                 c.setCvCandidat(rs.getString("cv"));
                 c.setDateCandidat(rs.getDate("date_inscription"));
                 c.setStatutCandidat(rs.getString("statut"));
