@@ -4,6 +4,9 @@
 .background{
     -fx-background-color:#D3D3D3;
 }
+.blanc{
+    -fx-background-color:white;
+}
 
 .button{
     background: #548192;

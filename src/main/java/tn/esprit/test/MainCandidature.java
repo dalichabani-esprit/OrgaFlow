@@ -28,7 +28,7 @@ import java.io.IOException;
                 primaryStage.show();
 
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Erreur de chargement du fichier FXML : " + e.getMessage());
             }
 
 

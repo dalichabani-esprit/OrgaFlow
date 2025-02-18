@@ -1,20 +1,28 @@
 package tn.esprit.controllers;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Candidature;
 import tn.esprit.services.ServiceCandidature;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class GestionCandidature implements Initializable {
+
+
 
     @FXML
     private Label LblAcceuil;
@@ -41,11 +49,8 @@ public class GestionCandidature implements Initializable {
         List<Candidature> C = sca.getAll();
         ListViewCandidature.getItems().setAll(C);
 
-        //ListViewCandidature.getItems().clear();
-
-        //List<Candidature> candidatures = sca.getAll(); // Récupère toutes les candidatures
-
     }
+
 
     @FXML
     private Button btnAdd_Cdtr;
@@ -74,15 +79,24 @@ public class GestionCandidature implements Initializable {
     @FXML
     private Label lblcdtr;
 
-    /*@FXML
-    public void ajouterCandidature(ActionEvent actionEvent) {
-        Candidature c = new Candidature();
-        c.setNom(tfNom.getText());
-        c.setPrenom(tfPrenom.getText());
-        c.setAge(Integer.parseInt(tfAge.getText()));
+    @FXML
+    private Button BtnRetour_Addcdtr;
 
-        sca.add(c);
-    }*/
+    @FXML
+    private Button BtnValider_Addcdtr;
+
+
+
+    @FXML
+    public void sceneadd(ActionEvent actionEvent) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/AddCandidature.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 }
 
