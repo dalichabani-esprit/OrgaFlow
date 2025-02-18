@@ -18,7 +18,7 @@
                   <HBox prefHeight="100.0" prefWidth="150.0" />
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label text="Acceuil">
+                        <Label fx:id="LblAcceuil" text="Acceuil">
                            <font>
                               <Font name="Choco Shake" size="18.0" />
                            </font>
@@ -27,7 +27,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label text="Formation">
+                        <Label fx:id="LblFormation" text="Formation">
                            <font>
                               <Font name="Choco Shake" size="18.0" />
                            </font>
@@ -36,21 +36,24 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label text="Recrutement">
+                        <Label fx:id="LblRecrutement" text="Recrutement">
                            <font>
                               <Font name="Choco Shake" size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label text="Label" />
+                        <Label fx:id="LblProjet" text="Projet">
+                           <font>
+                              <Font name="Choco Shake" size="18.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label text="Deconnexion">
+                        <Label fx:id="LblDeconnexion" text="Deconnexion">
                            <font>
                               <Font name="Choco Shake" size="18.0" />
                            </font>
@@ -65,19 +68,19 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0">
                      <children>
-                        <Label text="Candidats" />
-                        <Label text="Offre emploi" />
-                        <Label text="Candidature" />
-                        <Label text="Entretien" />
+                        <Label fx:id="lblcandidat" text="Candidats" />
+                        <Label fx:id="lblOffre" text="Offre emploi" />
+                        <Label fx:id="lblcdtr" text="Candidature" />
+                        <Label fx:id="lblEntret" text="Entretien" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Ajouter" />
-                        <Button mnemonicParsing="false" text="Modifier" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
-                        <Button mnemonicParsing="false" text="Statistiques" />
-                        <Button mnemonicParsing="false" text="Trier" />
+                        <Button fx:id="btnAdd_Cdtr" mnemonicParsing="false" styleClass="bt" stylesheets="@style.css" text="Ajouter" />
+                        <Button fx:id="btnMod_Cdtr" mnemonicParsing="false" styleClass="bt" stylesheets="@style.css" text="Modifier" />
+                        <Button fx:id="btnSupp_Cdtr" mnemonicParsing="false" styleClass="bt" stylesheets="@style.css" text="Supprimer" />
+                        <Button fx:id="btnStat_Cdtr" mnemonicParsing="false" styleClass="bt" text="Statistiques" />
+                        <Button fx:id="btnTrie_Cdtr" mnemonicParsing="false" styleClass="bt" text="Trier" />
                      </children>
                   </VBox>
                </children>

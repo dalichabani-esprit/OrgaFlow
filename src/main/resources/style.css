@@ -8,11 +8,14 @@
 .button{
     background: #548192;
     border-radius: 999px;
-    box-shadow: #5E5DF0 0 10px 20px -10px;
     box-sizing: border-box;
     color: #FFFFFF;
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     opacity: 1;
+}
+.bt{
+    -fx-background-color:#548192;
+    -fx-border-width: 999px;
 }

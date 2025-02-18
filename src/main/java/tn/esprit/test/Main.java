@@ -41,16 +41,16 @@ public class Main {
         so.delete(so.getById(3));
         System.out.println(so.getAll());*/
 
-        ServiceCandidature sca = new ServiceCandidature();
-        sca.add(new Candidature(4,4,"en attente",DateUtils.convertStringToSqlDate("15/03/2025")));
-        System.out.println(sca.getAll());
-        //sca.delete(sca.getById(4));
-        System.out.println(sca.getAll());
+        //ServiceCandidature sca = new ServiceCandidature();
+        //sca.add(new Candidature(9,4,"en attente",DateUtils.convertStringToSqlDate("15/03/2025")));
+        //System.out.println(sca.getAll());
+        //sca.delete(sca.getById(4));*/
+       // System.out.println(sca.getAll());
 
-       /* ServiceEntretien se = new ServiceEntretien();
-        se.add(new Entretien(1,"tunis","ALI","a retenir",DateUtils.convertStringToSqlDate("30/03/2025"),TimeUtils.stringToTime("15:30:00")));
-        System.out.println(se.getAll());
-        se.delete(se.getById(3));
-        System.out.println(se.getAll());*/
+        //ServiceEntretien se = new ServiceEntretien();
+       // se.add(new Entretien(11,"tunis","ALI","a retenir",DateUtils.convertStringToSqlDate("30/03/2025"),TimeUtils.stringToTime("15:30:00")));
+        //System.out.println(se.getAll());
+        //se.delete(se.getById(3));
+       // System.out.println(se.getAll());
     }
 }
