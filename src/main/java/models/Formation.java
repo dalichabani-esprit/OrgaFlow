@@ -13,6 +13,16 @@ public class Formation {
     private Formateur formateur;  // Remplacer int idFormateur par un objet Formateur
 
     public Formation() {}
+    public Formation(String nom, String description, int duree,
+                     Date dateDebut, Date dateFin, String categorie, Formateur formateur) {
+        this.nom = nom;
+        this.description = description;
+        this.duree = duree;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.categorie = categorie;
+        this.formateur = formateur;
+    }
 
     public Formation(int idFormation, String nom, String description, int duree,
                      Date dateDebut, Date dateFin, String categorie, Formateur formateur) {

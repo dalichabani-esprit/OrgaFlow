@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.AfficherFormations">
+    <children>
+        <!-- Titre -->
+        <Label text="Liste des Formations" layoutX="20" layoutY="20">
+            <font>
+                <Font name="Arial" size="17"/>
+            </font>
+        </Label>
+
+        <!-- ListView pour afficher les formations -->
+        <ListView fx:id="formationsListView" layoutX="20" layoutY="60" prefWidth="600" prefHeight="300"/>
+
+        <!-- Bouton pour rafraîchir la liste -->
+        <HBox spacing="10" alignment="center" layoutX="250" layoutY="380">
+            <Button text="Rafraîchir" onAction="#handleRefreshAction"/>
+        </HBox>
+    </children>
+</AnchorPane>

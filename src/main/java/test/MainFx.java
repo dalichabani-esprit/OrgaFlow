@@ -17,7 +17,11 @@ public class MainFx extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Charger le fichier FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormateur.fxml"));
+       // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormateur.fxml"));
+       // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherFormation.fxml"));
+
+
         try {
             Parent root = loader.load(); // Charger le fichier FXML
 
