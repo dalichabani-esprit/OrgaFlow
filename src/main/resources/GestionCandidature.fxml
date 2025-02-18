@@ -77,7 +77,7 @@
                   <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">
                      <children>
                         <Button fx:id="btnAdd_Cdtr" mnemonicParsing="false" onAction="#sceneadd" styleClass="bt" stylesheets="@style.css" text="Ajouter" />
-                        <Button fx:id="btnMod_Cdtr" mnemonicParsing="false" styleClass="bt" stylesheets="@style.css" text="Modifier" />
+                        <Button fx:id="btnMod_Cdtr" mnemonicParsing="false" onAction="#sceneModify" styleClass="bt" stylesheets="@style.css" text="Modifier" />
                         <Button fx:id="btnSupp_Cdtr" mnemonicParsing="false" styleClass="bt" stylesheets="@style.css" text="Supprimer" />
                         <Button fx:id="btnStat_Cdtr" mnemonicParsing="false" styleClass="bt" text="Statistiques" />
                         <Button fx:id="btnTrie_Cdtr" mnemonicParsing="false" styleClass="bt" text="Trier" />
