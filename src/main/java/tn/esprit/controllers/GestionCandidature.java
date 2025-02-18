@@ -48,6 +48,7 @@ public class GestionCandidature implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Candidature> C = sca.getAll();
         ListViewCandidature.getItems().setAll(C);
+        //sca.update((Candidature) sca);
 
     }
 
@@ -97,6 +98,7 @@ public class GestionCandidature implements Initializable {
         stage.show();
     }
 
+    @FXML
     public void sceneModify(ActionEvent actionEvent) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/ModifyCandidature.fxml"));
@@ -104,6 +106,23 @@ public class GestionCandidature implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void sceneDel(ActionEvent actionEvent) throws IOException {
+
+        try {
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/DelCandidature.fxml"));
+            Parent root1 =(Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setTitle("--------Suppression--------- ");
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println("Erreur de chargement du fichier FXML : " + e.getMessage());
+        }
+
     }
 
 
