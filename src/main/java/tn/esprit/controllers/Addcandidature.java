@@ -97,6 +97,7 @@ public class Addcandidature implements Initializable {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Candidature ");
         stage.show();
     }
 

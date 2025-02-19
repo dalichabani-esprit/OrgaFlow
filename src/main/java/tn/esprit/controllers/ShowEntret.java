@@ -82,7 +82,12 @@ public class ShowEntret implements Initializable {
     }
 
     @FXML
-    void sceneModify(ActionEvent event) {
+    void sceneModify(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/ModifyEntret.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -103,6 +108,7 @@ public class ShowEntret implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Candidature ");
         stage.show();
 
     }

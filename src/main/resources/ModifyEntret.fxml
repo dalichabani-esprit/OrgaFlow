@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -84,26 +85,30 @@
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0" styleClass="blanc">
                             <children>
                                 <Label text="Entrez l'Id de l'entretient" />
-                                <Label text="ID Du Candidat" />
-                                <Label text="ID De l'Offre d'emploi" />
-                                <Label text="Statut" />
+                                <Label text="ID De Candidature" />
+                                <Label text="Lieu" />
+                                <Label text="Interviewer" />
+                        <Label text="note" />
+                        <Label text="heure" />
                                 <Label text="Date" />
                             </children>
                             <HBox.margin>
                                 <Insets top="50.0" />
                             </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0" spacing="25.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0" spacing="20.0">
                             <children>
                                 <ComboBox fx:id="IdEntret" prefWidth="150.0" />
-                                <ComboBox fx:id="CbId" prefWidth="60.0" />
-                                <TextField fx:id="tfIDoffre_Addcdtr" />
-                                <ComboBox fx:id="CbStatut_Addcdtr" prefWidth="150.0" />
+                                <ComboBox fx:id="Idcdtr" prefWidth="60.0" />
+                                <TextField fx:id="tflieu" />
+                        <TextField fx:id="tfinter" />
+                        <TextArea fx:id="tanote" prefHeight="200.0" prefWidth="200.0" />
+                        <TextField fx:id="tfheure" />
                                 <DatePicker fx:id="DpDate_Addcdtr" />
-                                <Button fx:id="BtnValider_Modcdtr" mnemonicParsing="false" onAction="#ModifierCandidature" text="Valider" />
+                                <Button fx:id="BtnValider_Modcdtr" mnemonicParsing="false" onAction="#ModifierEntret" text="Valider" />
                             </children>
                             <HBox.margin>
-                                <Insets bottom="150.0" />
+                                <Insets bottom="100.0" />
                             </HBox.margin>
                         </VBox>
                     </children>
