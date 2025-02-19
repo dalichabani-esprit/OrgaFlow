@@ -17,6 +17,7 @@ import tn.esprit.services.ServiceCandidature;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,16 +37,29 @@ public class DelCandidature implements Initializable {
 
     }
 
+    /*
     @FXML
     public void DeleteCandidature(ActionEvent actionEvent) {
-        Candidature c = listview.getSelectionModel().getSelectedItem();
+       List<Candidature> c = (List<Candidature>) listview.getSelectionModel().getSelectedItem();
         if (c!= null) {
-            sca.delete(c);
-            sca.update(c);
+            for (Candidature a : c)
+            sca.delete(a);
             listview.getItems().remove(c);
         }
 
+    }*/
+    @FXML
+    public void DeleteCandidature(ActionEvent actionEvent) {
+        List<Candidature> selectedCandidatures = new ArrayList<>(listview.getSelectionModel().getSelectedItems());
+
+        if (!selectedCandidatures.isEmpty()) {
+            for (Candidature c : selectedCandidatures) {
+                sca.delete(c); // Supprime chaque candidature de la base de données
+            }
+            listview.getItems().removeAll(selectedCandidatures); // Supprime les candidatures de la ListView
+        }
     }
+
 
 
 

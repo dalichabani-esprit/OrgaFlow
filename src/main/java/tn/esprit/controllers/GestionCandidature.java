@@ -124,6 +124,13 @@ public class GestionCandidature implements Initializable {
         }
 
     }
+    @FXML
+    void refresh(ActionEvent event) {
+        List<Candidature> C = sca.getAll();
+        ListViewCandidature.getItems().setAll(C);
+
+
+    }
 
 
 }

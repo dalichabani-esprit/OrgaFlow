@@ -81,6 +81,7 @@
                         <Button fx:id="btnSupp_Cdtr" mnemonicParsing="false" onAction="#sceneDel" styleClass="bt" stylesheets="@style.css" text="Supprimer" />
                         <Button fx:id="btnStat_Cdtr" mnemonicParsing="false" styleClass="bt" text="Statistiques" />
                         <Button fx:id="btnTrie_Cdtr" mnemonicParsing="false" styleClass="bt" text="Trier" />
+                        <Button mnemonicParsing="false" onAction="#refresh" text="Rafraichir" />
                      </children>
                   </VBox>
                </children>
