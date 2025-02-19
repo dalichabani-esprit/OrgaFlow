@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="764.0" style="-fx-background-color: D3d3D3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Formateur.AfficherFormateurs">
+    <children>
+        <ListView fx:id="formateursListView" layoutX="108.8" layoutY="120.8" onMouseClicked="#modifierFormateur" prefHeight="358.0" prefWidth="543.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="121.0" />
+        <TextField fx:id="searchField" layoutX="564.0" layoutY="64.0" onKeyReleased="#rechercherFormateur" prefHeight="30.0" prefWidth="174.0" promptText="Rechercher..." AnchorPane.rightAnchor="25.600000000000023" AnchorPane.topAnchor="64.0" />
+
+        <Button layoutX="6.0" layoutY="64.0" mnemonicParsing="false" onAction="#ajouterFormateur" prefHeight="30.0" prefWidth="173.0" text="Ajouter un formateur" textFill="#548192" textOverrun="CLIP" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="64.0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+        <Label layoutX="245.0" layoutY="58.0" prefHeight="40.0" prefWidth="353.0" text="La Liste des Formateurs" textFill="#548192">
+            <font>
+                <Font name="System Bold Italic" size="21.0" />
+            </font>
+        </Label>
+      <Button fx:id="menuback" layoutX="6.0" layoutY="11.0" mnemonicParsing="false" onAction="#GoToTheMenu" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: D3D3D3;" text="&lt;- Menu" textFill="#548192">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Button>
+    </children>
+
+</AnchorPane>

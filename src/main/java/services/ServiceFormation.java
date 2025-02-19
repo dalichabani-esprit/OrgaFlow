@@ -110,15 +110,15 @@ public class ServiceFormation {
     }
 
 
-    public void delete(int id) {
-        String query = "DELETE FROM formation WHERE id_formation=?";
+    public void delete (int id) {
+        String query = "DELETE FROM formation WHERE id_formation= ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(query);
             ps.setInt(1, id);
             ps.executeUpdate();
-            System.out.println(" Reservation  Supprimee avec success !!!");
+            System.out.println(" Formation Supprimee avec success !!!");
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceFormation.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(" Erreur lors de la suppression du formateur : " + ex.getMessage());
         }
     }
 }

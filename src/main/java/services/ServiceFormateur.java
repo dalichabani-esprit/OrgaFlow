@@ -60,7 +60,7 @@ public class ServiceFormateur {
     }
 
     public void update(Formateur formateur) {
-        String query = "UPDATE formateur SET nom=?, prenom=?, email=?, telephone=?, specialite=? WHERE id_formateur=?";
+        String query = "UPDATE formateur SET nom= ?, prenom= ?, email= ?, telephone= ?, specialite= ? WHERE id_formateur= ?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(query);
             pstm.setString(1, formateur.getNom());
@@ -74,6 +74,7 @@ public class ServiceFormateur {
             if (rowsUpdated > 0) {
                 System.out.println(" Formateur mis à jour avec succès !");
             } else {
+                System.out.println(formateur.getIdFormateur() + " n'existe pas !");
                 System.out.println(" Aucun formateur trouvé avec cet ID !");
             }
         } catch (SQLException e) {
@@ -81,18 +82,13 @@ public class ServiceFormateur {
         }
     }
 
-    public void delete(Formateur formateur) {
+    public void delete(int id) {
         String query = "DELETE FROM formateur WHERE id_formateur=?";
         try {
-            PreparedStatement pstm = cnx.prepareStatement(query);
-            pstm.setInt(1, formateur.getIdFormateur());
-
-            int rowsDeleted = pstm.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println(" Formateur supprimé avec succès !");
-            } else {
-                System.out.println(" Aucun formateur trouvé avec cet ID !");
-            }
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println(" formateur Supprime avec success !!!");
         } catch (SQLException e) {
             System.out.println(" Erreur lors de la suppression du formateur : " + e.getMessage());
         }

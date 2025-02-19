@@ -1,18 +1,22 @@
 package Controllers.Formation;
 
+import Controllers.Formateur.AfficherFormateurs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import models.Formateur;
 import models.Formation;
+import services.ServiceFormateur;
 import services.ServiceFormation;
 
 import java.util.logging.Level;
@@ -79,13 +83,12 @@ public class AfficherFormations implements Initializable {
                 .collect(Collectors.toList());
 
         // Mettre à jour la ListView
-        if (filteredList.isEmpty()) {
-            System.out.println("Aucune formation trouvée !");
-            // Option : formationsListView.setItems(formationsList); // Garder la liste actuelle
-        } else {
-            formationsListView.setItems(FXCollections.observableArrayList(filteredList));
-        }
+        formationsListView.setItems(FXCollections.observableArrayList(filteredList));
+
+        // Rafraîchir la ListView
+        formationsListView.refresh();
     }
+
 
 
 
@@ -99,6 +102,7 @@ public class AfficherFormations implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.showAndWait();
+            rafraichirListeFormations() ;
         } catch (IOException ex) {
             Logger.getLogger(AfficherFormations.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,17 +124,40 @@ public class AfficherFormations implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.showAndWait();
-            rafraichirListeFormations();
+            rafraichirListeFormations() ;
         } catch (IOException e) {
             e.printStackTrace();
         }}
 
-
-
-    // Ajouter une méthode pour recharger la liste des formations
+    // Ajouter une méthode pour recharger la liste des Formateurs
     private void rafraichirListeFormations() {
         ServiceFormation serviceFormation = new ServiceFormation();
         List<Formation> ReflechedListFormation = serviceFormation.getAll();
-        formationsListView.setItems(FXCollections.observableArrayList(ReflechedListFormation));
+        ObservableList<Formation> items = FXCollections.observableArrayList(ReflechedListFormation);
+        formationsListView.setItems(items);
+    }
+
+    @FXML
+    private void GoToTheMenu(ActionEvent event) {
+        try {
+            // Charger la nouvelle scène
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Menu.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre (stage)
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre actuelle
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            // Rafraîchir la liste des formateurs (si nécessaire)
+            rafraichirListeFormations();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherFormateurs.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

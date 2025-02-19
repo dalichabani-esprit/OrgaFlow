@@ -155,7 +155,7 @@ public class Main {
 
                     if (indexFormateurDelete >= 0 && indexFormateurDelete < formateursToDelete.size()) {
                         Formateur formateurToDelete = formateursToDelete.get(indexFormateurDelete);
-                        sf.delete(formateurToDelete);
+                        sf.delete(1);
                         System.out.println(" Formateur supprimé avec succès !");
                     } else {
                         System.out.println(" Formateur non trouvé.");
