@@ -68,10 +68,10 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0">
                      <children>
-                        <Label fx:id="lblcandidat" text="Candidats" />
+                        <Button mnemonicParsing="false" text="Candidat" />
+                        <Button mnemonicParsing="false" text="Candidature" />
+                        <Button mnemonicParsing="false" onAction="#retourEntretien" text="Entretien" />
                         <Label fx:id="lblOffre" text="Offre emploi" />
-                        <Label fx:id="lblcdtr" text="Candidature" />
-                        <Label fx:id="lblEntret" text="Entretien" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">

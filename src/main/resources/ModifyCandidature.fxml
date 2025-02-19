@@ -69,14 +69,7 @@
             <right>
                 <VBox prefHeight="200.0" prefWidth="100.0" styleClass="blanc" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
-                        <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0">
-                            <children>
-                                <Label fx:id="lblcandidat" text="Candidats" />
-                                <Label fx:id="lblOffre" text="Offre emploi" />
-                                <Label fx:id="lblcdtr" text="Candidature" />
-                                <Label fx:id="lblEntret" text="Entretien" />
-                            </children>
-                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0" />
                         <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">
                             <children>
                                 <Button mnemonicParsing="false" onAction="#retour" text="retour" />

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="503.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Addcandidature">
+<AnchorPane prefHeight="503.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddEntret">
     <children>
         <BorderPane layoutX="256.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -70,36 +70,36 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0" />
                         <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">
-                     <children>
-                        <Button fx:id="BtnRetour_Addcdtr" mnemonicParsing="false" onAction="#retour" text="retour" />
-                     </children>
+                            <children>
+                                <Button fx:id="BtnRetour_Addcdtr" mnemonicParsing="false" onAction="#retour" text="retour" />
+                            </children>
                         </VBox>
                     </children>
                 </VBox>
             </right>
-         <center>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0" styleClass="blanc">
-                     <children>
-                        <Label text="ID Du Candidat" />
-                        <Label text="ID De l'Offre d'emploi" />
-                        <Label text="Statut" />
-                        <Label text="Date" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
-                     <children>
-                        <TextField fx:id="tfIDc_Addcdtr" />
-                        <TextField fx:id="tfIDoffre_Addcdtr" />
-                        <ComboBox fx:id="CbStatut_Addcdtr" prefWidth="150.0" />
-                        <DatePicker fx:id="DpDate_Addcdtr" />
-                        <Button fx:id="BtnValider_Addcdtr" mnemonicParsing="false" onAction="#ajouterCandidature" text="Valider" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </center>
+            <center>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0" styleClass="blanc">
+                            <children>
+                                <Label text="ID Du Candidat" />
+                                <Label text="ID De l'Offre d'emploi" />
+                                <Label text="Statut" />
+                                <Label text="Date" />
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
+                            <children>
+                                <TextField fx:id="tfIDc_Addcdtr" />
+                                <TextField fx:id="tfIDoffre_Addcdtr" />
+                                <ComboBox fx:id="CbStatut_Addcdtr" prefWidth="150.0" />
+                                <DatePicker fx:id="DpDate_Addcdtr" />
+                                <Button fx:id="BtnValider_Addcdtr" mnemonicParsing="false" onAction="#ajouterCandidature" text="Valider" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </center>
         </BorderPane>
     </children>
 </AnchorPane>
