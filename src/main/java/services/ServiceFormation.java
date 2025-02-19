@@ -7,6 +7,8 @@ import models.Formateur;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ServiceFormation {
     private Connection cnx;
@@ -35,7 +37,7 @@ public class ServiceFormation {
 
     public List<Formation> getAll() {
         List<Formation> formations = new ArrayList<>();
-        String query = "SELECT * FROM formation";
+        String query = "SELECT * FROM formation ";
         try (Statement stm = cnx.createStatement();
              ResultSet rs = stm.executeQuery(query)) {
 
@@ -85,41 +87,38 @@ public class ServiceFormation {
     }
 
     public void update(Formation formation) {
-        String query = "UPDATE formation SET nom=?, description=?, duree=?, date_debut=?, date_fin=?, categorie=?, id_formateur=? WHERE id_formation=?";
+        String query = "UPDATE formation SET nom= ?, categorie= ?, description= ?, duree= ?, date_debut= ?, date_fin= ? WHERE id_formation= ?";
         try (PreparedStatement pstm = cnx.prepareStatement(query)) {
+
             pstm.setString(1, formation.getNom());
-            pstm.setString(2, formation.getDescription());
-            pstm.setInt(3, formation.getDuree());
-            pstm.setDate(4, formation.getDateDebut());
-            pstm.setDate(5, formation.getDateFin());
-            pstm.setString(6, formation.getCategorie());
-            pstm.setInt(7, formation.getFormateur().getIdFormateur());  // Accès à l'ID du formateur
-            pstm.setInt(8, formation.getIdFormation());
+            pstm.setString(2, formation.getCategorie());
+            pstm.setString(3, formation.getDescription());
+            pstm.setInt(4, formation.getDuree());
+            pstm.setDate(5, formation.getDateDebut());
+            pstm.setDate(6, formation.getDateFin());
+            pstm.setInt(7, formation.getIdFormation());
 
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Formation mise à jour avec succès !");
             } else {
-                System.out.println("Aucune formation trouvée avec cet ID !");
+                System.out.println("Aucune formation trouvée avec cet ID !" + formation.getIdFormation());
             }
         } catch (SQLException e) {
             System.out.println("Erreur lors de la mise à jour de la formation : " + e.getMessage());
         }
     }
 
-    public void delete(Formation formation) {
-        String query = "DELETE FROM formation WHERE id_formation=?";
-        try (PreparedStatement pstm = cnx.prepareStatement(query)) {
-            pstm.setInt(1, formation.getIdFormation());
 
-            int rowsDeleted = pstm.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("Formation supprimée avec succès !");
-            } else {
-                System.out.println("Aucune formation trouvée avec cet ID !");
-            }
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la suppression de la formation : " + e.getMessage());
+    public void delete(int id) {
+        String query = "DELETE FROM formation WHERE id_formation=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println(" Reservation  Supprimee avec success !!!");
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceFormation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

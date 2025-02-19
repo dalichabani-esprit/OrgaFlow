@@ -1,5 +1,8 @@
 package models;
 
+import javafx.scene.control.DatePicker;
+
+import java.awt.*;
 import java.sql.Date;
 
 public class Formation {
@@ -34,6 +37,11 @@ public class Formation {
         this.dateFin = dateFin;
         this.categorie = categorie;
         this.formateur = formateur;
+    }
+
+
+
+    public Formation(int idFormation, String nom, String categorie, String description, int duree, Date dateDebut, Date dateFin) {
     }
 
     public int getIdFormation() {

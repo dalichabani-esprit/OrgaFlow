@@ -15,7 +15,14 @@
     </properties>
 
     <dependencies>
-        <!-- JavaFX -->
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+        <!-- JavaFX Dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -26,15 +33,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>21</version>
         </dependency>
-
-        <!-- MySQL Connector -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>21</version>
         </dependency>
 
-        <!-- Logging (SLF4J) -->
+        <!-- SLF4J (Logging) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -45,21 +50,26 @@
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.9</version>
         </dependency>
+
+        <!-- Supprimer les dépendances redondantes pour javafx -->
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Plugin JavaFX -->
+            <!-- Plugin pour compiler JavaFX -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.1.0</version>
+                <version>0.0.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <mainClass>test.MainFx</mainClass>
-                    <modules>
-                        <module>javafx.controls</module>
-                        <module>javafx.fxml</module>
-                    </modules>
+                    <mainClass>test.MainFx</mainClass> <!-- Définissez la classe principale -->
                 </configuration>
             </plugin>
         </plugins>

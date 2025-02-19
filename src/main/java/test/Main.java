@@ -174,7 +174,7 @@ public class Main {
 
                     if (indexFormationDelete >= 0 && indexFormationDelete < formationsToDelete.size()) {
                         Formation formationToDelete = formationsToDelete.get(indexFormationDelete);
-                        sfm.delete(formationToDelete);
+                        sfm.delete(5);
                         System.out.println(" Formation supprimée avec succès !");
                     } else {
                         System.out.println(" Formation non trouvée.");

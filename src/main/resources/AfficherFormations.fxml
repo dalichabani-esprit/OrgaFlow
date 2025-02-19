@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controllers.AfficherFormations">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherFormations">
     <children>
-        <!-- Titre -->
-        <Label text="Liste des Formations" layoutX="20" layoutY="20">
+        <ListView fx:id="formationsListView" layoutY="99.0" onMouseClicked="#modifierFormation" prefHeight="531.0" prefWidth="918.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="92.0" />
+        <TextField layoutX="1183.0" layoutY="36.0" prefHeight="29.0" prefWidth="149.0" promptText="Rechercher..." AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
+        <Button layoutX="6.0" layoutY="39.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="127.0" onAction="#ajouterFormation" text="Ajouter une formation" textOverrun="CLIP" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="39.0">
             <font>
-                <Font name="Arial" size="17"/>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+        <Label layoutX="245.0" layoutY="34.0" prefHeight="40.0" prefWidth="353.0" text="La Liste des Formations" textFill="#d05b5b">
+            <font>
+                <Font name="System Bold Italic" size="21.0" />
             </font>
         </Label>
-
-        <!-- ListView pour afficher les formations -->
-        <ListView fx:id="formationsListView" layoutX="20" layoutY="60" prefWidth="600" prefHeight="300"/>
-
-        <!-- Bouton pour rafraîchir la liste -->
-        <HBox spacing="10" alignment="center" layoutX="250" layoutY="380">
-            <Button text="Rafraîchir" onAction="#handleRefreshAction"/>
-        </HBox>
     </children>
 </AnchorPane>

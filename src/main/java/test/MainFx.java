@@ -19,8 +19,8 @@ public class MainFx extends Application {
         // Charger le fichier FXML
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormateur.fxml"));
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormation.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherFormation.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierFormation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherFormations.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierFormation.fxml"));
 
 
         try {
