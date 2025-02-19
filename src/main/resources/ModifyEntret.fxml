@@ -2,9 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="503.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddEntret">
+<AnchorPane prefHeight="503.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifyEntret">
     <children>
         <BorderPane layoutX="256.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -72,7 +72,7 @@
                         <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0" />
                         <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">
                             <children>
-                                <Button fx:id="BtnRetour_Addcdtr" mnemonicParsing="false" onAction="#retour" text="retour" />
+                                <Button mnemonicParsing="false" onAction="#retour" text="retour" />
                             </children>
                         </VBox>
                     </children>
@@ -81,30 +81,30 @@
             <center>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0" styleClass="blanc">
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0" styleClass="blanc">
                             <children>
-                                <Label text="ID De la Candidature" />
-                                <Label text="lieu" />
-                                <Label text="interviewer" />
-                        <Label text="note" />
-                        <Label text="heure" />
+                                <Label text="Entrez l'Id de l'entretient" />
+                                <Label text="ID Du Candidat" />
+                                <Label text="ID De l'Offre d'emploi" />
+                                <Label text="Statut" />
                                 <Label text="Date" />
                             </children>
+                            <HBox.margin>
+                                <Insets top="50.0" />
+                            </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0" spacing="15.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0" spacing="25.0">
                             <children>
-                                <TextField fx:id="tfIDc_Addentret" />
-                                <TextField fx:id="tflieu_Addentret" />
-                        <TextField fx:id="tfinter" />
-                        <TextArea fx:id="ta_note" prefHeight="100.0" prefWidth="100.0" />
-                        <TextField fx:id="tf_time" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="68.0" promptText="00:00:00">
-                           <VBox.margin>
-                              <Insets left="15.0" />
-                           </VBox.margin>
-                        </TextField>
+                                <ComboBox fx:id="IdEntret" prefWidth="150.0" />
+                                <ComboBox fx:id="CbId" prefWidth="60.0" />
+                                <TextField fx:id="tfIDoffre_Addcdtr" />
+                                <ComboBox fx:id="CbStatut_Addcdtr" prefWidth="150.0" />
                                 <DatePicker fx:id="DpDate_Addcdtr" />
-                                <Button fx:id="BtnValider_Addcdtr" mnemonicParsing="false" onAction="#ajouterEnt" text="Valider" />
+                                <Button fx:id="BtnValider_Modcdtr" mnemonicParsing="false" onAction="#ModifierCandidature" text="Valider" />
                             </children>
+                            <HBox.margin>
+                                <Insets bottom="150.0" />
+                            </HBox.margin>
                         </VBox>
                     </children>
                 </HBox>
