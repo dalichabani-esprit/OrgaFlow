@@ -1,4 +1,4 @@
-package Controllers;
+package Controllers.Formation;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.Formation;
@@ -21,8 +22,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
+import java.util.stream.Collectors;
 
 public class AfficherFormations implements Initializable {
+    @FXML
+    private TextField searchField;
+
+    private ObservableList<Formation> formationsList;
 
     @FXML
     private ListView<Formation> formationsListView;
@@ -34,9 +40,15 @@ public class AfficherFormations implements Initializable {
         // TODO
         ServiceFormation sf = new ServiceFormation();
 
+
+
         formationsListView.setCellFactory(param -> new ListFormationCell());
         ServiceFormation serviceFormation = new ServiceFormation();
         List<Formation> formations = serviceFormation.getAll();
+
+        //pour la recherche
+        formationsList = FXCollections.observableArrayList(formations);
+
         ObservableList<Formation> items = FXCollections.observableArrayList(formations);
         formationsListView.setItems(items);
         // Ajouter les éléments de la liste à la ListView
@@ -54,6 +66,30 @@ public class AfficherFormations implements Initializable {
 
         });
     }
+
+    //recherche :
+    @FXML
+    private void rechercherFormation() {
+        String searchText = searchField.getText().toLowerCase();
+
+        // Filtrer les formations
+        List<Formation> filteredList = formationsList.stream()
+                .filter(f -> f.getNom().toLowerCase().contains(searchText) ||
+                        f.getCategorie().toLowerCase().contains(searchText))
+                .collect(Collectors.toList());
+
+        // Mettre à jour la ListView
+        if (filteredList.isEmpty()) {
+            System.out.println("Aucune formation trouvée !");
+            // Option : formationsListView.setItems(formationsList); // Garder la liste actuelle
+        } else {
+            formationsListView.setItems(FXCollections.observableArrayList(filteredList));
+        }
+    }
+
+
+
+
     @FXML
     private void ajouterFormation(ActionEvent event) {
         try {
@@ -84,9 +120,17 @@ public class AfficherFormations implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.showAndWait();
+            rafraichirListeFormations();
         } catch (IOException e) {
             e.printStackTrace();
         }}
 
 
+
+    // Ajouter une méthode pour recharger la liste des formations
+    private void rafraichirListeFormations() {
+        ServiceFormation serviceFormation = new ServiceFormation();
+        List<Formation> ReflechedListFormation = serviceFormation.getAll();
+        formationsListView.setItems(FXCollections.observableArrayList(ReflechedListFormation));
+    }
 }

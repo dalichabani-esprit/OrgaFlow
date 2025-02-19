@@ -1,4 +1,4 @@
-package Controllers;
+package Controllers.Formation;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

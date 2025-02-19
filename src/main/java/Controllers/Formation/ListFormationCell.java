@@ -1,8 +1,7 @@
-package Controllers;
+package Controllers.Formation;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.Separator;

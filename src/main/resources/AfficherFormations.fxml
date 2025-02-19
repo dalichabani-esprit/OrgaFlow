@@ -7,10 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherFormations">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Formation.AfficherFormations">
     <children>
         <ListView fx:id="formationsListView" layoutY="99.0" onMouseClicked="#modifierFormation" prefHeight="531.0" prefWidth="918.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="92.0" />
-        <TextField layoutX="1183.0" layoutY="36.0" prefHeight="29.0" prefWidth="149.0" promptText="Rechercher..." AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
+        <TextField fx:id="searchField" layoutX="1183.0" layoutY="36.0"
+                   prefHeight="29.0" prefWidth="149.0" promptText="Rechercher..."
+                   onKeyReleased="#rechercherFormation" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
+
         <Button layoutX="6.0" layoutY="39.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="127.0" onAction="#ajouterFormation" text="Ajouter une formation" textOverrun="CLIP" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="39.0">
             <font>
                 <Font name="System Bold" size="13.0" />

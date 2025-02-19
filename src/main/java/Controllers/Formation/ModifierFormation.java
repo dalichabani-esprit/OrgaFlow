@@ -1,4 +1,4 @@
-package Controllers;
+package Controllers.Formation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,10 +11,8 @@ import models.Formation;
 import services.ServiceFormation;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
@@ -74,7 +72,7 @@ public class ModifierFormation implements Initializable {
         Date dateFin = Date.valueOf(dateFinPicker.getValue());
 
         // Création de l'objet Formation avec les bons types
-            Formation formationModifie = new Formation();
+        Formation formationModifie = new Formation();
         formationModifie.setIdFormation(selectedFormationId);
         formationModifie.setNom(nom);
         formationModifie.setCategorie(categorie);
@@ -90,6 +88,7 @@ public class ModifierFormation implements Initializable {
        Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
         confirmation.setContentText("Formation modifiée avec succès !");
         confirmation.show();
+
     }
 
 
