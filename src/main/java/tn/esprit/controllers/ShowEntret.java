@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.Candidature;
 import tn.esprit.models.Entretien;
 import java.io.IOException;
 import tn.esprit.services.ServiceEntretien;
@@ -73,11 +74,24 @@ public class ShowEntret implements Initializable {
 
     @FXML
     void refresh(ActionEvent event) {
+        List<Entretien> C = Ent.getAll();
+        ListViewEntret.getItems().setAll(C);
 
     }
 
     @FXML
     void sceneDel(ActionEvent event) {
+        try {
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/DelEntret.fxml"));
+            Parent root1 =(Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setTitle("--------Suppression--------- ");
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println("Erreur de chargement du fichier FXML : " + e.getMessage());
+        }
 
     }
 
