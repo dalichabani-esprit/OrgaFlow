@@ -56,6 +56,13 @@ public class ItemOffre {
         dd.setText(offre.getDate_publicationOffre().toString());
         df.setText(offre.getDate_limiteOffre().toString());
 
+        if (statut.getText().equalsIgnoreCase("ouvert")) {
+            statut.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+        } else {
+            statut.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
+
+
     }
 
 }

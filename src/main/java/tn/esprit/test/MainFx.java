@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class MainFx extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/ShowOffre.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/GestionCandidature.fxml"));
         try {
             Parent root =loader.load();
             Scene scene = new Scene(root);

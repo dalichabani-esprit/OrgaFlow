@@ -56,7 +56,7 @@
                      <children>
                         <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" prefHeight="361.0" prefWidth="436.0" styleClass="blanc" stylesheets="@style.css" HBox.hgrow="ALWAYS">
                            <content>
-                              <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" styleClass="background" stylesheets="@style.css">
+                              <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" stylesheets="@style.css">
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                                  </rowConstraints>

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +18,20 @@
             <left>
                 <VBox prefHeight="200.0" prefWidth="150.0" styleClass="left-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="150.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="150.0">
+                     <children>
+                        <ImageView fitHeight="131.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/474509875_931439885743568_4906166253426459442_n.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                             <children>
                                 <Label fx:id="LblAcceuil" text="Acceuil">
@@ -64,27 +80,30 @@
                 </VBox>
             </left>
             <right>
-                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="background" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
-                        <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="15.0">
+                        <VBox alignment="CENTER" prefHeight="150.0" prefWidth="100.0" spacing="10.0">
                             <children>
-                        <Button mnemonicParsing="false" text="Candidat" />
-                        <Button mnemonicParsing="false" onAction="#retourCandidature" text="Candidature" />
-                                <Label fx:id="lblOffre" text="Offre emploi" />
-                                <Label fx:id="lblEntret" text="Entretien" />
+                        <Button mnemonicParsing="false" styleClass="bt2" text="Candidat" />
+                        <Button mnemonicParsing="false" onAction="#retourCandidature" styleClass="bt2" text="Candidature" />
+                        <Button mnemonicParsing="false" styleClass="bt2" text="Entretien" />
+                        <Button mnemonicParsing="false" onAction="#retourOffre" styleClass="bt2" text="Offre d'emploi" />
                             </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="25.0">
+                        <VBox alignment="CENTER" prefHeight="300.0" prefWidth="100.0" spacing="10.0">
                             <children>
                                 <Button fx:id="btnAdd_Cdtr" mnemonicParsing="false" onAction="#sceneadd" styleClass="bt" stylesheets="@style.css" text="Ajouter" />
                                 <Button fx:id="btnMod_Cdtr" mnemonicParsing="false" onAction="#sceneModify" styleClass="bt" stylesheets="@style.css" text="Modifier" />
                                 <Button fx:id="btnSupp_Cdtr" mnemonicParsing="false" onAction="#sceneDel" styleClass="bt" stylesheets="@style.css" text="Supprimer" />
                                 <Button fx:id="btnStat_Cdtr" mnemonicParsing="false" styleClass="bt" text="Statistiques" />
                                 <Button fx:id="btnTrie_Cdtr" mnemonicParsing="false" styleClass="bt" text="Trier" />
-                                <Button mnemonicParsing="false" onAction="#refresh" text="Rafraichir" />
+                                <Button mnemonicParsing="false" onAction="#refresh" styleClass="bt" text="Rafraichir" />
                             </children>
                         </VBox>
                     </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
                 </VBox>
             </right>
             <center>

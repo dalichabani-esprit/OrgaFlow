@@ -1,24 +1,54 @@
-.left-bar{
-    -fx-background-color:#548192;
+.left-bar {
+    -fx-background-color: #548192;
+    -fx-background-radius: 20px; /* Ajuste la valeur selon tes besoins */
 }
+
 .background{
     -fx-background-color:#D3D3D3;
 }
 .blanc{
     -fx-background-color:white;
 }
+.bt {
+    -fx-background-color: #548192;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-padding: 10px 20px;
+}
 
-.button{
-    background: #548192;
-    border-radius: 999px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    opacity: 1;
+.bt2 {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-color: #548192;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-text-fill: #548192;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
 }
-.bt{
-    -fx-background-color:#548192;
-    -fx-border-width: 999px;
+.bt2:hover {
+    -fx-background-color: #f0f0f0;
 }
+
+.gridcell {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-padding: 5px;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.gridcell:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+
+
+

@@ -55,9 +55,9 @@ public class ShowOffre implements Initializable {
         try {
             for (int i = 0; i < emploi.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/ItemOffre.fxml")); // Charger l'élément individuel
+                fxmlLoader.setLocation(getClass().getResource("/ItemOffre.fxml"));
 
-                AnchorPane pane = fxmlLoader.load(); // Charger l'interface
+                AnchorPane pane = fxmlLoader.load();
 
                 // Récupérer le contrôleur de l'élément
                 ItemOffre controller = fxmlLoader.getController();
