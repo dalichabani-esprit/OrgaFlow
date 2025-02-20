@@ -3,31 +3,35 @@ package tn.esprit.models;
 import java.sql.Date;
 
 public class Employes extends User {
-    private double salaire;
+    private String salaire;
     private String departement;
     private Date dateEmbauche;
 
     //  Constructeur pour la création
-    public Employes(String nom, String prenom, String email, String motDePasse, double salaire, String departement, Date dateEmbauche) {
-        super(nom, prenom, email, motDePasse, "EMPLOYE", "employe");
+    public Employes(String nom, String prenom, String email, String motDePasse, String salaire, String departement, Date dateEmbauche) {
+        super(nom, prenom, email, motDePasse,  "employe");
         this.salaire = salaire;
         this.departement = departement;
         this.dateEmbauche = dateEmbauche;
     }
     //  Constructeur pour la récupération depuis la BDD
-    public Employes(int iduser, String nom, String prenom, String email, String motDePasse, double salaire, String departement, Date dateEmbauche) {
-        super(iduser, nom, prenom, email, motDePasse, "EMPLOYE", "employe", null);
+    public Employes(int iduser, String nom, String prenom, String email, String motDePasse, String salaire, String departement, Date dateEmbauche) {
+        super(iduser, nom, prenom, email, motDePasse, "employe");
         this.salaire = salaire;
         this.departement = departement;
         this.dateEmbauche = dateEmbauche;
     }
 
+    public Employes() {
 
-    public double getSalaire() {
+    }
+
+
+    public String getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(double salaire) {
+    public void setSalaire(String salaire) {
         this.salaire = salaire;
     }
 

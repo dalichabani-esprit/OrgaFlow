@@ -1,3 +1,4 @@
+
 package tn.esprit.interfaces;
 
 import java.util.List;
@@ -8,6 +9,6 @@ public interface IService<T> {
     void update(T user);
     void delete(T user);
     T getByIduser(int i);
-
+    boolean emailExiste(String email);
 
 }

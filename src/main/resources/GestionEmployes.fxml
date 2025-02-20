@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="746.0" style="-fx-background-color: f1efe7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.GestionEmployes">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="12.0" layoutY="135.0" text="Gestion Employés" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="102.0" fitWidth="101.0" layoutX="35.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@employment.png" />
+               </image>
+            </ImageView>
+            <ListView fx:id="listview" layoutX="72.0" layoutY="208.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: f1efe7;" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="547.0" prefWidth="387.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="59.0" layoutY="47.0" text="Nom" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="62.0" layoutY="146.0" text="Email" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="96.0" text="Prenom" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="363.0" text="Mot de Passe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="190.0" text="Role" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfnom" layoutX="167.0" layoutY="48.0" prefHeight="32.0" prefWidth="181.0" promptText="Firstname" />
+            <TextField fx:id="tfprenom" layoutX="167.0" layoutY="98.0" prefHeight="30.0" prefWidth="181.0" promptText="Lastname" />
+            <TextField fx:id="tfemail" layoutX="167.0" layoutY="148.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
+            <PasswordField fx:id="pfmotdepasse" layoutX="167.0" layoutY="365.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
+            <ComboBox fx:id="cbrole" accessibleText="admin" layoutX="166.0" layoutY="193.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
+            <TextField fx:id="salaire" layoutX="167.0" layoutY="233.0" prefHeight="30.0" prefWidth="181.0" promptText="Salaire" />
+            <Label layoutX="59.0" layoutY="233.0" prefHeight="30.0" prefWidth="164.0" text="Salaire" textFill="DODGERBLUE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="departement" layoutX="167.0" layoutY="273.0" prefHeight="32.0" prefWidth="181.0" promptText="Departement" />
+            <Label layoutX="7.0" layoutY="274.0" prefHeight="30.0" prefWidth="164.0" text="Departement" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="314.0" prefHeight="30.0" prefWidth="164.0" text="Date Embauche" textFill="DODGERBLUE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dateembauche" layoutX="167.0" layoutY="314.0" prefHeight="34.0" prefWidth="182.0" promptText="Date Embauche" />
+         </children>
+      </AnchorPane>
+   </right>
+   <bottom>
+      <AnchorPane prefHeight="118.0" prefWidth="746.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="Ajouteremployes" layoutX="296.0" layoutY="22.0" mnemonicParsing="false" onAction="#Onclickajouteremploye" text="Ajouter Employe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="supprimeremploye" layoutX="296.0" layoutY="76.0" mnemonicParsing="false" onAction="#Onclicksupprimeremploye" text="Supprimer  Employe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="modifieremploye" layoutX="481.0" layoutY="20.0" mnemonicParsing="false" onAction="#Onclickmodifieremploye" text="Modifier  Employe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="afficheremployes" layoutX="481.0" layoutY="70.0" mnemonicParsing="false" onAction="#Onclickaafficheremploye" text="Afficher Liste  Employe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="logoutS" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#onclickLogout" text="Se deconnecter" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="72.0" fitWidth="63.0" layoutX="48.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

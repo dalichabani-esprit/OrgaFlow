@@ -1,79 +1,102 @@
 package tn.esprit.Controllers;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import tn.esprit.interfaces.IService;
 import tn.esprit.models.User;
-
+import tn.esprit.services.ServiceUser;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-
-public class AjouterUser {
+public class AjouterUser implements Initializable {
 
     @FXML
     private Button btcreercompte;
-
     @FXML
     private Button btidentifier;
-
     @FXML
-    private ComboBox<?> cbrole;
+    private ComboBox<String> cbrole;
 
     @FXML
     private CheckBox chboxshowpassword;
-
     @FXML
     private PasswordField pfmotdepasse;
-
     @FXML
     private TextField tfemail;
-
     @FXML
     private TextField tfnom;
-
     @FXML
     private TextField tfprenom;
 
+
+    private final IService<User> serviceUser = new ServiceUser();
+
     @FXML
     public void OnclicShowpassword(ActionEvent event) {
-        if (chboxshowpassword.isSelected()) {
-            pfmotdepasse.setVisible(true);
-            pfmotdepasse.setDisable(false);
-        } else {
-            pfmotdepasse.setVisible(false);
-            pfmotdepasse.setDisable(true);
-        }
-    }
 
+    }
 
     @FXML
-    public void Onclicloginpage(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/logginUser.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Login Page");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void Onclicloginpage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/logginUser.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Login page");
+        stage.show();
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cbrole.setItems(FXCollections.observableArrayList("admin"));
+
+    }
+    @FXML
+    public void Oncliclogup(ActionEvent event) {
+        if ("admin".equals(cbrole.getValue())) {
+            User user = new User();
+            user.setEmail(tfemail.getText());
+            user.setNom(tfnom.getText());
+            user.setPrenom(tfprenom.getText());
+            user.setRole(cbrole.getSelectionModel().getSelectedItem());
+            user.setMotDePasse(pfmotdepasse.getText());
+
+            if (serviceUser.emailExiste(user.getEmail())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'inscription");
+                alert.setHeaderText("Email déjà utilisé !");
+                alert.setContentText("L'email " + user.getEmail() + " est déjà associé à un compte.");
+                alert.showAndWait();
+                return;
+            }
+
+            System.out.println("Ajout de Admin : " + user);
+            serviceUser.add(user);
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/UserCRUD.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("Gestion Utilisateur");
+                stage.show();
+            } catch (IOException e) {
+                System.out.println("Erreur lors du chargement de UserCRUD.fxml : " + e.getMessage());
+            }
         }
     }
 
 
 
-   @FXML
-    void Oncliclogup(ActionEvent event) {
 
-    }
+
+
 
 }
