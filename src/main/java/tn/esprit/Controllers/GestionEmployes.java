@@ -15,12 +15,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Employes;
 import tn.esprit.models.User;
 import tn.esprit.services.ServiceUser;
-import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -28,7 +29,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GestionEmployes implements Initializable {
-
+    @FXML
+    private VBox Vbox;
     @FXML
     private Button Ajouteremployes;
 
@@ -43,8 +45,7 @@ public class GestionEmployes implements Initializable {
 
     @FXML
     private DatePicker dateembauche;
-    @FXML
-    private ListView<String> listview;
+
     @FXML
     private TextField departement;
 
@@ -78,29 +79,38 @@ public class GestionEmployes implements Initializable {
     private final IService<User> serviceUser = new ServiceUser();
     @FXML
     void Onclickaafficheremploye(ActionEvent event) {
+        Vbox.getChildren().clear();
+
         List<User> users = serviceUser.getAll();
-        ObservableList<String> employeList = FXCollections.observableArrayList();
+
+        boolean found = false;
 
         for (User user : users) {
             if (user instanceof Employes) {
-              Employes employe = (Employes) user;
+                found = true;
+                Employes employe = (Employes) user;
+
                 String employeInfo = "ID: " + employe.getIduser() +
-                        "\nNom: " + employe.getNom() +
-                        "\nPrénom: " + employe.getPrenom() +
-                        "\nEmail: " + employe.getEmail() +
-                        "\nMot de passe: " + employe.getMotDePasse() +
-                        "\nRôle: " + employe.getRole() +
-                        "\nSalaire: " + employe.getSalaire() +
-                        "\nDate Embauche " + (employe.getDateEmbauche() != null ? employe.getDateEmbauche().toString() : "Non renseignée") +
-                        "\nDepartement: " + employe.getDepartement();
-                employeList.add(employeInfo);
+                        "\tNom: " + employe.getNom() +
+                        "\tPrénom: " + employe.getPrenom() +
+                        "\tEmail: " + employe.getEmail() +
+                        "\tMot de passe: " + employe.getMotDePasse() +
+                        "\tRôle: " + employe.getRole() +
+                        "\tSalaire: " + employe.getSalaire() +
+                        "\tDate Embauche: " + (employe.getDateEmbauche() != null ? employe.getDateEmbauche().toString() : "Non renseignée") +
+                        "\tDépartement: " + employe.getDepartement();
+
+                Label label = new Label(employeInfo);
+
+
+                Vbox.getChildren().add(label);
             }
         }
-        if (employeList.isEmpty()) {
-            employeList.add("Aucun candidat trouvé.");
-        }
 
-        listview.setItems(employeList);
+        if (!found) {
+            Label noDataLabel = new Label("Aucun employé trouvé.");
+            Vbox.getChildren().add(noDataLabel);
+        }
     }
 
     @FXML

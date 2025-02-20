@@ -20,7 +20,7 @@ import tn.esprit.interfaces.IService;
 import tn.esprit.models.User;
 import tn.esprit.models.Candidat;
 import tn.esprit.services.ServiceUser;
-import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,11 +33,12 @@ import java.util.ResourceBundle;
 public class Gestioncandidat implements Initializable {
 
     @FXML
-    private Button affichercandidat;
+    private Button onclicaffiche;
 
     @FXML
     private Button ajoutercandidat;
-
+    @FXML
+    private VBox Vbox;
     @FXML
     private ComboBox<String> cbrole;
 
@@ -50,8 +51,7 @@ public class Gestioncandidat implements Initializable {
     @FXML
     private DatePicker datecandi;
 
-    @FXML
-    private ListView<String> listview;
+
 
     @FXML
     private Button logout;
@@ -86,31 +86,36 @@ public class Gestioncandidat implements Initializable {
     private final IService<User> serviceUser = new ServiceUser();
 
 
-    @FXML
-    void onclicaffichecandidats(ActionEvent event) {
+    public void onclicaffiche(ActionEvent actionEvent) {
+        Vbox.getChildren().clear(); // Nettoyer le contenu précédent
+
         List<User> users = serviceUser.getAll();
-        ObservableList<String> candidatsList = FXCollections.observableArrayList();
+        boolean found = false;
 
         for (User user : users) {
             if (user instanceof Candidat) {
+                found = true;
                 Candidat candidat = (Candidat) user;
+
                 String candidatInfo = "ID: " + candidat.getIduser() +
-                        "\nNom: " + candidat.getNom() +
-                        "\nPrénom: " + candidat.getPrenom() +
-                        "\nEmail: " + candidat.getEmail() +
-                        "\nMot de passe: " + candidat.getMotDePasse() +
-                        "\nRôle: " + candidat.getRole() +
-                        "\nCV: " + candidat.getCvCandidat() +
-                        "\nDate de candidature: " + (candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée") +
-                        "\nStatut: " + candidat.getStatutCandidat() +
-                        "\n--------------------------";
-                candidatsList.add(candidatInfo);
+                        "\tNom: " + candidat.getNom() +
+                        "\tPrénom: " + candidat.getPrenom() +
+                        "\tEmail: " + candidat.getEmail() +
+                        "\tMot de passe: " + candidat.getMotDePasse() +
+                        "\tRôle: " + candidat.getRole() +
+                        "\tCV: " + candidat.getCvCandidat() +
+                        "\tDate de candidature: " + (candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée") +
+                        "\tStatut: " + candidat.getStatutCandidat();
+
+                Label label = new Label(candidatInfo);
+                Vbox.getChildren().add(label);
             }
         }
-        if (candidatsList.isEmpty()) {
-            candidatsList.add("Aucun candidat trouvé.");
+
+        if (!found) {
+            Label noDataLabel = new Label("Aucun candidat trouvé.");
+            Vbox.getChildren().add(noDataLabel);
         }
-        listview.setItems(candidatsList);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

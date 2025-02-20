@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -67,14 +66,9 @@
             <TextField fx:id="tfemail" layoutX="164.0" layoutY="236.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
             <PasswordField fx:id="pfmotdepasse" layoutX="164.0" layoutY="320.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
             <ComboBox fx:id="cbrole" accessibleRoleDescription="admin&#10;employe&#10;candidat" layoutX="164.0" layoutY="278.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
-            <Button fx:id="btcreercompte" layoutX="186.0" layoutY="408.0" mnemonicParsing="false" onAction="#Oncliclogup" prefHeight="38.0" prefWidth="140.0" text="Créer un compte" textFill="DODGERBLUE" />
-            <CheckBox fx:id="chboxshowpassword" layoutX="166.0" layoutY="358.0" mnemonicParsing="false" onAction="#OnclicShowpassword" prefHeight="34.0" prefWidth="139.0" text="Show Password">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </CheckBox>
-            <Label layoutX="84.0" layoutY="468.0" text="Already have an account ?" />
-            <Button fx:id="btidentifier" layoutX="221.0" layoutY="463.0" mnemonicParsing="false" onAction="#Onclicloginpage" prefHeight="28.0" prefWidth="106.0" style="-fx-background-color: #f1efe7;" text="S'identifier" textFill="DODGERBLUE" underline="true" />
+            <Button fx:id="btcreercompte" layoutX="186.0" layoutY="378.0" mnemonicParsing="false" onAction="#Oncliclogup" prefHeight="38.0" prefWidth="140.0" text="Créer un compte" textFill="DODGERBLUE" />
+            <Label layoutX="84.0" layoutY="443.0" text="Already have an account ?" />
+            <Button fx:id="btidentifier" layoutX="221.0" layoutY="438.0" mnemonicParsing="false" onAction="#Onclicloginpage" prefHeight="28.0" prefWidth="106.0" style="-fx-background-color: #f1efe7;" text="S'identifier" textFill="DODGERBLUE" underline="true" />
          </children>
       </AnchorPane>
    </right>

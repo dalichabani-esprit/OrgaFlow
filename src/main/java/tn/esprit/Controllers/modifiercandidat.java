@@ -8,12 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Candidat;
@@ -47,7 +43,8 @@ public class modifiercandidat {
     private Button affichercandidat;
     @FXML
     private Button modifiercandidat;
-
+    @FXML
+    private VBox Vbox;
     @FXML
     private PasswordField pfmotdepasse;
 
@@ -120,27 +117,34 @@ public class modifiercandidat {
     }
 
     public void onclicaffiche(ActionEvent actionEvent) {
+       Vbox.getChildren().clear(); // Nettoyer le contenu précédent
+
         List<User> users = serviceUser.getAll();
-        ObservableList<String> candidatsList = FXCollections.observableArrayList();
+        boolean found = false;
+
         for (User user : users) {
             if (user instanceof Candidat) {
+                found = true;
                 Candidat candidat = (Candidat) user;
+
                 String candidatInfo = "ID: " + candidat.getIduser() +
-                        "\nNom: " + candidat.getNom() +
-                        "\nPrénom: " + candidat.getPrenom() +
-                        "\nEmail: " + candidat.getEmail() +
-                        "\nMot de passe: " + candidat.getMotDePasse() +
-                        "\nRôle: " + candidat.getRole() +
-                        "\nCV: " + candidat.getCvCandidat() +
-                        "\nDate de candidature: " + (candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée") +
-                        "\nStatut: " + candidat.getStatutCandidat() +
-                        "\n--------------------------";
-                candidatsList.add(candidatInfo);
+                        "\tNom: " + candidat.getNom() +
+                        "\tPrénom: " + candidat.getPrenom() +
+                        "\tEmail: " + candidat.getEmail() +
+                        "\tMot de passe: " + candidat.getMotDePasse() +
+                        "\tRôle: " + candidat.getRole() +
+                        "\tCV: " + candidat.getCvCandidat() +
+                        "\tDate de candidature: " + (candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée") +
+                        "\tStatut: " + candidat.getStatutCandidat();
+
+                Label label = new Label(candidatInfo);
+                Vbox.getChildren().add(label);
             }
         }
-        if (candidatsList.isEmpty()) {
-            candidatsList.add("Aucun candidat trouvé.");
+
+        if (!found) {
+            Label noDataLabel = new Label("Aucun candidat trouvé.");
+           Vbox.getChildren().add(noDataLabel);
         }
-        listviews.setItems(candidatsList);
     }
-}
+    }
