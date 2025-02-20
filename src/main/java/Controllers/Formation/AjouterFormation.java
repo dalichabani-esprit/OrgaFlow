@@ -28,10 +28,10 @@ public class AjouterFormation {
     private DatePicker dpDateFin;
 
     @FXML
-    private TextField tfCategorie; // ✅ Remplacement du ComboBox par un TextField
+    private TextField tfCategorie;
 
     @FXML
-    private ComboBox<Formateur> cbFormateur; // ✅ Stocker directement l'objet Formateur
+    private ComboBox<Formateur> cbFormateur;
 
     @FXML
     private Button btnAjouter;
@@ -49,7 +49,7 @@ public class AjouterFormation {
             cbFormateur.getItems().add(formateur);
         }
 
-        // ✅ Modifier l'affichage de la ComboBox pour afficher "Nom - Spécialité"
+
         cbFormateur.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Formateur formateur, boolean empty) {
@@ -90,8 +90,8 @@ public class AjouterFormation {
             int duree = Integer.parseInt(tfDuree.getText());
             LocalDate dateDebut = dpDateDebut.getValue();
             LocalDate dateFin = dpDateFin.getValue();
-            String categorie = tfCategorie.getText(); // ✅ Récupération depuis TextField
-            Formateur formateur = cbFormateur.getValue(); // ✅ Récupère l'objet Formateur sélectionné
+            String categorie = tfCategorie.getText();
+            Formateur formateur = cbFormateur.getValue();
 
             Formation formation = new Formation(0, nom, description, duree, Date.valueOf(dateDebut), Date.valueOf(dateFin), categorie, formateur);
             serviceFormation.add(formation);

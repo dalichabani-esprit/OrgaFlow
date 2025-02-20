@@ -52,7 +52,6 @@ public class ModifierFormateur implements Initializable {
     private void modifierFormateur(ActionEvent event) {
         ServiceFormateur sf = new ServiceFormateur();
 
-        // Récupération des valeurs et conversion des types
         String nom = nomField.getText();
         String prenom = prenomField.getText();
         String email = emailField.getText();
@@ -60,7 +59,6 @@ public class ModifierFormateur implements Initializable {
         String specialite = specialiteField.getText();
 
 
-        // Création de l'objet Formation avec les bons types
         Formateur formateurModifie = new Formateur();
         formateurModifie.setIdFormateur(selectedFormateurId);
         formateurModifie.setPrenom(prenom);
@@ -70,10 +68,8 @@ public class ModifierFormateur implements Initializable {
         formateurModifie.setSpecialite(specialite);
 
 System.out.println(formateurModifie.toString());
-        // Mise à jour de la formation
         sf.update(formateurModifie);
 
-        // Confirmation de la modification
         Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
         confirmation.setContentText("Formateur modifiée avec succès !");
         confirmation.show();

@@ -61,17 +61,14 @@ public class ModifierFormation implements Initializable {
     private void modifierFormation(ActionEvent event) {
         ServiceFormation sf = new ServiceFormation();
 
-        // Récupération des valeurs et conversion des types
         String nom = nomField.getText();
         String categorie = categorieField.getText();
         String description = descriptionArea.getText();
         int duree = Integer.parseInt(dureeField.getText());
 
-        // Conversion des dates depuis DatePicker
         Date dateDebut = Date.valueOf(dateDebutPicker.getValue());
         Date dateFin = Date.valueOf(dateFinPicker.getValue());
 
-        // Création de l'objet Formation avec les bons types
         Formation formationModifie = new Formation();
         formationModifie.setIdFormation(selectedFormationId);
         formationModifie.setNom(nom);
@@ -80,11 +77,12 @@ public class ModifierFormation implements Initializable {
         formationModifie.setDateDebut(dateDebut);
         formationModifie.setDateFin(dateFin);
         formationModifie.setDescription(description);
+
+
         System.out.println(nom+"-----------------");
-        // Mise à jour de la formation
+        System.out.println(formationModifie.toString());
         sf.update(formationModifie);
 
-        // Confirmation de la modification
        Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
         confirmation.setContentText("Formation modifiée avec succès !");
         confirmation.show();

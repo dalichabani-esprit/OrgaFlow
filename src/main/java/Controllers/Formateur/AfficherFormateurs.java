@@ -51,15 +51,11 @@ public class AfficherFormateurs implements Initializable {
 
         ObservableList<Formateur> items = FXCollections.observableArrayList(formateurs);
         formateursListView.setItems(items);
-        // Ajouter les éléments de la liste à la ListView
         formateursListView.setItems(items);
         // 2. Créez une ArrayList de maps pour stocker les attributs de chaque Formateur
         formateursListView.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            // Récupérer l'index de l'élément sélectionné
             int selectedIndex = newValue.intValue();
-            // Récupérer l'objet Hotel correspondant à cet index
             Formateur selectedFormateur = formateurs.get(selectedIndex);
-            // Récupérer l'ID de l'hôtel
             int FormateurId = selectedFormateur.getIdFormateur();
             prefs.putInt("selectedFormateurId", FormateurId);
             System.out.println(FormateurId+"--------------------------");
@@ -75,14 +71,12 @@ public class AfficherFormateurs implements Initializable {
         // Filtrer les Formateurs
         List<Formateur> filteredList = formateursList.stream()
                 .filter(f -> f.getNom().toLowerCase().contains(searchText) ||
-                        f.getPrenom().toLowerCase().contains(searchText)||
-                        f.getSpecialite().toLowerCase().contains(searchText))
+                        f.getPrenom().toLowerCase().contains(searchText))
                 .collect(Collectors.toList());
 
         // Mettre à jour la ListView
         if (filteredList.isEmpty()) {
             System.out.println("Aucune Formateur trouvée !");
-            // Option : FormateursListView.setItems(FormateursList); // Garder la liste actuelle
         } else {
             formateursListView.setItems(FXCollections.observableArrayList(filteredList));
         }
@@ -129,7 +123,6 @@ public class AfficherFormateurs implements Initializable {
 
 
 
-    // Ajouter une méthode pour recharger la liste des Formateurs
     private void rafraichirListeFormateurs() {
         ServiceFormateur serviceFormateur = new ServiceFormateur();
         List<Formateur> ReflechedListFormateur = serviceFormateur.getAll();
@@ -139,20 +132,16 @@ public class AfficherFormateurs implements Initializable {
     @FXML
     private void GoToTheMenu(ActionEvent event) {
         try {
-            // Charger la nouvelle scène
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Menu.fxml"));
             Parent root = loader.load();
 
-            // Créer une nouvelle fenêtre (stage)
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Fermer la fenêtre actuelle
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
 
-            // Rafraîchir la liste des formateurs (si nécessaire)
             rafraichirListeFormateurs();
 
         } catch (IOException ex) {

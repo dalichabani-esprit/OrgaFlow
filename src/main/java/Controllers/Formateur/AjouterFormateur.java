@@ -30,24 +30,24 @@ public class AjouterFormateur {
         String telephone = telephoneField.getText();
         String specialite = specialiteField.getText();
 
-        // Vérifier si les champs sont valides
+
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || telephone.isEmpty() || specialite.isEmpty()) {
             showAlert("Erreur", "Veuillez remplir tous les champs.");
             return;
         }
 
-        // Créer un formateur et ajouter via le service
+
         Formateur formateur = new Formateur(0, nom, prenom, email, telephone, specialite);
         serviceFormateur.add(formateur);
 
-        // Réinitialiser les champs après l'ajout
+
         nomField.clear();
         prenomField.clear();
         emailField.clear();
         telephoneField.clear();
         specialiteField.clear();
 
-        // Afficher un message de succès
+
         showAlert("Succès", "Formateur ajouté avec succès !");
     }
 

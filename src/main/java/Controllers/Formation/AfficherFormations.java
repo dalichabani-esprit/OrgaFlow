@@ -38,7 +38,6 @@ public class AfficherFormations implements Initializable {
     private ListView<Formation> formationsListView;
     Preferences prefs = Preferences.userNodeForPackage(AfficherFormations.class);
 
-    // Initialize method to load formations when the controller is loaded
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -50,20 +49,18 @@ public class AfficherFormations implements Initializable {
         ServiceFormation serviceFormation = new ServiceFormation();
         List<Formation> formations = serviceFormation.getAll();
 
-        //pour la recherche
         formationsList = FXCollections.observableArrayList(formations);
 
         ObservableList<Formation> items = FXCollections.observableArrayList(formations);
         formationsListView.setItems(items);
-        // Ajouter les éléments de la liste à la ListView
         formationsListView.setItems(items);
-        // 2. Créez une ArrayList de maps pour stocker les attributs de chaque hôtel
+        // 2. Créez une ArrayList de maps pour stocker les attributs de chaque formation
         formationsListView.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             // Récupérer l'index de l'élément sélectionné
             int selectedIndex = newValue.intValue();
-            // Récupérer l'objet Hotel correspondant à cet index
+            // Récupérer l'objet formation correspondant à cet index
             Formation selectedFormation = formations.get(selectedIndex);
-            // Récupérer l'ID de l'hôtel
+            // Récupérer l'ID de la formation
             int FormationId = selectedFormation.getIdFormation();
             prefs.putInt("selectedFormationId", FormationId);
             System.out.println(FormationId+"--------------------------");
@@ -83,9 +80,13 @@ public class AfficherFormations implements Initializable {
                 .collect(Collectors.toList());
 
         // Mettre à jour la ListView
-        formationsListView.setItems(FXCollections.observableArrayList(filteredList));
-
+        if (filteredList.isEmpty()) {
+            System.out.println("Aucune formation trouvée !");
+        } else {
+            formationsListView.setItems(FXCollections.observableArrayList(filteredList));
+        }
         // Rafraîchir la ListView
+
         formationsListView.refresh();
     }
 
