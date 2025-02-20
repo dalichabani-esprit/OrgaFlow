@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="tn.esprit.controllers.ReclamationsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Gestion des Réclamations" />
+
+    <!-- Formulaire de saisie -->
+    <GridPane hgap="10" vgap="10">
+        <Label text="ID Réclamation:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="tfIdReclamation" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="ID Contrat:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="tfIdContrat" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Sujet:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="tfSujet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextArea fx:id="tfDesc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Date de Soumission:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <DatePicker fx:id="dateSoumissionPicker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Statut:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <ComboBox fx:id="statutComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+    <!-- Boutons d'action -->
+    <HBox spacing="10">
+        <Button fx:id="addButton" onAction="#handleAddButton" text="Ajouter" />
+        <Button fx:id="updateButton" onAction="#handleUpdateButton" text="Modifier" />
+        <Button fx:id="deleteButton" onAction="#handleDeleteButton" text="Supprimer" />
+        <Button fx:id="searchButton" onAction="#handleSearchButton" text="Rechercher" />
+    </HBox>
+
+    <!-- Liste des réclamations -->
+    <Label text="Liste des Réclamations:" />
+    <ListView fx:id="reclamationsListView" prefHeight="200" prefWidth="400" />
+   <Button mnemonicParsing="false" onAction="#afficherReclamations" text="Refresh" />
+
+    <!-- Message pour l'utilisateur -->
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;" />
+</VBox>
