@@ -12,27 +12,27 @@
    <items>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="244.0">
          <children>
-            <ImageView fitHeight="176.0" fitWidth="191.0" layoutX="23.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="108.0" fitWidth="166.0" layoutX="57.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Downloads/orgaflow.png" />
+                  <Image url="@../img/orgaflow.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="251.0" prefWidth="305.0" style="-fx-background-color: D3D3D3;">
          <children>
-            <Button fx:id="formation" layoutX="124.0" layoutY="197.0" mnemonicParsing="false" onAction="#GoToAffciherFormations" style="-fx-background-color: D3D3D3;" text="Gestion des Formations">
+            <Button fx:id="formation" layoutX="57.0" layoutY="106.0" mnemonicParsing="false" onAction="#GoToAffciherFormations" style="-fx-background-color: D3D3D3;" text="Gestion des Formations">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
 
-            <Button fx:id="formateur" layoutX="121.0" layoutY="266.0" mnemonicParsing="false" onAction="#GoToformateurs" style="-fx-background-color: D3D3D3;" text="Gestion des formateurs">
+            <Button fx:id="formateur" layoutX="54.0" layoutY="175.0" mnemonicParsing="false" onAction="#GoToformateurs" style="-fx-background-color: D3D3D3;" text="Gestion des formateurs">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
 
-            <Text layoutX="194.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" wrappingWidth="92.80006408691406">
+            <Text layoutX="105.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" wrappingWidth="92.80006408691406">
                <font>
                   <Font size="30.0" />
                </font>
