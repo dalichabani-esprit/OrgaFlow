@@ -15,13 +15,13 @@ public class Main {
         System.out.println("======== DÉMARRAGE DE L'APPLICATION ========\n");
 
         //  Ajouter un administrateur
-        Admin admin = new Admin("gfdzadf", "Yarzdya", "augwsddsjfaeifmail.com", "secure123");
+        Admin admin = new Admin("gfdzadf", "Yarzdya", "augwsdrrrdsjfaeifmail.com", "secure123");
         serviceUser.add(admin);
         System.out.println("Administrateur ajouté avec succès.\n");
 
         //  Ajouter un employé
         Employes employe = new Employes(
-                "thea", "mado", "hmadcc@qdeample.com", "password123",
+                "thea", "mado", "hmadccrer@qdeample.com", "password123",
                 3000.0, "Finance", new Date(System.currentTimeMillis())
         );
         serviceUser.add(employe);
@@ -29,7 +29,7 @@ public class Main {
 
         //  Ajouter un candidat
         Candidat candidat = new Candidat(
-                "Bienvenu", "fqsqlssomou", "h@gdaddseqmail.com", "secuepass",
+                "Bienvenu", "fqsqlssomou", "h@ggereedaddseqmail.com", "secuepass",
                 new Date(System.currentTimeMillis()), "en attente" , "cv"
         );
         serviceUser.add(candidat);

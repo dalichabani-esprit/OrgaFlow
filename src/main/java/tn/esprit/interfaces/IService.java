@@ -9,4 +9,5 @@ public interface IService<T> {
     void delete(T user);
     T getByIduser(int i);
 
+
 }
