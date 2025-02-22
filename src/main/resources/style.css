@@ -49,6 +49,22 @@
     -fx-scale-y: 1.05;
 }
 
+.bt3 {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent; /* Bordure légère */
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px; /* Coins arrondis */
+    -fx-text-fill: #333; /* Couleur du texte */
+    -fx-padding: 8px 16px; /* Espacement interne */
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-font-family: Arial, Helvetica, sans-serif;
+    -fx-font-size: 16px; /* Taille correcte du texte */
+}
 
-
-
+.bt3:hover {
+    -fx-background-color: rgba(200, 200, 200, 0.3); /* Devient légèrement gris */
+    -fx-scale-x: 1.1; /* Grandit légèrement */
+    -fx-scale-y: 1.1;
+    -fx-border-color: white; /* Renforce la bordure */
+    -fx-text-fill: white;
+}

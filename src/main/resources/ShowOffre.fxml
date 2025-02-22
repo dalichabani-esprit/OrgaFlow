@@ -43,10 +43,11 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="39.0" prefWidth="424.0" spacing="30.0" styleClass="blanc" stylesheets="@style.css">
                      <children>
-                        <Button mnemonicParsing="false" text="ajouter" />
-                        <Button mnemonicParsing="false" text="modifier" />
-                        <Button mnemonicParsing="false" text="supprimer" />
-                        <Button mnemonicParsing="false" text="trier" />
+                        <Button mnemonicParsing="false" styleClass="bt" text="ajouter" />
+                        <Button mnemonicParsing="false" styleClass="bt" text="modifier" />
+                        <Button mnemonicParsing="false" styleClass="bt" text="supprimer" />
+                        <Button mnemonicParsing="false" styleClass="bt" text="trier" />
+                        <Button mnemonicParsing="false" onAction="#retourCandidature" styleClass="bt2" text="retour" />
                      </children>
                      <VBox.margin>
                         <Insets left="10.0" top="5.0" />

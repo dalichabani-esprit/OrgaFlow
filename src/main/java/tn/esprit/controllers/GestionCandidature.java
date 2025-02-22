@@ -95,6 +95,7 @@ public class GestionCandidature implements Initializable {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
@@ -104,6 +105,7 @@ public class GestionCandidature implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/ModifyCandidature.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
@@ -137,6 +139,7 @@ public class GestionCandidature implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.setTitle("Entretien ");
         stage.show();
 
@@ -147,6 +150,7 @@ public class GestionCandidature implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.setTitle("Offre ");
         stage.show();
 

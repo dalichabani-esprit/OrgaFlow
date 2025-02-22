@@ -1,12 +1,17 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.OffreEmploi;
 import tn.esprit.services.ServiceOffreEmploi;
@@ -75,5 +80,16 @@ public class ShowOffre implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    void retourCandidature(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/GestionCandidature.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Candidature ");
+        stage.setMaximized(true);
+        stage.show();
+
     }
 }
