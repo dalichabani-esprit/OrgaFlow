@@ -1,5 +1,4 @@
 package tn.esprit.test;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,10 +20,7 @@ public class MainFx extends Application {
             Parent root =loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setMaximized(true);
             primaryStage.setTitle("--------Gestion candidature--------- ");
-             /*   Image image = new Image("474509875_931439885743568_4906166253426459442_n.png");
-                primaryStage.getIcons().add(image);*/
             primaryStage.show();
 
         } catch (IOException e) {

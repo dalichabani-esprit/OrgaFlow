@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="503.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifyCandidature">
+<AnchorPane prefHeight="1080" prefWidth="1920" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifyCandidature">
     <children>
         <BorderPane layoutX="256.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -81,7 +81,7 @@
             <center>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0" styleClass="blanc">
+                        <VBox alignment="TOP_CENTER" prefHeight="1030.0" prefWidth="314.0" spacing="30.0" styleClass="blanc">
                             <children>
                         <Label text="Entrez l'Id" />
                                 <Label text="ID Du Candidat" />
