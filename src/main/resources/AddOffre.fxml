@@ -82,7 +82,7 @@
          <right>
             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="retour" mnemonicParsing="false" text="Retour" />
+                  <Button mnemonicParsing="false" onAction="#retour" text="Retour" />
                </children>
             </VBox>
          </right>

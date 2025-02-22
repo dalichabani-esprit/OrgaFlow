@@ -43,7 +43,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="39.0" prefWidth="424.0" spacing="30.0" styleClass="blanc" stylesheets="@style.css">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="bt" text="ajouter" />
+                        <Button mnemonicParsing="false" onAction="#sceneadd" styleClass="bt" text="ajouter" />
                         <Button mnemonicParsing="false" styleClass="bt" text="modifier" />
                         <Button mnemonicParsing="false" styleClass="bt" text="supprimer" />
                         <Button mnemonicParsing="false" styleClass="bt" text="trier" />
