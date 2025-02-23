@@ -1,7 +1,8 @@
 module org.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.sql;
+    requires java.net.http;
+    requires com.google.gson;
 
 
     opens tn.esprit.test to javafx.fxml;

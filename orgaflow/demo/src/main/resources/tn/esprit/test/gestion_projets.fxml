@@ -6,33 +6,41 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1103.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ProjetsController">
-   <children>
-      <VBox layoutX="54.0" layoutY="39.0" prefHeight="306.0" prefWidth="236.0">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ProjetsController">
+   <left>
+      <fx:include source="sidebar.fxml" />
+   </left>
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="1098.0">
          <children>
-            <Label text="Nom" />
-            <TextField fx:id="tfNom" />
-            <Label text="description" />
-            <TextField fx:id="tfDesc" />
-            <Label prefHeight="18.0" prefWidth="98.0" text="date début" />
-            <TextField fx:id="tfDateDebut" />
-            <Label prefHeight="18.0" prefWidth="98.0" text="date fin" />
-            <TextField fx:id="tfDateFin" />
-            <Label prefHeight="18.0" prefWidth="98.0" text="Statut" />
-            <TextField fx:id="tfStatut" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#ajouterProjet" prefHeight="58.0" prefWidth="208.0" text="Ajouter" textAlignment="JUSTIFY">
-               <VBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </VBox.margin>
-            </Button>
+            <VBox layoutX="52.0" layoutY="49.0" prefHeight="306.0" prefWidth="236.0">
+               <children>
+                  <Label text="Nom" textFill="#507b8b" />
+                  <TextField fx:id="tfNom" />
+                  <Label text="description" textFill="#507b8b" />
+                  <TextField fx:id="tfDesc" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="date début" textFill="#507b8b" />
+                  <TextField fx:id="tfDateDebut" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="date fin" textFill="#507b8b" />
+                  <TextField fx:id="tfDateFin" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="Statut" textFill="#507b8b" />
+                  <TextField fx:id="tfStatut" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#ajouterProjet" prefHeight="58.0" prefWidth="208.0" style="-fx-background-color: #507B8B;" text="Ajouter" textAlignment="JUSTIFY" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <ListView fx:id="lvProjets" layoutX="353.0" layoutY="34.0" prefHeight="433.0" prefWidth="723.0" />
+            <Button alignment="CENTER" layoutX="565.0" layoutY="492.0" mnemonicParsing="false" onAction="#afficherProjets" prefHeight="58.0" prefWidth="208.0" style="-fx-background-color: #507B8B;" text="Voir" textAlignment="JUSTIFY" textFill="WHITE" />
+            <Label layoutX="81.0" layoutY="399.0" prefHeight="18.0" prefWidth="98.0" text="Supprimer (id)" textFill="#507b8b" />
+            <TextField fx:id="tfId" layoutX="179.0" layoutY="395.0" prefHeight="18.0" prefWidth="84.0" />
+            <Button alignment="CENTER" layoutX="73.0" layoutY="426.0" mnemonicParsing="false" onAction="#supprimerProjet" prefHeight="41.0" prefWidth="194.0" style="-fx-background-color: #507B8B;" text="Supprimer" textAlignment="JUSTIFY" textFill="WHITE" />
          </children>
-      </VBox>
-      <ListView fx:id="lvProjets" layoutX="365.0" layoutY="55.0" prefHeight="433.0" prefWidth="723.0" />
-      <Button alignment="CENTER" layoutX="623.0" layoutY="501.0" mnemonicParsing="false" onAction="#afficherProjets" prefHeight="58.0" prefWidth="208.0" text="Voir" textAlignment="JUSTIFY" />
-      <Label layoutX="54.0" layoutY="396.0" prefHeight="18.0" prefWidth="98.0" text="Supprimer (id)" />
-      <TextField fx:id="tfId" layoutX="152.0" layoutY="392.0" prefHeight="18.0" prefWidth="84.0" />
-      <Button alignment="CENTER" layoutX="46.0" layoutY="423.0" mnemonicParsing="false" onAction="#supprimerProjet" prefHeight="41.0" prefWidth="194.0" text="Supprimer" textAlignment="JUSTIFY" />
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </center>
+</BorderPane>
