@@ -49,25 +49,22 @@ public class ProjetsController implements Initializable {
         );
 
         sp.add(p);
+
+        fillLvProjets();
     }
 
     @FXML
     public void supprimerProjet(ActionEvent actionEvent) {
         Projet p = new Projet(Integer.parseInt(tfId.getText().toString()));
         sp.delete(p);
+
+        fillLvProjets();
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Projet> projets = sp.getAll();
-        String[] projets_s = new String[projets.size()];
-
-        for (int i = 0; i < projets.size(); i++) {
-            projets_s[i] = projets.get(i).toString();
-        }
-
-        lvProjets.getItems().addAll(projets_s);
+        fillLvProjets();
 
         lvProjets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -80,7 +77,12 @@ public class ProjetsController implements Initializable {
 
 
     @FXML
-    public void afficherProjets(ActionEvent actionEvent) {
+    public void afficherProjets(ActionEvent event) {
+        fillLvProjets();
+    }
+
+    @FXML
+    public void fillLvProjets() {
         lvProjets.getItems().clear();
 
         List<Projet> projets = sp.getAll();
