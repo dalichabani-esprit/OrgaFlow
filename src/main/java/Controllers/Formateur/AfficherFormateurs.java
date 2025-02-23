@@ -19,8 +19,10 @@ import javafx.stage.Stage;
 import models.Formateur;
 import services.ServiceFormateur;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,6 +31,7 @@ import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
 
 public class AfficherFormateurs implements Initializable {
+    ServiceFormateur sf = new ServiceFormateur();
     @FXML
     private TextField searchField;
 
@@ -41,7 +44,7 @@ public class AfficherFormateurs implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-        ServiceFormateur sf = new ServiceFormateur();
+
         formateursListView.setCellFactory(param -> new ListFormateursCell() );
         ServiceFormateur serviceFormateur = new ServiceFormateur();
         List<Formateur> formateurs = serviceFormateur.getAll();
@@ -147,6 +150,49 @@ public class AfficherFormateurs implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(AfficherFormateurs.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+//***************************trier par Nom  :
+@FXML
+private void trierFormateursParNom(ActionEvent event) {
+    // Récupérer la liste des formateurs depuis la source de données (par exemple, un champ ou une base de données)
+    List<Formateur> formateursList = sf.getAll();  // Assurez-vous que cette méthode vous renvoie la liste de formateurs
+
+    // Trier la liste des formateurs par nom en utilisant Stream
+    List<Formateur> sortedFormateurs = formateursList.stream()
+            .sorted(Comparator.comparing(Formateur::getNom))  // Trie par nom
+            .collect(Collectors.toList());  // Collecte les résultats dans une nouvelle liste
+
+    // Mettre à jour la ListView avec la liste triée
+    if (sortedFormateurs.isEmpty()) {
+        System.out.println("Aucun formateur trouvé !");
+    } else {
+        formateursListView.setItems(FXCollections.observableArrayList(sortedFormateurs));
+    }
+
+    // Rafraîchir la ListView
+    formateursListView.refresh();
+}
+
+    //***************************trier par Specialite :
+    @FXML
+    private void trierFormateursParSpecialite(ActionEvent event) {
+        // Récupérer la liste des formateurs depuis la source de données (par exemple, un champ ou une base de données)
+        List<Formateur> formateursList = sf.getAll();  // Assurez-vous que cette méthode vous renvoie la liste de formateurs
+
+        // Trier la liste des formateurs par nom en utilisant Stream
+        List<Formateur> sortedFormateurs = formateursList.stream()
+                .sorted(Comparator.comparing(Formateur::getSpecialite))  // Trie par nom
+                .collect(Collectors.toList());  // Collecte les résultats dans une nouvelle liste
+
+        // Mettre à jour la ListView avec la liste triée
+        if (sortedFormateurs.isEmpty()) {
+            System.out.println("Aucun formateur trouvé !");
+        } else {
+            formateursListView.setItems(FXCollections.observableArrayList(sortedFormateurs));
+        }
+
+        // Rafraîchir la ListView
+        formateursListView.refresh();
     }
 
 

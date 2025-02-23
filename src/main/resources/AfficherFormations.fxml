@@ -9,13 +9,15 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Formation.AfficherFormations">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="764.0" style="-fx-background-color: #D3D3D3;">
           <children>
               <ListView fx:id="formationsListView" layoutX="146.0" layoutY="115.0" onMouseClicked="#modifierFormation" prefHeight="531.0" prefWidth="918.0" AnchorPane.bottomAnchor="52.19999999999999" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="166.0" AnchorPane.topAnchor="115.0" />
               <TextField fx:id="searchField" layoutX="597.0" layoutY="59.0" onKeyReleased="#rechercherFormation" prefHeight="29.0" prefWidth="149.0" promptText="Rechercher..." AnchorPane.rightAnchor="17.399999999999977" AnchorPane.topAnchor="59.0" />
-      
+
               <Button layoutX="17.0" layoutY="59.0" mnemonicParsing="false" onAction="#ajouterFormation" prefHeight="30.0" prefWidth="169.0" text="Ajouter une formation" textFill="#548192" textOverrun="CLIP" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="59.0">
                   <font>
                       <Font name="System Bold" size="13.0" />
@@ -31,6 +33,12 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Button>
+              <SplitMenuButton fx:id="tree" layoutX="602.0" layoutY="115.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="139.0" text="Tree ...">
+                  <items>
+                      <MenuItem fx:id="triParNomMenuItem" text="Trier par nom" onAction="#trierFormateursParNom"/>
+                      <MenuItem fx:id="triParSpecMenuItem" text="Trier par specialite" onAction="#trierFormateursParCategorie"/>
+                  </items>
+              </SplitMenuButton>
           </children>
       </AnchorPane>
    </center>

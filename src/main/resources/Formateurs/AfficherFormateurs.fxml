@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <AnchorPane prefHeight="550.0" prefWidth="764.0" style="-fx-background-color: D3d3D3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Formateur.AfficherFormateurs">
     <children>
         <ListView fx:id="formateursListView" layoutX="108.8" layoutY="120.8" onMouseClicked="#modifierFormateur" prefHeight="358.0" prefWidth="543.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="121.0" />
@@ -27,6 +29,13 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
+        <SplitMenuButton fx:id="tree" layoutX="602.0" layoutY="115.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="139.0" text="Tree ...">
+            <items>
+                <MenuItem fx:id="triParNomMenuItem" text="Trier par nom" onAction="#trierFormateursParNom"/>
+                <MenuItem fx:id="triParSpecMenuItem" text="Trier par specialite" onAction="#trierFormateursParSpecialite"/>
+            </items>
+        </SplitMenuButton>
+
     </children>
 
 </AnchorPane>
