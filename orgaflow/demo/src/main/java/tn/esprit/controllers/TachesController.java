@@ -55,25 +55,23 @@ public class TachesController implements Initializable {
         );
 
         st.add(t);
+
+        fillLvTaches();
     }
 
     @FXML
     public void supprimerTache(ActionEvent actionEvent) {
         Tache t = new Tache(Integer.parseInt(tfId.getText().toString()));
         st.delete(t);
+
+        fillLvTaches();
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Tache> taches = st.getAll();
-        String[] taches_s = new String[taches.size()];
 
-        for (int i = 0; i < taches.size(); i++) {
-            taches_s[i] = taches.get(i).toString();
-        }
-
-        lvTaches.getItems().addAll(taches_s);
+        fillLvTaches();
 
         lvTaches.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -86,7 +84,12 @@ public class TachesController implements Initializable {
 
 
     @FXML
-    public void afficherTaches(ActionEvent actionEvent) {
+    public void afficherTaches() {
+        fillLvTaches();
+    }
+
+    @FXML
+    public void fillLvTaches() {
         lvTaches.getItems().clear();
 
         List<Tache> taches = st.getAll();
