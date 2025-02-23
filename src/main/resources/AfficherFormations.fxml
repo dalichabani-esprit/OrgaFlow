@@ -5,27 +5,33 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="764.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Formation.AfficherFormations">
-    <children>
-        <ListView fx:id="formationsListView" layoutX="146.0" layoutY="115.0" onMouseClicked="#modifierFormation" prefHeight="531.0" prefWidth="918.0" AnchorPane.bottomAnchor="52.19999999999999" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="166.0" AnchorPane.topAnchor="115.0" />
-        <TextField fx:id="searchField" layoutX="597.0" layoutY="59.0" onKeyReleased="#rechercherFormation" prefHeight="29.0" prefWidth="149.0" promptText="Rechercher..." AnchorPane.rightAnchor="17.399999999999977" AnchorPane.topAnchor="59.0" />
 
-        <Button layoutX="17.0" layoutY="59.0" mnemonicParsing="false" onAction="#ajouterFormation" prefHeight="30.0" prefWidth="169.0" text="Ajouter une formation" textFill="#548192" textOverrun="CLIP" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="59.0">
-            <font>
-                <Font name="System Bold" size="13.0" />
-            </font>
-        </Button>
-        <Label layoutX="256.0" layoutY="54.0" prefHeight="40.0" prefWidth="353.0" text="La Liste des Formations" textFill="#548192">
-            <font>
-                <Font name="System Bold Italic" size="21.0" />
-            </font>
-        </Label>
-      <Button fx:id="menuback" layoutY="14.0" mnemonicParsing="false" onAction="#GoToTheMenu" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: D3D3D3;" text="&lt;- Menu" textFill="#548192">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
-         </font>
-      </Button>
-    </children>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Formation.AfficherFormations">
+   <center>
+      <AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="764.0" style="-fx-background-color: #D3D3D3;">
+          <children>
+              <ListView fx:id="formationsListView" layoutX="146.0" layoutY="115.0" onMouseClicked="#modifierFormation" prefHeight="531.0" prefWidth="918.0" AnchorPane.bottomAnchor="52.19999999999999" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="166.0" AnchorPane.topAnchor="115.0" />
+              <TextField fx:id="searchField" layoutX="597.0" layoutY="59.0" onKeyReleased="#rechercherFormation" prefHeight="29.0" prefWidth="149.0" promptText="Rechercher..." AnchorPane.rightAnchor="17.399999999999977" AnchorPane.topAnchor="59.0" />
+      
+              <Button layoutX="17.0" layoutY="59.0" mnemonicParsing="false" onAction="#ajouterFormation" prefHeight="30.0" prefWidth="169.0" text="Ajouter une formation" textFill="#548192" textOverrun="CLIP" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="59.0">
+                  <font>
+                      <Font name="System Bold" size="13.0" />
+                  </font>
+              </Button>
+              <Label layoutX="256.0" layoutY="54.0" prefHeight="40.0" prefWidth="353.0" text="La Liste des Formations" textFill="#548192">
+                  <font>
+                      <Font name="System Bold Italic" size="21.0" />
+                  </font>
+              </Label>
+            <Button fx:id="menuback" layoutY="14.0" mnemonicParsing="false" onAction="#GoToTheMenu" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: D3D3D3;" text="&lt;- Menu" textFill="#548192">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+          </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

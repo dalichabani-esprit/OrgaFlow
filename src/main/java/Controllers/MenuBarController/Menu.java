@@ -21,6 +21,11 @@ public class Menu {
     }
 
     @FXML
+    private void GoToMenu (ActionEvent event) {
+        changerScene(event, "/Menu/Menu.fxml");
+    }
+
+    @FXML
     private void GoToformateurs(ActionEvent event) {
         changerScene(event, "/Formateurs/AfficherFormateurs.fxml");
     }

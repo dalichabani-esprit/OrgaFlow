@@ -22,7 +22,8 @@ public class MainFx extends Application {
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherFormations.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierFormation.fxml"));
      //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/Formateurs/AfficherFormateurs.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Menu.fxml"));
+      //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Home.fxml"));
 
 
         try {
