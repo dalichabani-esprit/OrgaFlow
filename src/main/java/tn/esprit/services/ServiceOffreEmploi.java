@@ -88,7 +88,7 @@ public class ServiceOffreEmploi implements IService<OffreEmploi> {
 
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("L'offre a été mise à jour avec succès !");
+                System.out.println("L'offre " + offreEmploi.getIdOffre() + " a été mise à jour avec succès !");
             } else {
                 System.out.println("Aucune offre trouvée avec cet ID.");
             }

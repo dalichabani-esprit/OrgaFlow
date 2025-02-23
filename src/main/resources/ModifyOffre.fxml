@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +14,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="780.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifyOffre">
     <children>
@@ -82,13 +80,18 @@
             <right>
                 <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="retour" mnemonicParsing="false" text="Retour" />
+                        <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" text="Retour" />
                     </children>
                 </VBox>
             </right>
             <center>
                 <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                     <children>
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="873.0">
+                     <children>
+                        <Label text="Entrez le Titre de l'offre pour faire la modification" />
+                     </children>
+                  </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                             <children>
                                 <Label text="Titre">
@@ -96,7 +99,7 @@
                                         <Font name="Arial Bold" size="24.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="tftitre" />
+                        <ComboBox fx:id="cbtitre" prefWidth="150.0" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
@@ -135,7 +138,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
                             <children>
-                                <Button fx:id="valider" mnemonicParsing="false" onAction="#ajouterOffre" text="Valider" />
+                                <Button fx:id="valider" mnemonicParsing="false" onAction="#modifyOffre" text="Valider" />
                             </children>
                         </HBox>
                         <ProgressBar fx:id="progression" prefWidth="200.0" progress="0.0" />
