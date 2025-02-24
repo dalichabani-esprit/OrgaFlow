@@ -38,6 +38,8 @@ public class DelOffre implements Initializable {
                 so.delete(c); // Supprime chaque candidature de la base de données
             }
             listview.getItems().removeAll(selectedOffrre); // Supprime les offres de la ListView
+
+
         }
 
     }

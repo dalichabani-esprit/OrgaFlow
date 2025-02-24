@@ -4,13 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Candidature;
+import tn.esprit.models.OffreEmploi;
 import tn.esprit.services.ServiceCandidature;
 
 
@@ -20,9 +25,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class GestionCandidature implements Initializable {
+public class ShowCandidature implements Initializable {
 
 
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private ScrollPane scroll;
 
     @FXML
     private Label LblAcceuil;
@@ -46,10 +56,46 @@ public class GestionCandidature implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Candidature> C = sca.getAll();
-        ListViewCandidature.getItems().setAll(C);
-        //sca.update((Candidature) sca);
+        List<Candidature> can = sca.getAll();
+        int column = 0;
+        int row = 1;
+        int maxColumns = 4; // Nombre max de colonnes affichées dynamiquement
 
+        try {
+            for (Candidature c : can) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ItemCandidature.fxml"));
+                AnchorPane pane = fxmlLoader.load();
+
+                ItemCandidature controller = fxmlLoader.getController();
+                controller.setData(c);
+
+                if (column == 4) {
+                    column = 0;
+                    row++;
+                }
+                grid.add(pane, column++, row);
+
+                // Configurer la grille
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(pane, new Insets(10));
+            }
+        } catch (IOException e) {
+            showError("Erreur de chargement des offres", "Impossible de charger les offres d'emploi.");
+        }
+
+    }
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
@@ -128,8 +174,8 @@ public class GestionCandidature implements Initializable {
     }
     @FXML
     void refresh(ActionEvent event) {
-        List<Candidature> C = sca.getAll();
-        ListViewCandidature.getItems().setAll(C);
+        grid.getChildren().clear();
+        initialize(null, null);
 
 
     }

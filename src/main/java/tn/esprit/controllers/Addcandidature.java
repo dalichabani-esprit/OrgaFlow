@@ -93,7 +93,7 @@ public class Addcandidature implements Initializable {
 
     @FXML
     public void retour(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/GestionCandidature.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ShowCandidature.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
