@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.OffreEmploi;
@@ -26,7 +27,7 @@ public class ShowOffre implements Initializable {
 
     IService<OffreEmploi> O =  new ServiceOffreEmploi();
 
-    List<OffreEmploi> getData(){
+   private  List<OffreEmploi> getData(){
         List<OffreEmploi> emploi = new ArrayList<>();
         OffreEmploi offreEmploi ;
 
@@ -55,7 +56,7 @@ public class ShowOffre implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<OffreEmploi> emploi = O.getAll(); // Récupérer les offres
         int column = 0;
-        int row = 0;
+        int row = 1;
 
         try {
             for (int i = 0; i < emploi.size(); i++) {
@@ -69,12 +70,22 @@ public class ShowOffre implements Initializable {
                 controller.setData(emploi.get(i)); // Passer les données via `setData()`
 
                 // Gestion du positionnement dans la grille
-                if (column == 3) {
+                if (column == 8) {
                     column = 0;
                     row++;
                 }
 
-                grid.add(pane, column++, row);
+                grid.add(pane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
                 GridPane.setMargin(pane, new Insets(10));
             }
         } catch (IOException e) {

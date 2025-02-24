@@ -57,13 +57,13 @@
                      <children>
                         <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" prefHeight="361.0" prefWidth="436.0" styleClass="blanc" stylesheets="@style.css" HBox.hgrow="ALWAYS">
                            <content>
-                              <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" stylesheets="@style.css">
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                                 </rowConstraints>
+                              <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="0.0" prefWidth="31.0" stylesheets="@style.css">
                                  <padding>
                                     <Insets top="100.0" />
                                  </padding>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
                               </GridPane>
                            </content>
                            <HBox.margin>
