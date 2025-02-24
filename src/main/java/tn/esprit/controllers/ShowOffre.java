@@ -124,4 +124,19 @@ public class ShowOffre implements Initializable {
         stage.show();
 
     }
+    @FXML
+    void sceneDel(ActionEvent event) {
+        try {
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/DelOffre.fxml"));
+            Parent root1 =(Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setTitle("--------Suppression--------- ");
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println("Erreur de chargement du fichier FXML : " + e.getMessage());
+        }
+
+    }
 }

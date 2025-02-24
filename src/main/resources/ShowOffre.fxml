@@ -45,7 +45,7 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#sceneadd" styleClass="bt" text="ajouter" />
                         <Button mnemonicParsing="false" onAction="#sceneModify" styleClass="bt" text="modifier" />
-                        <Button mnemonicParsing="false" styleClass="bt" text="supprimer" />
+                        <Button mnemonicParsing="false" onAction="#sceneDel" styleClass="bt" text="supprimer" />
                         <Button mnemonicParsing="false" styleClass="bt" text="trier" />
                         <Button mnemonicParsing="false" onAction="#retourCandidature" styleClass="bt2" text="retour" />
                      </children>
