@@ -37,6 +37,11 @@
                   <Font size="30.0" />
                </font>
             </Text>
+            <Button fx:id="menuback" layoutY="3.0" mnemonicParsing="false" onAction="#GoToTheHome" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: D3D3D3;" text="&lt;- Home" textFill="#548192">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </items>
 </SplitPane>
