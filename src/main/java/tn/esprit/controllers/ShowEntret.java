@@ -4,17 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Candidature;
 import tn.esprit.models.Entretien;
 import java.io.IOException;
+
+import tn.esprit.models.OffreEmploi;
 import tn.esprit.services.ServiceEntretien;
 
 import java.net.URL;
@@ -22,6 +26,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ShowEntret implements Initializable {
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private ScrollPane scroll;
 
     @FXML
     private Label LblAcceuil;
@@ -66,16 +76,52 @@ public class ShowEntret implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Entretien> E = Ent.getAll();
-        ListViewEntret.getItems().setAll(E);
-        //sca.update((Candidature) sca);
+        List<Entretien> entretiens = Ent.getAll();
+        int column = 0;
+        int row = 1;
+        int maxColumns = 4; // Nombre max de colonnes affichées dynamiquement
 
+        try {
+            for (Entretien ent : entretiens) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ItemEntret.fxml"));
+                AnchorPane pane = fxmlLoader.load();
+
+                ItemEntret controller = fxmlLoader.getController();
+                controller.setData(ent);
+
+                if (column == 4) {
+                    column = 0;
+                    row++;
+                }
+                grid.add(pane, column++, row);
+
+                // Configurer la grille
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(pane, new Insets(10));
+            }
+        } catch (IOException e) {
+            showError("Erreur de chargement des offres", "Impossible de charger les offres d'emploi.");
+        }
+
+    }
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML
     void refresh(ActionEvent event) {
-        List<Entretien> C = Ent.getAll();
-        ListViewEntret.getItems().setAll(C);
+        grid.getChildren().clear();
+        initialize(null, null);
 
     }
 

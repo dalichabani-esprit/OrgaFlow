@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="367.0" styleClass="gridcell" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ItemEntret">
+    <children>
+        <VBox alignment="CENTER" layoutX="43.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="188.0">
+                    <children>
+                        <Label prefHeight="27.0" prefWidth="98.0" text="Candidature">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="Labelcan" prefHeight="43.0" prefWidth="249.0" text="Labelcan" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="188.0">
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="61.0" text="heure:" />
+                        <Label fx:id="Labelheure" prefHeight="38.0" prefWidth="286.0" text="labelheure">
+                            <font>
+                                <Font name="System Italic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="200.0" spacing="5.0">
+                    <children>
+                        <Label prefHeight="26.0" prefWidth="111.0" text="Date de l'entretien:" />
+                        <Label fx:id="Labeld" prefHeight="17.0" prefWidth="177.0" text="Labeld" />
+                    </children>
+                </HBox>
+            <HBox prefHeight="35.0" prefWidth="355.0">
+               <children>
+                  <Label text="Lieu:  " />
+                  <Label fx:id="labellieu" text="Labellieu" />
+               </children>
+            </HBox>
+            <HBox prefHeight="47.0" prefWidth="355.0">
+               <children>
+                  <Label text="Interviewer" />
+                  <Label fx:id="labelinter" text="Labelinter" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Note: " />
+                  <Label fx:id="labelnote" prefHeight="68.0" prefWidth="312.0" text="Label" />
+               </children>
+            </HBox>
+            </children>
+            <padding>
+                <Insets top="5.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
