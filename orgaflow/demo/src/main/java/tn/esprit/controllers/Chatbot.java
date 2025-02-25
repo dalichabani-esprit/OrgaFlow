@@ -47,6 +47,7 @@ public class Chatbot {
     @FXML
     public void clearText(ActionEvent event) {
         taQuestion.clear();
+        taAnswer.clear();
     }
 
 

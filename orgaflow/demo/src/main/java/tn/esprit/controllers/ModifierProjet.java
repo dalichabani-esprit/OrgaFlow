@@ -1,22 +1,14 @@
 package tn.esprit.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Projet;
 import tn.esprit.services.ServiceProjet;
 
-import java.lang.reflect.Array;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import javafx.scene.control.DatePicker;
+
 
 public class ModifierProjet{
     @FXML
@@ -27,9 +19,9 @@ public class ModifierProjet{
     @FXML
     private TextField tfDesc;
     @FXML
-    private TextField tfDateDebut;
+    private DatePicker dpDateDebut;
     @FXML
-    private TextField tfDateFin;
+    private DatePicker dpDateFin;
     @FXML
     private TextField tfStatut;
 
@@ -42,8 +34,8 @@ public class ModifierProjet{
                 Integer.parseInt(tfId.getText()),
                 tfNom.getText(),
                 tfDesc.getText(),
-                tfDateDebut.getText(),
-                tfDateFin.getText(),
+                dpDateDebut.getValue().toString(),
+                dpDateFin.getValue().toString(),
                 tfStatut.getText()
         );
         

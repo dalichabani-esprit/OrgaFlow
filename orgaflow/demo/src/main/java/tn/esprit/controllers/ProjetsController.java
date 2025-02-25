@@ -12,6 +12,8 @@ import tn.esprit.interfaces.IService;
 import tn.esprit.models.Projet;
 import tn.esprit.services.ServiceProjet;
 
+import javafx.scene.control.DatePicker;
+
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,15 +26,15 @@ public class ProjetsController implements Initializable {
     @FXML
     private TextField tfDesc;
     @FXML
-    private TextField tfDateDebut;
-    @FXML
-    private TextField tfDateFin;
-    @FXML
     private TextField tfStatut;
     @FXML
     private TextField tfId;
     @FXML
     private ListView<String> lvProjets;
+    @FXML
+    private DatePicker dpDateDebut;
+    @FXML
+    private DatePicker dpDateFin;
 
 
     IService<Projet> sp = new ServiceProjet();
@@ -43,8 +45,8 @@ public class ProjetsController implements Initializable {
         Projet p = new Projet(
                 tfNom.getText(),
                 tfDesc.getText(),
-                tfDateDebut.getText(),
-                tfDateFin.getText(),
+                dpDateDebut.getValue().toString(),
+                dpDateFin.getValue().toString(),
                 tfStatut.getText()
         );
 
@@ -75,11 +77,6 @@ public class ProjetsController implements Initializable {
         });
     }
 
-
-    @FXML
-    public void afficherProjets(ActionEvent event) {
-        fillLvProjets();
-    }
 
     @FXML
     public void fillLvProjets() {

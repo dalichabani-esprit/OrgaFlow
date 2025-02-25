@@ -20,10 +20,10 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="taQuestion" layoutX="294.0" layoutY="114.0" prefHeight="97.0" prefWidth="510.0" />
+            <TextArea fx:id="taQuestion" layoutX="294.0" layoutY="114.0" prefHeight="97.0" prefWidth="510.0" style="-fx-border-color: #507b8b; -fx-border-width: 4; -fx-border-radius: 10;" />
             <Button layoutX="835.0" layoutY="113.0" mnemonicParsing="false" onAction="#sendQuestion" prefHeight="44.0" prefWidth="185.0" style="-fx-background-color: #507B8B;" text="Envoyer" textFill="WHITE" />
             <Button layoutX="835.0" layoutY="165.0" mnemonicParsing="false" onAction="#clearText" prefHeight="44.0" prefWidth="185.0" style="-fx-background-color: #507B8B;" text="Supprimer" textFill="WHITE" />
-            <TextArea fx:id="taAnswer" layoutX="71.0" layoutY="241.0" prefHeight="376.0" prefWidth="972.0" />
+            <TextArea fx:id="taAnswer" layoutX="71.0" layoutY="241.0" prefHeight="376.0" prefWidth="972.0" style="-fx-border-color: #507b8b; -fx-border-width: 4; -fx-border-radius: 10;" />
             <Label fx:id="labelError" layoutX="77.0" layoutY="630.0" prefHeight="74.0" prefWidth="970.0" textFill="RED" />
          </children>
       </AnchorPane>

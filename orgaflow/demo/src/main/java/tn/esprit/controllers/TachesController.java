@@ -14,6 +14,8 @@ import tn.esprit.models.Tache;
 import tn.esprit.services.ServiceProjet;
 import tn.esprit.services.ServiceTache;
 
+import javafx.scene.control.DatePicker;
+
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,6 +37,11 @@ public class TachesController implements Initializable {
     private TextField tfId;
     @FXML
     private TextField tfIdProjet;
+    @FXML
+    private DatePicker dpDateDebut;
+    @FXML
+    private DatePicker dpDateFin;
+
 
     @FXML
     private ListView<String> lvTaches;
@@ -48,8 +55,8 @@ public class TachesController implements Initializable {
         Tache t = new Tache(
                 tfNom.getText(),
                 tfDesc.getText(),
-                tfDateDebut.getText(),
-                tfDateFin.getText(),
+                dpDateDebut.getValue().toString(),
+                dpDateFin.getValue().toString(),
                 tfStatut.getText(),
                 Integer.parseInt(tfIdProjet.getText())
         );
@@ -82,11 +89,6 @@ public class TachesController implements Initializable {
         });
     }
 
-
-    @FXML
-    public void afficherTaches() {
-        fillLvTaches();
-    }
 
     @FXML
     public void fillLvTaches() {
