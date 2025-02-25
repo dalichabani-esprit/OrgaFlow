@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,72 +15,101 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
-import tn.esprit.models.Candidature;
 import tn.esprit.models.Entretien;
-import java.io.IOException;
-
-import tn.esprit.models.OffreEmploi;
 import tn.esprit.services.ServiceEntretien;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ShowEntret implements Initializable {
-
+    @FXML
+    private ComboBox<String> Detail, cbtrier;
     @FXML
     private GridPane grid;
-
     @FXML
     private ScrollPane scroll;
-
     @FXML
-    private Label LblAcceuil;
+    private Button btnAdd_Cdtr, btnMod_Cdtr, btnStat_Cdtr, btnSupp_Cdtr;
 
-    @FXML
-    private Label LblDeconnexion;
+    private final IService<Entretien> entService = new ServiceEntretien();
+    private List<Entretien> entretiens;
 
-    @FXML
-    private Label LblFormation;
-
-    @FXML
-    private Label LblProjet;
-
-    @FXML
-    private Label LblRecrutement;
-
-    @FXML
-    private ListView<Entretien> ListViewEntret;
-
-    @FXML
-    private Button btnAdd_Cdtr;
-
-    @FXML
-    private Button btnMod_Cdtr;
-
-    @FXML
-    private Button btnStat_Cdtr;
-
-    @FXML
-    private Button btnSupp_Cdtr;
-
-    @FXML
-    private Button btnTrie_Cdtr;
-
-    @FXML
-    private Label lblEntret;
-
-    @FXML
-    private Label lblOffre;
-
-    IService<Entretien> Ent =new ServiceEntretien();
-
-    @FXML
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Entretien> entretiens = Ent.getAll();
-        int column = 0;
-        int row = 1;
-        int maxColumns = 4; // Nombre max de colonnes affichées dynamiquement
+        cbtrier.setItems(FXCollections.observableArrayList("par heure", "par date", "par lieu", "par interviewer"));
+        cbtrier.setOnAction(event -> updateDetailComboBox());
+        Detail.setOnAction(event -> filterEntretien());
+        loadEntretien();
+    }
+
+    private void updateDetailComboBox() {
+        String selected = cbtrier.getValue();
+        if (selected == null) return;
+
+        switch (selected) {
+            case "par heure":
+            case "par date":
+                Detail.setItems(FXCollections.observableArrayList("croissant", "décroissant"));
+                break;
+            case "par lieu":
+                Detail.setItems(FXCollections.observableArrayList(
+                        entService.getAll().stream().map(Entretien::getLieuEntret).distinct().collect(Collectors.toList())));
+                break;
+            case "par interviewer":
+                Detail.setItems(FXCollections.observableArrayList(
+                        entService.getAll().stream().map(Entretien::getInterviewerEntret).distinct().collect(Collectors.toList())));
+                break;
+        }
+    }
+
+    private void filterEntretien() {
+        String critere = cbtrier.getValue();
+        String valeur = Detail.getValue();
+
+        if (critere == null || valeur == null) {
+            loadEntretien();
+            return;
+        }
+
+        List<Entretien> filteredList = entretiens;
+
+        switch (critere) {
+            case "par heure":
+                filteredList.sort("croissant".equals(valeur) ?
+                        (e1, e2) -> e1.getTimeEntret().compareTo(e2.getTimeEntret()) :
+                        (e1, e2) -> e2.getTimeEntret().compareTo(e1.getTimeEntret()));
+                break;
+            case "par date":
+                filteredList.sort("croissant".equals(valeur) ?
+                        (e1, e2) -> e1.getDateEntret().compareTo(e2.getDateEntret()) :
+                        (e1, e2) -> e2.getDateEntret().compareTo(e1.getDateEntret()));
+                break;
+            case "par lieu":
+                filteredList = filteredList.stream()
+                        .filter(e -> e.getLieuEntret().equals(valeur))
+                        .collect(Collectors.toList());
+                break;
+            case "par interviewer":
+                filteredList = filteredList.stream()
+                        .filter(e -> e.getInterviewerEntret().equals(valeur))
+                        .collect(Collectors.toList());
+                break;
+        }
+
+        updateGrid(filteredList);
+    }
+
+    private void loadEntretien() {
+        entretiens = entService.getAll();
+        updateGrid(entretiens);
+    }
+
+    private void updateGrid(List<Entretien> entretiens) {
+        grid.getChildren().clear();
+        int column = 0, row = 1, maxColumns = 4;
 
         try {
             for (Entretien ent : entretiens) {
@@ -89,13 +119,11 @@ public class ShowEntret implements Initializable {
                 ItemEntret controller = fxmlLoader.getController();
                 controller.setData(ent);
 
-                if (column == 4) {
+                if (column == maxColumns) {
                     column = 0;
                     row++;
                 }
                 grid.add(pane, column++, row);
-
-                // Configurer la grille
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 grid.setMaxWidth(Region.USE_PREF_SIZE);
@@ -106,10 +134,11 @@ public class ShowEntret implements Initializable {
                 GridPane.setMargin(pane, new Insets(10));
             }
         } catch (IOException e) {
-            showError("Erreur de chargement des offres", "Impossible de charger les offres d'emploi.");
+            showError("Erreur de chargement des entretiens", "Impossible de charger les entretiens.");
+            e.printStackTrace();
         }
-
     }
+
     private void showError(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -120,70 +149,54 @@ public class ShowEntret implements Initializable {
 
     @FXML
     void refresh(ActionEvent event) {
-        grid.getChildren().clear();
-        initialize(null, null);
-
+        loadEntretien();
     }
 
     @FXML
     void sceneDel(ActionEvent event) {
-        try {
-            FXMLLoader loader= new FXMLLoader(getClass().getResource("/DelEntret.fxml"));
-            Parent root1 =(Parent) loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.setTitle("--------Suppression--------- ");
-            stage.show();
-
-        } catch (IOException e) {
-            System.out.println("Erreur de chargement du fichier FXML : " + e.getMessage());
-        }
-
+        loadPopupScene("/DelEntret.fxml", "Suppression");
     }
 
     @FXML
     void sceneModify(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/ModifyEntret.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setMaximized(true);
-        stage.setScene(scene);
-        stage.show();
-
+        loadScene(event, "/ModifyEntret.fxml");
     }
 
     @FXML
     void sceneadd(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/AddEntret.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setMaximized(true);
-        stage.setScene(scene);
-        stage.show();
-
+        loadScene(event, "/AddEntret.fxml");
     }
-
 
     @FXML
     void retourCandidature(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/ShowCandidature.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Candidature ");
-        stage.show();
-
+        loadScene(event, "/ShowCandidature.fxml");
     }
 
     @FXML
     void retourOffre(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/ShowOffre.fxml"));
+        loadScene(event, "/ShowOffre.fxml");
+    }
+
+    private void loadScene(ActionEvent event, String fxmlPath) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Offre ");
+        stage.setTitle(fxmlPath.substring(1, fxmlPath.indexOf("."))); // Extrait le nom du fichier sans ".fxml"
         stage.show();
-
     }
 
+    private void loadPopupScene(String fxmlPath, String title) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(title);
+            stage.show();
+        } catch (IOException e) {
+            showError("Erreur", "Impossible de charger la fenêtre.");
+            e.printStackTrace();
+        }
+    }
 }

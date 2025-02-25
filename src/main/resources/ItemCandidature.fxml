@@ -47,6 +47,12 @@
                         <Label fx:id="labelstat" prefHeight="17.0" prefWidth="122.0" text="labelstat" />
                     </children>
                 </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="355.0" spacing="5.0">
+               <children>
+                  <Label text="Candidature numéro : " />
+                  <Label fx:id="labelid" text="Label" />
+               </children>
+            </HBox>
             </children>
          <padding>
             <Insets top="5.0" />

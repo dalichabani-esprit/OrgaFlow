@@ -23,6 +23,10 @@ public class ItemCandidature {
     @FXML
     private Label Labelcan;
 
+
+    @FXML
+    private Label labelid;
+
     @FXML
     private Label Labeld;
 
@@ -54,6 +58,7 @@ public class ItemCandidature {
         // Affichage du statut de la candidature
         labelstat.setText(cn.getStatutCandidature());
         Labeld.setText(cn.getDate_candidature().toString());
+        labelid.setText(String.valueOf(cn.getIdCandidature()));
 
         // Changer la couleur du statut en fonction du type de statut
         switch (cn.getStatutCandidature()) {
