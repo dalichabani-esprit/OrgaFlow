@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import models.Formateur;
 import services.ServiceFormateur;
+import utils.EmailAPI;
 
 public class AjouterFormateur {
 
@@ -46,6 +47,8 @@ public class AjouterFormateur {
         emailField.clear();
         telephoneField.clear();
         specialiteField.clear();
+
+
 
 
         showAlert("Succès", "Formateur ajouté avec succès !");

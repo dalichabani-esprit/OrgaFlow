@@ -6,6 +6,7 @@ import models.Formation;
 import models.Formateur;
 import services.ServiceFormation;
 import services.ServiceFormateur;
+import utils.EmailAPI;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -95,6 +96,10 @@ public class AjouterFormation {
 
             Formation formation = new Formation(0, nom, description, duree, Date.valueOf(dateDebut), Date.valueOf(dateFin), categorie, formateur);
             serviceFormation.add(formation);
+            /*------------------------Envoyer QR code dans un email--------------------*/
+            EmailAPI e = new EmailAPI();
+            e.sendMail(formation);
+
             showAlert("Succès", "Formation ajoutée avec succès !");
             clearFields();
 
