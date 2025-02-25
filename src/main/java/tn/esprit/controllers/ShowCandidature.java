@@ -16,7 +16,9 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Candidature;
+import tn.esprit.models.OffreEmploi;
 import tn.esprit.services.ServiceCandidature;
+import tn.esprit.services.ServiceOffreEmploi;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +39,7 @@ public class ShowCandidature implements Initializable {
 
     private final IService<Candidature> sca = new ServiceCandidature();
     private List<Candidature> candidatures = new ArrayList<>();
+    private final ServiceOffreEmploi serviceOffre = new ServiceOffreEmploi();
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,14 +55,14 @@ public class ShowCandidature implements Initializable {
 
         switch (selected) {
             case "par statut":
-                Détail.setItems(FXCollections.observableArrayList("en attente", "entretien", "rejetté", "embauché"));
+                Détail.setItems(FXCollections.observableArrayList("en attente", "entretien", "rejeté", "embauché"));
                 break;
             case "par offre":
-                // Récupérer les offres disponibles depuis les candidatures
-                Set<String> offres = candidatures.stream()
-                        .map(c -> String.valueOf(c.getOffreID()))
-                        .collect(Collectors.toSet());
-                Détail.setItems(FXCollections.observableArrayList(offres));
+                // Récupérer les titres des offres et associer l'ID correspondant
+                List<String> titresOffres = serviceOffre.getAll().stream()
+                        .map(OffreEmploi::getTitreOffre)
+                        .collect(Collectors.toList());
+                Détail.setItems(FXCollections.observableArrayList(titresOffres));
                 break;
             case "par date":
                 Détail.setItems(FXCollections.observableArrayList("croissant", "décroissant"));
@@ -85,9 +88,17 @@ public class ShowCandidature implements Initializable {
                         .collect(Collectors.toList());
                 break;
             case "par offre":
-                filteredList = filteredList.stream()
-                        .filter(c -> String.valueOf(c.getOffreID()).equals(valeur))
-                        .collect(Collectors.toList());
+                // Récupérer l'ID de l'offre correspondant au titre sélectionné
+                Optional<OffreEmploi> selectedOffre = serviceOffre.getAll().stream()
+                        .filter(offre -> offre.getTitreOffre().equals(valeur))
+                        .findFirst();
+
+                if (selectedOffre.isPresent()) {
+                    String selectedOffreID = String.valueOf(selectedOffre.get().getIdOffre());
+                    filteredList = filteredList.stream()
+                            .filter(c -> String.valueOf(c.getOffreID()).equals(selectedOffreID))
+                            .collect(Collectors.toList());
+                }
                 break;
             case "par date":
                 if ("croissant".equals(valeur)) {
