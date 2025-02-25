@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -98,7 +99,8 @@
                                 <Button fx:id="btnSupp_Cdtr" mnemonicParsing="false" onAction="#sceneDel" styleClass="bt" stylesheets="@style.css" text="Supprimer" />
                                 <Button fx:id="btnStat_Cdtr" mnemonicParsing="false" styleClass="bt" text="Statistiques" />
                                 <Button fx:id="btnTrie_Cdtr" mnemonicParsing="false" styleClass="bt" text="Trier" />
-                                <Button mnemonicParsing="false" onAction="#refresh" styleClass="bt" stylesheets="@style.css" text="Rafraichir" />
+                        <ComboBox fx:id="cbtrier" prefWidth="150.0" promptText="Trier" styleClass="bt" />
+                        <ComboBox fx:id="Détail" prefWidth="150.0" promptText="Détail" styleClass="bt3" />
                             </children>
                         </VBox>
                     </children>

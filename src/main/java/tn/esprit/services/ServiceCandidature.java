@@ -124,6 +124,30 @@ public class ServiceCandidature implements IService<Candidature> {
 
     }
 
+    public  Candidature getByStatus(String statut){
+        String qry = "SELECT * FROM `candidature` WHERE `statut` = ?";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(qry);
+            pstm.setString(5, statut);
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                Candidature c = new Candidature();
+                c.setIdCandidature(rs.getInt("id"));
+                c.setCandidatID(rs.getInt("candidat_id"));
+                c.setOffreID(rs.getInt("offre_id"));
+                c.setDate_candidature(rs.getDate("date_candidature"));
+                c.setStatutCandidature(rs.getString("statut"));
+
+
+                return c;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération de candidature : " + e.getMessage());
+        }
+        return null;
+    }
+
     @Override
     public Candidature getById(int id) {
         String qry = "SELECT * FROM `candidature` WHERE `id` = ?";
