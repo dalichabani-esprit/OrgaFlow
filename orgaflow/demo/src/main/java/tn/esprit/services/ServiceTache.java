@@ -39,11 +39,6 @@ public class ServiceTache implements IService<Tache> {
 
     @Override
     public List<Tache> getAll() {
-        //create Qry sql
-        //execution
-        //Mapping data
-
-
         List<Tache> taches = new ArrayList<>();
         String qry ="SELECT * FROM `tache`";
 
@@ -72,6 +67,35 @@ public class ServiceTache implements IService<Tache> {
 
         return taches;
     }
+
+    public List<Tache> getAllSort(String criteria) {
+        List<Tache> taches = new ArrayList<>();
+        String qry ="SELECT * FROM `tache` ORDER BY " + criteria;
+
+        try {
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+
+            while (rs.next()){
+                Tache t = new Tache();
+                t.setId(rs.getInt("id"));
+                t.setNom(rs.getString("nom"));
+                t.setDescription(rs.getString("description"));
+                t.setDate_debut(rs.getString("date_debut"));
+                t.setDate_fin(rs.getString("date_fin"));
+                t.setStatut(rs.getString("statut"));
+                t.setId_projet(rs.getInt("id_projet"));
+
+                taches.add(t);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return taches;
+    }
+
+
 
     @Override
     public void update(Tache tache) {

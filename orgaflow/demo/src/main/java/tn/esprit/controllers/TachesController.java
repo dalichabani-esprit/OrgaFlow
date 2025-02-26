@@ -7,7 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import tn.esprit.interfaces.IService;
+import javafx.scene.control.ChoiceBox;
+import tn.esprit.models.Projet;
 import tn.esprit.models.Tache;
 import tn.esprit.services.ServiceTache;
 
@@ -33,10 +34,13 @@ public class TachesController implements Initializable {
     @FXML
     private DatePicker dpDateFin;
 
+    @FXML
+    private ChoiceBox<String> choiceBoxTri;
 
     @FXML
     private ListView<String> lvTaches;
 
+    private String[] criterias = {"nom", "description", "date_debut", "date_fin", "statut"};
 
     ServiceTache st = new ServiceTache();
 
@@ -74,6 +78,8 @@ public class TachesController implements Initializable {
 
         fillLvTaches();
 
+        choiceBoxTri.getItems().addAll(criterias);
+
         lvTaches.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -97,6 +103,20 @@ public class TachesController implements Initializable {
 
         lvTaches.getItems().addAll(taches_s);
 
+    }
+
+    @FXML
+    public void trierLvTaches() {
+        String criteria = choiceBoxTri.getValue();
+        List<Tache> taches = st.getAllSort(criteria);
+        String[] taches_s = new String[taches.size()];
+
+        for (int i = 0; i < taches.size(); i++) {
+            taches_s[i] = taches.get(i).toString();
+        }
+
+        lvTaches.getItems().clear();
+        lvTaches.getItems().addAll(taches_s);
     }
 
 }

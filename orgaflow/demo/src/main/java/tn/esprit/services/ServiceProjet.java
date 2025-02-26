@@ -70,6 +70,33 @@ public class ServiceProjet implements IService<Projet> {
         return personnes;
     }
 
+    public List<Projet> getAllSort(String criteria) {
+        List<Projet> personnes = new ArrayList<>();
+        String qry ="SELECT * FROM `projet` ORDER BY " + criteria;
+
+        try {
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+
+            while (rs.next()){
+                Projet p = new Projet();
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom"));
+                p.setDescription(rs.getString("description"));
+                p.setDate_debut(rs.getString("date_debut"));
+                p.setDate_fin(rs.getString("date_fin"));
+                p.setStatut(rs.getString("statut"));
+
+                personnes.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return personnes;
+    }
+
+
     @Override
     public void update(Projet projet) {
         String qry ="UPDATE `projet` SET `nom`=?, `description`=?, `date_debut`=?, `date_fin`=?, `statut`=? WHERE `id`=?;";

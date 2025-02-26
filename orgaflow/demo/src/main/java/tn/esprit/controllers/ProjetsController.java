@@ -5,18 +5,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import tn.esprit.interfaces.IService;
 import tn.esprit.models.Projet;
 import tn.esprit.services.ServiceProjet;
 
 import javafx.scene.control.DatePicker;
 
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -29,15 +26,20 @@ public class ProjetsController implements Initializable {
     private TextField tfStatut;
     @FXML
     private TextField tfNomDel;
+
+
     @FXML
     private ListView<String> lvProjets;
+
     @FXML
     private DatePicker dpDateDebut;
     @FXML
     private DatePicker dpDateFin;
 
+    @FXML
+    private ChoiceBox<String> choiceBoxTri;
 
-    //IService<Projet> sp = new ServiceProjet();
+    private String[] criterias = {"nom", "description", "date_debut", "date_fin", "statut"};
 
     ServiceProjet sp = new ServiceProjet();
 
@@ -66,15 +68,29 @@ public class ProjetsController implements Initializable {
             sp.delete(p);
             fillLvProjets();
         }
-        //int id = sp.getIdByNom();
-        //Projet p = new Projet(Integer.parseInt(tfId.getText().toString()));
-        //sp.delete(p);
+    }
+
+    @FXML
+    public void trierLvProjets() {
+        String criteria = choiceBoxTri.getValue();
+        List<Projet> projets = sp.getAllSort(criteria);
+
+        String[] projets_s = new String[projets.size()];
+
+        for (int i = 0; i < projets.size(); i++) {
+            projets_s[i] = projets.get(i).toString();
+        }
+
+        lvProjets.getItems().clear();
+        lvProjets.getItems().addAll(projets_s);
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillLvProjets();
+        
+        choiceBoxTri.getItems().addAll(criterias);
 
         lvProjets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
