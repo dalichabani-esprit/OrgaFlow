@@ -51,6 +51,7 @@
                </font>
             </Label>
             <Button layoutX="383.0" layoutY="628.0" mnemonicParsing="false" onAction="#trierLvTaches" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #507b8b;" text="Trier" textFill="WHITE" />
+            <Button layoutX="782.0" layoutY="597.0" mnemonicParsing="false" onAction="#exportPDF" prefHeight="63.0" prefWidth="165.0" style="-fx-background-color: #507b8b;" text="Exporter en PDF" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>

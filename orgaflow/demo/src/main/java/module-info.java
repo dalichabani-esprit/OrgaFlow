@@ -3,6 +3,8 @@ module org.example.demo {
     requires javafx.fxml;
     requires java.net.http;
     requires com.google.gson;
+    requires kernel;
+    requires layout;
 
 
     opens tn.esprit.test to javafx.fxml;

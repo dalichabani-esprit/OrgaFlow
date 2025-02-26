@@ -8,12 +8,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.DirectoryChooser;
 import tn.esprit.models.Projet;
 import tn.esprit.models.Tache;
 import tn.esprit.services.ServiceTache;
 
 import javafx.scene.control.DatePicker;
+import tn.esprit.utils.PdfGen;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -117,6 +121,18 @@ public class TachesController implements Initializable {
 
         lvTaches.getItems().clear();
         lvTaches.getItems().addAll(taches_s);
+    }
+
+    @FXML
+    public void exportPDF(ActionEvent event) throws FileNotFoundException {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedDirectory = directoryChooser.showDialog(null);
+
+        if (selectedDirectory != null) {
+            // Construct the full path for the PDF file (in the selected directory)
+            String dest = selectedDirectory.getAbsolutePath() + File.separator + "taches.pdf";
+            PdfGen.generateTachePdf(dest);
+        }
     }
 
 }

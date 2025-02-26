@@ -10,12 +10,18 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import tn.esprit.models.Projet;
 import tn.esprit.services.ServiceProjet;
+import javafx.stage.DirectoryChooser;
+
 
 import javafx.scene.control.DatePicker;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import tn.esprit.utils.PdfGen;
 
 public class ProjetsController implements Initializable {
     @FXML
@@ -115,6 +121,18 @@ public class ProjetsController implements Initializable {
 
         lvProjets.getItems().addAll(projets_s);
 
+    }
+
+    @FXML
+    public void exportPDF(ActionEvent event) throws FileNotFoundException {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedDirectory = directoryChooser.showDialog(null);
+
+        if (selectedDirectory != null) {
+            // Construct the full path for the PDF file (in the selected directory)
+            String dest = selectedDirectory.getAbsolutePath() + File.separator + "projets.pdf";
+            PdfGen.generateProjetPdf(dest);
+        }
     }
 
 }
