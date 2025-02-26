@@ -24,7 +24,8 @@ public class logginUser {
 
     @FXML
     private Hyperlink forgotpass;
-
+    @FXML
+    private Hyperlink logup;
     @FXML
     private PasswordField pfmotdepasseS;
 
@@ -85,7 +86,7 @@ public class logginUser {
             return;
         }
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/UserCRUD.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/GestionAdmin.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -94,6 +95,16 @@ public class logginUser {
         } catch (IOException e) {
             System.out.println("Erreur lors du chargement de UserCRUD.fxml : " + e.getMessage());
         }
+    }
+    @FXML
+    void Oncliclogup(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Creation de compte");
+        stage.show();
+
     }
 
 
