@@ -90,10 +90,10 @@ public class logginUser {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle("User Management");
+            stage.setTitle("DashBoard");
             stage.show();
         } catch (IOException e) {
-            System.out.println("Erreur lors du chargement de UserCRUD.fxml : " + e.getMessage());
+            System.out.println("Erreur lors du chargement de DashBoard.fxml : " + e.getMessage());
         }
     }
     @FXML

@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.Employes;
 import tn.esprit.models.User;
 import tn.esprit.services.ServiceUser;
 import java.io.IOException;
@@ -56,12 +57,13 @@ public class AjouterUser implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cbrole.setItems(FXCollections.observableArrayList("admin"));
+        cbrole.setItems(FXCollections.observableArrayList("admin","employe"));
 
     }
     @FXML
     public void Oncliclogup(ActionEvent event) {
         if ("admin".equals(cbrole.getValue())) {
+            // Création de l'objet Admin
             User user = new User();
             user.setEmail(tfemail.getText());
             user.setNom(tfnom.getText());
@@ -69,6 +71,7 @@ public class AjouterUser implements Initializable {
             user.setRole(cbrole.getSelectionModel().getSelectedItem());
             user.setMotDePasse(pfmotdepasse.getText());
 
+            // Vérifier si l'email existe déjà
             if (serviceUser.emailExiste(user.getEmail())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur d'inscription");
@@ -81,6 +84,38 @@ public class AjouterUser implements Initializable {
             System.out.println("Ajout de Admin : " + user);
             serviceUser.add(user);
             try {
+                Parent root = FXMLLoader.load(getClass().getResource("/GestionAdmin.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("Gestion Utilisateur");
+                stage.show();
+            } catch (IOException e) {
+                System.out.println("Erreur lors du chargement de GestionAdmin.fxml : " + e.getMessage());
+            }
+
+        } else if ("employe".equals(cbrole.getValue())) {
+            // Création de l'objet Employe
+            Employes employe = new Employes();
+            employe.setEmail(tfemail.getText());
+            employe.setNom(tfnom.getText());
+            employe.setPrenom(tfprenom.getText());
+            employe.setRole(cbrole.getSelectionModel().getSelectedItem());
+            employe.setMotDePasse(pfmotdepasse.getText());
+
+
+             if (serviceUser.emailExiste(employe.getEmail())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'inscription");
+                alert.setHeaderText("Email déjà utilisé !");
+                alert.setContentText("L'email " + employe.getEmail() + " est déjà associé à un compte.");
+                alert.showAndWait();
+                return;
+            }
+
+            System.out.println("Ajout d'Employé : " + employe);
+            serviceUser.add(employe);
+            try {
                 Parent root = FXMLLoader.load(getClass().getResource("/UserCRUD.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -92,6 +127,7 @@ public class AjouterUser implements Initializable {
             }
         }
     }
+
 
 
 

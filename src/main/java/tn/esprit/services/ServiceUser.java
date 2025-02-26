@@ -224,4 +224,98 @@ public class ServiceUser implements IService<User> {
 
         return null;
     }
+    public int getTotalCandidats() {
+        String query = "SELECT COUNT(*) FROM utilisateur WHERE role = 'candidat'";
+        try (PreparedStatement stmt = cnx.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des candidats : " + e.getMessage());
+        }
+        return 0;
+    }
+    public int getTotalEmployes() {
+        String query = "SELECT COUNT(*) FROM utilisateur WHERE role = 'employe'";
+        try (PreparedStatement stmt = cnx.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);  // Retourne le nombre d'employés
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des employés : " + e.getMessage());
+        }
+        return 0;
+    }
+    public List<Candidat> searchCandidatsByKeyword(String keyword) {
+        List<Candidat> candidats = new ArrayList<>();
+        String qry = "SELECT * FROM utilisateur WHERE role = 'candidat' AND (nom LIKE ? OR prenom LIKE ? OR email LIKE ?)";
+
+        try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
+            String searchPattern = "%" + keyword + "%";
+            pstm.setString(1, searchPattern);
+            pstm.setString(2, searchPattern);
+            pstm.setString(3, searchPattern);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    candidats.add(createCandidatFromResultSet(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la recherche des candidats : " + e.getMessage());
+        }
+
+        return candidats;
+    }
+
+    private Candidat createCandidatFromResultSet(ResultSet rs) throws SQLException {
+        return new Candidat(
+                rs.getInt("iduser"),
+                rs.getString("nom"),
+                rs.getString("prenom"),
+                rs.getString("email"),
+                rs.getString("motDePasse"),
+                rs.getDate("dateCandidature"),
+                rs.getString("statutCandidat"),
+                rs.getString("CvCandidat")
+        );
+    }
+
+    public List<Employes> searchEmployesByKeyword(String keyword) {
+        List<Employes> employes = new ArrayList<>();
+        String qry = "SELECT * FROM utilisateur WHERE role = 'employe' AND (nom LIKE ? OR prenom LIKE ? OR email LIKE ?)";
+
+        try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
+            String searchPattern = "%" + keyword + "%";
+            pstm.setString(1, searchPattern);
+            pstm.setString(2, searchPattern);
+            pstm.setString(3, searchPattern);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                while (rs.next()) {
+                    employes.add(createEmployeFromResultSet(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la recherche des employés : " + e.getMessage());
+        }
+
+        return employes;
+    }
+
+    private Employes createEmployeFromResultSet(ResultSet rs) throws SQLException {
+        return new Employes(
+                rs.getInt("iduser"),
+                rs.getString("nom"),
+                rs.getString("prenom"),
+                rs.getString("email"),
+                rs.getString("motDePasse"),
+                rs.getString("salaire"),
+                rs.getString("departement"),
+                rs.getDate("dateEmbauche")
+        );
+    }
+
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -21,6 +22,8 @@ import tn.esprit.models.User;
 import tn.esprit.services.ServiceUser;
 
 import java.io.IOException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestionAdmin {
@@ -54,88 +57,162 @@ public class GestionAdmin {
 
     @FXML
     private HBox totalcandidats;
-    private final IService<User> serviceUser = new ServiceUser();
+
     @FXML
     private HBox totalemployes;
-
+    private final IService<User> serviceUser = new ServiceUser();
     @FXML
-    void onclicaddcandidat(ActionEvent event) {
-
+    void onclicaddcandidat(ActionEvent event)  throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Addcandidat.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Modification ");
+        stage.show();
     }
 
     @FXML
-    void onclicaddemployes(ActionEvent event) {
-
+    void onclicaddemployes(ActionEvent event)  throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Addemploye.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Modification ");
+        stage.show();
     }
 
     @FXML
     void onclicdashboard(ActionEvent event) {
 
+        int candidatCount = serviceUser.getTotalCandidats();
+        int employeCount = serviceUser.getTotalEmployes();
+
+        totalcandidats.getChildren().clear();
+        totalemployes.getChildren().clear();
+
+        totalcandidats.getChildren().add(new Label("Total Candidats: " + candidatCount));
+        totalemployes.getChildren().add(new Label("Total Employés: " + employeCount));
     }
+
 
     @FXML
-    void onclichome(ActionEvent event) {
-
+    void onclichome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/GestionAdmin.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("DashBoard");
+        stage.show();
     }
+
 
     @FXML
     void oncliclistecand(ActionEvent event) {
         gridpane.getChildren().clear();
+
+
+        for (int i = 0; i < 9; i++) {
+            ColumnConstraints colConstraints = new ColumnConstraints();
+            colConstraints.setPercentWidth(11.1);
+            gridpane.getColumnConstraints().add(colConstraints);
+        }
+
+
         gridpane.add(new Label("ID"), 0, 0);
         gridpane.add(new Label("Nom"), 1, 0);
         gridpane.add(new Label("Prénom"), 2, 0);
         gridpane.add(new Label("Email"), 3, 0);
-        gridpane.add(new Label("Mot de Passe"), 4, 0);
         gridpane.add(new Label("Rôle"), 5, 0);
         gridpane.add(new Label("CV"), 6, 0);
-        gridpane.add(new Label("Date de Candidature"), 7, 0);
+        gridpane.add(new Label("Date Candidature"), 7, 0);
         gridpane.add(new Label("Statut"), 8, 0);
 
         List<User> users = serviceUser.getAll();
-        int row = 1; // Ligne où commencer l'ajout des candidats
+        int row = 1;
 
         for (User user : users) {
             if (user instanceof Candidat) {
                 Candidat candidat = (Candidat) user;
 
-                // Ajouter les informations du candidat dans le GridPane
-                gridpane.add(new Label(String.valueOf(candidat.getIduser())), 0, row);
-                gridpane.add(new Label(candidat.getNom()), 1, row);
-                gridpane.add(new Label(candidat.getPrenom()), 2, row);
-                gridpane.add(new Label(candidat.getEmail()), 3, row);
-                gridpane.add(new Label(candidat.getMotDePasse()), 4, row);
-                gridpane.add(new Label(candidat.getRole()), 5, row);
-                gridpane.add(new Label(candidat.getCvCandidat()), 6, row);
-                gridpane.add(new Label(candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée"), 7, row);
-                gridpane.add(new Label(candidat.getStatutCandidat()), 8, row);
+                Label idLabel = new Label(String.valueOf(candidat.getIduser()));  // Ajout de l'ID
+                Label nomLabel = new Label(candidat.getNom());
+                Label prenomLabel = new Label(candidat.getPrenom());
+                Label emailLabel = new Label(candidat.getEmail());
+                Label roleLabel = new Label(candidat.getRole());
+                Label cvLabel = new Label(candidat.getCvCandidat() != null ? "Disponible" : "Non disponible");
+                Label dateLabel = new Label(candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée");
+                Label statutLabel = new Label(candidat.getStatutCandidat());
 
-                row++; // Passer à la ligne suivante
+                GridPane.setMargin(idLabel, new Insets(5));
+                GridPane.setMargin(nomLabel, new Insets(5));
+                GridPane.setMargin(prenomLabel, new Insets(5));
+                GridPane.setMargin(emailLabel, new Insets(5));
+                GridPane.setMargin(roleLabel, new Insets(5));
+                GridPane.setMargin(cvLabel, new Insets(5));
+                GridPane.setMargin(dateLabel, new Insets(5));
+                GridPane.setMargin(statutLabel, new Insets(5));
+
+
+                gridpane.add(idLabel, 0, row);
+                gridpane.add(nomLabel, 1, row);
+                gridpane.add(prenomLabel, 2, row);
+                gridpane.add(emailLabel, 3, row);
+                gridpane.add(roleLabel, 5, row);
+                gridpane.add(cvLabel, 6, row);
+                gridpane.add(dateLabel, 7, row);
+                gridpane.add(statutLabel, 8, row);
+
+
+                Button btnSelect = new Button("Sélectionner");
+                btnSelect.setOnAction(e -> {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Informations Candidat");
+                    alert.setHeaderText("Détails du candidat sélectionné");
+                    alert.setContentText(
+                            "ID: " + candidat.getIduser() + "\n" +  // Afficher l'ID
+                                    "Nom: " + candidat.getNom() + "\n" +
+                                    "Prénom: " + candidat.getPrenom() + "\n" +
+                                    "Email: " + candidat.getEmail() + "\n" +
+                                    "Rôle: " + candidat.getRole() + "\n" +
+                                    "CV: " + (candidat.getCvCandidat() != null ? "Disponible" : "Non disponible") + "\n" +
+                                    "Date de Candidature: " + (candidat.getDateCandidature() != null ? candidat.getDateCandidature().toString() : "Non renseignée") + "\n" +
+                                    "Statut: " + candidat.getStatutCandidat()
+                    );
+                    alert.showAndWait();
+                });
+
+                gridpane.add(btnSelect, 9, row);
+                row++;
             }
         }
 
         if (row == 1) {
-            // Aucun candidat trouvé
-            gridpane.add(new Label("Aucun candidat trouvé."), 0, 1, 9, 1);
+            gridpane.add(new Label("Aucun candidat trouvé."), 0, 1, 9, 1); // Mettre à jour la largeur de la cellule "Aucun candidat trouvé"
         }
     }
 
-    @FXML
-    void initialize() {
-        gridpane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-    }
+
 
     @FXML
     void oncliclisteemplo(ActionEvent event) {
         gridpane.getChildren().clear();
-        gridpane.getStyleClass().add("gridpane");
 
-        // En-têtes du tableau
-        String[] headers = {"ID", "Nom", "Prénom", "Email", "Salaire", "Date Embauche", "Département", "Action"};
-        for (int i = 0; i < headers.length; i++) {
-            Label label = new Label(headers[i]);
-            label.getStyleClass().add("label");
-            gridpane.add(label, i, 0);
+
+        for (int i = 0; i < 8; i++) {
+            ColumnConstraints colConstraints = new ColumnConstraints();
+            colConstraints.setPercentWidth(12.5);  // Chaque colonne occupe 12.5% de la largeur totale
+            gridpane.getColumnConstraints().add(colConstraints);
         }
+
+
+        gridpane.add(new Label("ID"), 0, 0);
+        gridpane.add(new Label("Nom"), 1, 0);
+        gridpane.add(new Label("Prénom"), 2, 0);
+        gridpane.add(new Label("Email"), 3, 0);
+        gridpane.add(new Label("Salaire"), 4, 0);
+        gridpane.add(new Label("Date Embauche"), 5, 0);
+        gridpane.add(new Label("Département"), 6, 0);
+        gridpane.add(new Label("Action"), 7, 0);
 
         List<User> users = serviceUser.getAll();
         int row = 1;
@@ -144,25 +221,34 @@ public class GestionAdmin {
             if (user instanceof Employes) {
                 Employes employe = (Employes) user;
 
-                // Ajouter les informations de l'employé avec un style
-                Label[] labels = {
-                        new Label(String.valueOf(employe.getIduser())),
-                        new Label(employe.getNom()),
-                        new Label(employe.getPrenom()),
-                        new Label(employe.getEmail()),
-                        new Label(String.valueOf(employe.getSalaire())),
-                        new Label(employe.getDateEmbauche() != null ? employe.getDateEmbauche().toString() : "Non renseignée"),
-                        new Label(employe.getDepartement())
-                };
+                Label idLabel = new Label(String.valueOf(employe.getIduser()));
+                Label nomLabel = new Label(employe.getNom());
+                Label prenomLabel = new Label(employe.getPrenom());
+                Label emailLabel = new Label(employe.getEmail());
+                Label salaireLabel = new Label(String.valueOf(employe.getSalaire()));
+                Label dateLabel = new Label(employe.getDateEmbauche() != null ? employe.getDateEmbauche().toString() : "Non renseignée");
+                Label departementLabel = new Label(employe.getDepartement());
 
-                for (int i = 0; i < labels.length; i++) {
-                    labels[i].getStyleClass().add("grid-cell");
-                    gridpane.add(labels[i], i, row);
-                }
+
+                GridPane.setMargin(idLabel, new Insets(5));
+                GridPane.setMargin(nomLabel, new Insets(5));
+                GridPane.setMargin(prenomLabel, new Insets(5));
+                GridPane.setMargin(emailLabel, new Insets(5));
+                GridPane.setMargin(salaireLabel, new Insets(5));
+                GridPane.setMargin(dateLabel, new Insets(5));
+                GridPane.setMargin(departementLabel, new Insets(5));
+
+
+                gridpane.add(idLabel, 0, row);
+                gridpane.add(nomLabel, 1, row);
+                gridpane.add(prenomLabel, 2, row);
+                gridpane.add(emailLabel, 3, row);
+                gridpane.add(salaireLabel, 4, row);
+                gridpane.add(dateLabel, 5, row);
+                gridpane.add(departementLabel, 6, row);
 
                 // Bouton de sélection
                 Button btnSelect = new Button("Sélectionner");
-                btnSelect.getStyleClass().add("button");
                 btnSelect.setOnAction(e -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Informations Employé");
@@ -172,7 +258,7 @@ public class GestionAdmin {
                                     "Nom: " + employe.getNom() + "\n" +
                                     "Prénom: " + employe.getPrenom() + "\n" +
                                     "Email: " + employe.getEmail() + "\n" +
-                                    "Salaire: " + employe.getSalaire() + "dt\n" +
+                                    "Salaire: " + employe.getSalaire() + "€\n" +
                                     "Date d'embauche: " + (employe.getDateEmbauche() != null ? employe.getDateEmbauche().toString() : "Non renseignée") + "\n" +
                                     "Département: " + employe.getDepartement()
                     );
@@ -180,16 +266,16 @@ public class GestionAdmin {
                 });
 
                 gridpane.add(btnSelect, 7, row);
+
                 row++;
             }
         }
 
         if (row == 1) {
-            Label noDataLabel = new Label("Aucun employé trouvé.");
-            noDataLabel.getStyleClass().add("grid-cell");
-            gridpane.add(noDataLabel, 0, 1, 8, 1);
+            gridpane.add(new Label("Aucun employé trouvé."), 0, 1, 8, 1);
         }
     }
+
 
 
     @FXML
@@ -201,13 +287,43 @@ public class GestionAdmin {
         stage.setTitle("Login");
         stage.show();
     }
-
     @FXML
-    private void onclicsearch() {
-        String keyword = search.getText().trim();
-        if (!keyword.isEmpty()) {
-            // Effectuer la recherche (à implémenter)
-            System.out.println("Recherche en cours pour : " + keyword);
+    void onclicsearch(ActionEvent event) {
+        String keyword = search.getText();
+
+        gridpane.getChildren().clear();
+
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            List<Candidat> resultCandidats = serviceUser.searchCandidatsByKeyword(keyword);
+            List<Employes> resultEmployes = serviceUser.searchEmployesByKeyword(keyword);
+            List<User> combinedResults = new ArrayList<>();
+            combinedResults.addAll(resultCandidats);
+            combinedResults.addAll(resultEmployes);
+            if (!combinedResults.isEmpty()) {
+                int row = 0;
+                for (User user : combinedResults) {
+                    Label nameLabel = new Label(user.getNom() + " " + user.getPrenom());
+                    Label emailLabel = new Label(user.getEmail());
+                    Label roleLabel = new Label(user.getRole());
+
+                    gridpane.add(nameLabel, 0, row);
+                    gridpane.add(emailLabel, 1, row);
+                    gridpane.add(roleLabel, 2, row);
+                    gridpane.add(new Label(" "), 3, row);
+                    gridpane.add(new Label(" "), 4, row);
+                    gridpane.add(new Label(" "), 5, row);
+              
+                    row++;
+                }
+            } else {
+                Label noResultsLabel = new Label("Aucun utilisateur trouvé.");
+                gridpane.add(noResultsLabel, 0, 0);
+            }
+        } else {
+            Label emptySearchLabel = new Label("Veuillez entrer un mot-clé.");
+            gridpane.add(emptySearchLabel, 0, 0);
         }
     }
+
+
 }
