@@ -51,6 +51,7 @@ public class ShowEntret implements Initializable {
 
         switch (selected) {
             case "par heure":
+                Detail.setItems(FXCollections.observableArrayList("croissant", "décroissant"));
             case "par date":
                 Detail.setItems(FXCollections.observableArrayList("croissant", "décroissant"));
                 break;

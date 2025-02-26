@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,11 +22,12 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="39.0" prefWidth="424.0" spacing="30.0" styleClass="blanc" stylesheets="@style.css">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#refresh" text="refresh" />
-                        <Button mnemonicParsing="false" onAction="#sceneadd" styleClass="bt" text="ajouter" />
-                        <Button mnemonicParsing="false" onAction="#sceneModify" styleClass="bt" text="modifier" />
-                        <Button mnemonicParsing="false" onAction="#sceneDel" styleClass="bt" text="supprimer" />
-                        <Button mnemonicParsing="false" styleClass="bt" text="trier" />
+                        <Button mnemonicParsing="false" onAction="#refresh" styleClass="bt3" text="refresh" />
+                        <Button mnemonicParsing="false" onAction="#sceneadd" prefHeight="46.0" prefWidth="82.0" styleClass="bt" text="ajouter" />
+                        <Button mnemonicParsing="false" onAction="#sceneModify" prefHeight="48.0" prefWidth="89.0" styleClass="bt" text="modifier" />
+                        <Button mnemonicParsing="false" onAction="#sceneDel" prefHeight="49.0" prefWidth="98.0" styleClass="bt" text="supprimer" />
+                        <ComboBox fx:id="cbtrier" prefHeight="29.0" prefWidth="130.0" promptText="Trier" styleClass="bt" />
+                        <ComboBox fx:id="Detail" prefHeight="49.0" prefWidth="132.0" promptText="Detail" styleClass="bt" />
                         <Button mnemonicParsing="false" onAction="#retourCandidature" styleClass="bt2" text="retour" />
                      </children>
                      <VBox.margin>
