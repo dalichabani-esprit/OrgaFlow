@@ -29,8 +29,8 @@
                   <DatePicker fx:id="dpDateFin" stylesheets="@button_style.css" />
                   <Label prefHeight="18.0" prefWidth="98.0" text="Statut" textFill="#507b8b" />
                   <TextField fx:id="tfStatut" />
-                  <Label prefHeight="18.0" prefWidth="98.0" text="Id Projet" textFill="#507b8b" />
-                  <TextField fx:id="tfIdProjet" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="Nom Projet" textFill="#507b8b" />
+                  <TextField fx:id="tfNomProjet" />
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#ajouterTache" prefHeight="58.0" prefWidth="208.0" style="-fx-background-color: #507B8B;" text="Ajouter" textAlignment="JUSTIFY" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="15.0" top="10.0" />
@@ -39,9 +39,9 @@
                </children>
             </VBox>
             <ListView fx:id="lvTaches" layoutX="375.0" layoutY="65.0" prefHeight="433.0" prefWidth="723.0" />
-            <Label layoutX="65.0" layoutY="437.0" prefHeight="18.0" prefWidth="98.0" text="Supprimer (id)" textFill="#507b8b" />
-            <TextField fx:id="tfId" layoutX="163.0" layoutY="433.0" prefHeight="18.0" prefWidth="84.0" />
-            <Button alignment="CENTER" layoutX="57.0" layoutY="464.0" mnemonicParsing="false" onAction="#supprimerTache" prefHeight="41.0" prefWidth="194.0" style="-fx-background-color: #507B8B;" text="Supprimer" textAlignment="JUSTIFY" textFill="WHITE" />
+            <Label layoutX="65.0" layoutY="437.0" prefHeight="18.0" prefWidth="112.0" text="Supprimer (Nom)" textFill="#507b8b" />
+            <TextField fx:id="tfNomDel" layoutX="182.0" layoutY="433.0" prefHeight="18.0" prefWidth="84.0" />
+            <Button alignment="CENTER" layoutX="57.0" layoutY="464.0" mnemonicParsing="false" onAction="#supprimerTache" prefHeight="41.0" prefWidth="213.0" style="-fx-background-color: #507B8B;" text="Supprimer" textAlignment="JUSTIFY" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>

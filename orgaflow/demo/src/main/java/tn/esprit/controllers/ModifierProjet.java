@@ -12,9 +12,6 @@ import javafx.scene.control.DatePicker;
 
 public class ModifierProjet{
     @FXML
-    private TextField tfId;
-
-    @FXML
     private TextField tfNom;
     @FXML
     private TextField tfDesc;
@@ -25,23 +22,25 @@ public class ModifierProjet{
     @FXML
     private TextField tfStatut;
 
-    IService<Projet> sp = new ServiceProjet();
+    ServiceProjet sp = new ServiceProjet();
     //private Label lbPersonnes;
 
     @FXML
     public void modifierProjet(ActionEvent actionEvent) {
-        Projet p = new Projet(
-                Integer.parseInt(tfId.getText()),
-                tfNom.getText(),
-                tfDesc.getText(),
-                dpDateDebut.getValue().toString(),
-                dpDateFin.getValue().toString(),
-                tfStatut.getText()
-        );
-        
+        int id = sp.getIdByNom(tfNom.getText());
 
-        sp.update(p);
+        if (id != -1) {
+            Projet p = new Projet(
+                    id,
+                    tfNom.getText(),
+                    tfDesc.getText(),
+                    dpDateDebut.getValue().toString(),
+                    dpDateFin.getValue().toString(),
+                    tfStatut.getText()
+            );
+
+            sp.update(p);
+
+        }
     }
-
-
 }

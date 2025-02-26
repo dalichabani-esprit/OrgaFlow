@@ -11,10 +11,7 @@ import javafx.scene.control.DatePicker;
 
 public class ModifierTache{
     @FXML
-    private TextField tfId;
-
-    @FXML
-    private TextField tfIdProjet;
+    private TextField tfNomProjet;
 
 
     @FXML
@@ -30,22 +27,26 @@ public class ModifierTache{
     @FXML
     private TextField tfStatut;
 
-    IService<Tache> st = new ServiceTache();
+    ServiceTache st = new ServiceTache();
 
 
     @FXML
     public void modifierTache(ActionEvent actionEvent) {
-        Tache t = new Tache(
-                Integer.parseInt(tfId.getText()),
-                tfNom.getText(),
-                tfDesc.getText(),
-                dpDateDebut.getValue().toString(),
-                dpDateFin.getValue().toString(),
-                tfStatut.getText(),
-                Integer.parseInt(tfIdProjet.getText())
-        );
+        int id = st.getIdByNom(tfNom.getText());
+        int idProjet = st.getIdProjetByNom(tfNomProjet.getText());
+        if (id != -1 && idProjet != -1) {
+            Tache t = new Tache(
+                    id,
+                    tfNom.getText(),
+                    tfDesc.getText(),
+                    dpDateDebut.getValue().toString(),
+                    dpDateFin.getValue().toString(),
+                    tfStatut.getText(),
+                    idProjet
+            );
 
-        st.update(t);
+            st.update(t);
+        }
     }
 
 

@@ -19,8 +19,6 @@
          <children>
             <VBox layoutX="64.0" layoutY="49.0" prefHeight="374.0" prefWidth="508.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="440.0" text="Id" textFill="#507b8b" />
-                  <TextField fx:id="tfId" />
                   <Label prefHeight="18.0" prefWidth="440.0" text="Nom" textFill="#507b8b" />
                   <TextField fx:id="tfNom" />
                   <Label text="description" textAlignment="CENTER" textFill="#507b8b" />

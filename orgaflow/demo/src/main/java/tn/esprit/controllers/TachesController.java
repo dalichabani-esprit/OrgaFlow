@@ -5,20 +5,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import tn.esprit.interfaces.IService;
-import tn.esprit.models.Projet;
 import tn.esprit.models.Tache;
-import tn.esprit.services.ServiceProjet;
 import tn.esprit.services.ServiceTache;
 
 import javafx.scene.control.DatePicker;
 
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -26,17 +21,13 @@ public class TachesController implements Initializable {
     @FXML
     private TextField tfNom;
     @FXML
+    private TextField tfNomProjet;
+    @FXML
     private TextField tfDesc;
-    @FXML
-    private TextField tfDateDebut;
-    @FXML
-    private TextField tfDateFin;
     @FXML
     private TextField tfStatut;
     @FXML
-    private TextField tfId;
-    @FXML
-    private TextField tfIdProjet;
+    private TextField tfNomDel;
     @FXML
     private DatePicker dpDateDebut;
     @FXML
@@ -47,31 +38,34 @@ public class TachesController implements Initializable {
     private ListView<String> lvTaches;
 
 
-    IService<Tache> st = new ServiceTache();
-    //private Label lbPersonnes;
+    ServiceTache st = new ServiceTache();
 
     @FXML
     public void ajouterTache(ActionEvent actionEvent) {
-        Tache t = new Tache(
-                tfNom.getText(),
-                tfDesc.getText(),
-                dpDateDebut.getValue().toString(),
-                dpDateFin.getValue().toString(),
-                tfStatut.getText(),
-                Integer.parseInt(tfIdProjet.getText())
-        );
+        int idProjet = st.getIdProjetByNom(tfNomProjet.getText());
+        if (idProjet != -1) {
+            Tache t = new Tache(
+                    tfNom.getText(),
+                    tfDesc.getText(),
+                    dpDateDebut.getValue().toString(),
+                    dpDateFin.getValue().toString(),
+                    tfStatut.getText(),
+                    idProjet
+            );
 
-        st.add(t);
-
-        fillLvTaches();
+            st.add(t);
+            fillLvTaches();
+        }
     }
 
     @FXML
     public void supprimerTache(ActionEvent actionEvent) {
-        Tache t = new Tache(Integer.parseInt(tfId.getText().toString()));
-        st.delete(t);
-
-        fillLvTaches();
+        int id = st.getIdByNom(tfNomDel.getText());
+        if (id != -1) {
+            Tache t = new Tache(id);
+            st.delete(t);
+            fillLvTaches();
+        }
     }
 
 
@@ -83,8 +77,8 @@ public class TachesController implements Initializable {
         lvTaches.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentId = lvTaches.getSelectionModel().getSelectedItem();
-                tfId.setText(currentId.split(" ")[1]);
+                String current = lvTaches.getSelectionModel().getSelectedItem();
+                tfNomDel.setText(current.split("\n")[0]);
             }
         });
     }

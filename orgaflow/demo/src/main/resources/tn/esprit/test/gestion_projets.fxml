@@ -37,9 +37,9 @@
                </children>
             </VBox>
             <ListView fx:id="lvProjets" layoutX="353.0" layoutY="34.0" prefHeight="433.0" prefWidth="723.0" />
-            <Label layoutX="81.0" layoutY="420.0" prefHeight="18.0" prefWidth="98.0" text="Supprimer (id)" textFill="#507b8b" />
-            <TextField fx:id="tfId" layoutX="179.0" layoutY="416.0" prefHeight="18.0" prefWidth="84.0" />
-            <Button alignment="CENTER" layoutX="73.0" layoutY="447.0" mnemonicParsing="false" onAction="#supprimerProjet" prefHeight="41.0" prefWidth="194.0" style="-fx-background-color: #507B8B;" text="Supprimer" textAlignment="JUSTIFY" textFill="WHITE" />
+            <Label layoutX="81.0" layoutY="420.0" prefHeight="18.0" prefWidth="120.0" text="Supprimer (Nom)" textFill="#507b8b" />
+            <TextField fx:id="tfNomDel" layoutX="210.0" layoutY="416.0" prefHeight="18.0" prefWidth="84.0" />
+            <Button alignment="CENTER" layoutX="73.0" layoutY="447.0" mnemonicParsing="false" onAction="#supprimerProjet" prefHeight="41.0" prefWidth="223.0" style="-fx-background-color: #507B8B;" text="Supprimer" textAlignment="JUSTIFY" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>

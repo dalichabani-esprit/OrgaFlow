@@ -28,7 +28,7 @@ public class ProjetsController implements Initializable {
     @FXML
     private TextField tfStatut;
     @FXML
-    private TextField tfId;
+    private TextField tfNomDel;
     @FXML
     private ListView<String> lvProjets;
     @FXML
@@ -37,8 +37,9 @@ public class ProjetsController implements Initializable {
     private DatePicker dpDateFin;
 
 
-    IService<Projet> sp = new ServiceProjet();
-    //private Label lbPersonnes;
+    //IService<Projet> sp = new ServiceProjet();
+
+    ServiceProjet sp = new ServiceProjet();
 
     @FXML
     public void ajouterProjet(ActionEvent actionEvent) {
@@ -57,10 +58,17 @@ public class ProjetsController implements Initializable {
 
     @FXML
     public void supprimerProjet(ActionEvent actionEvent) {
-        Projet p = new Projet(Integer.parseInt(tfId.getText().toString()));
-        sp.delete(p);
+        ServiceProjet sp2 = new ServiceProjet();
+        int id = sp.getIdByNom(tfNomDel.getText());
 
-        fillLvProjets();
+        if (id != -1) {
+            Projet p = new Projet(id);
+            sp.delete(p);
+            fillLvProjets();
+        }
+        //int id = sp.getIdByNom();
+        //Projet p = new Projet(Integer.parseInt(tfId.getText().toString()));
+        //sp.delete(p);
     }
 
 
@@ -71,8 +79,8 @@ public class ProjetsController implements Initializable {
         lvProjets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentId = lvProjets.getSelectionModel().getSelectedItem();
-                tfId.setText(currentId.split(" ")[1]);
+                String current = lvProjets.getSelectionModel().getSelectedItem();
+                tfNomDel.setText(current.split("\n")[0]);
             }
         });
     }

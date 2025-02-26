@@ -39,6 +39,7 @@ public class Chatbot {
 
     @FXML
     public void sendQuestion(ActionEvent event) {
+        taAnswer.setText("Votre question est en cours de traitement...");
         String response = sendQuestionToGemini(taQuestion.getText());
         response = retrieveDataFromGemini(response);
         taAnswer.setText(response);

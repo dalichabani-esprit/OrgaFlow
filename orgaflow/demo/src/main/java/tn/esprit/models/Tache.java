@@ -53,9 +53,8 @@ public class Tache {
 
     @Override
     public String toString() {
-        return "id: " + id + " nom: " + nom + " date_debut: " + date_debut +
-                " date_fin: " + date_fin + " description: " + description + " statut: " + statut +
-                " id_projet: " + id_projet + "\n";
+        return nom + "\ndate_debut: " + date_debut +
+                " date_fin: " + date_fin + " description: " + description + " statut: " + statut + "\n";
     }
 
 }

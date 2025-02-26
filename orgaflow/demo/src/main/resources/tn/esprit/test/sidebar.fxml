@@ -12,7 +12,7 @@
     <items>
         <VBox prefHeight="451.0" prefWidth="404.0">
             <children>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="624.0" prefWidth="0.0" style="-fx-background-color: 507B8B;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="624.0" prefWidth="0.0" style="-fx-background-color: #507b8b;">
                     <children>
                         <Button fx:id="formations" layoutX="58.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Formations" textFill="WHITE">
                             <font>

@@ -19,12 +19,10 @@
          <children>
             <VBox layoutX="159.0" layoutY="57.0" prefHeight="416.0" prefWidth="397.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="440.0" text="Id" textFill="#507b8b" />
-                  <TextField fx:id="tfId" />
-                  <Label prefHeight="18.0" prefWidth="440.0" text="Id Projet" textFill="#507b8b" />
-                  <TextField fx:id="tfIdProjet" />
                   <Label prefHeight="18.0" prefWidth="440.0" text="Nom" textFill="#507b8b" />
                   <TextField fx:id="tfNom" />
+                  <Label prefHeight="18.0" prefWidth="440.0" text="Nom Projet" textFill="#507b8b" />
+                  <TextField fx:id="tfNomProjet" />
                   <Label text="description" textAlignment="CENTER" textFill="#507b8b" />
                   <TextField fx:id="tfDesc" />
                   <Label prefHeight="18.0" prefWidth="98.0" text="date début" textAlignment="CENTER" textFill="#507b8b" />

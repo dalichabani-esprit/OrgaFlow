@@ -104,4 +104,27 @@ public class ServiceProjet implements IService<Projet> {
 
     }
 
+
+    public int getIdByNom(String nom) {
+        String qry = "SELECT id FROM projet WHERE nom = ?";
+        int id = -1;
+
+
+        try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
+            pstm.setString(1, nom);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt("id");
+                }
+            }
+
+        } catch (SQLException e) {
+            // Log or print the exception for debugging
+            System.out.println("Error while fetching ID: " + e.getMessage());
+        }
+
+        return id;
+    }
+
 }
