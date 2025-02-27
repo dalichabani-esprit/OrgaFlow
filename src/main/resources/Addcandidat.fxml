@@ -19,12 +19,12 @@
    <left>
       <AnchorPane prefHeight="607.0" prefWidth="234.0" style="-fx-background-color: #548192;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="116.0" fitWidth="106.0" layoutX="46.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="116.0" fitWidth="106.0" layoutX="46.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@R.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" >
                <image>
                   <Image url="@dashboard.png" />
                </image>
@@ -49,12 +49,12 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@graduation.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" >
                <image>
                   <Image url="@home.png" />
                </image>
@@ -64,7 +64,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" >
                <image>
                   <Image url="@employment.png" />
                </image>
@@ -79,7 +79,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="21.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="21.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true" >
                <image>
                   <Image url="@user-logout.png" />
                </image>
@@ -94,12 +94,12 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@add_10023914.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" >
                <image>
                   <Image url="@add_10023914.png" />
                </image>
@@ -113,7 +113,7 @@
    <center>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="13.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="682.0" style="-fx-background-color: #FFFFFF;">
+            <Pane layoutX="13.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="682.0">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect>
@@ -184,8 +184,8 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="cvcandidat" layoutX="167.0" layoutY="297.0" prefHeight="32.0" prefWidth="181.0" promptText="CV candidat" />
                   <DatePicker fx:id="datecandi" layoutX="165.0" layoutY="216.0" prefHeight="34.0" prefWidth="179.0" promptText="Date de Candidature" />
+                  <Button fx:id="CVpdf" layoutX="167.0" layoutY="294.0" mnemonicParsing="false" onAction="#Onclicinsererpdf" prefHeight="34.0" prefWidth="181.0" text="Inserer Un cv PDF" />
                </children>
             </AnchorPane>
          </children>
