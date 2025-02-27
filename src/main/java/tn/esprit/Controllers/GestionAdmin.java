@@ -287,6 +287,7 @@ public class GestionAdmin {
         stage.setTitle("Login");
         stage.show();
     }
+
     @FXML
     void onclicsearch(ActionEvent event) {
         String keyword = search.getText();
@@ -309,10 +310,8 @@ public class GestionAdmin {
                     gridpane.add(nameLabel, 0, row);
                     gridpane.add(emailLabel, 1, row);
                     gridpane.add(roleLabel, 2, row);
-                    gridpane.add(new Label(" "), 3, row);
-                    gridpane.add(new Label(" "), 4, row);
-                    gridpane.add(new Label(" "), 5, row);
-              
+
+
                     row++;
                 }
             } else {

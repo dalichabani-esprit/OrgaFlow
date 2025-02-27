@@ -139,7 +139,7 @@
                </children>
             </Pane>
             <Label layoutX="24.0" layoutY="86.0" />
-            <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="81.0" prefHeight="246.0" prefWidth="270.0" style="-fx-background-color: #548192;">
+            <VBox alignment="TOP_CENTER" layoutX="24.0" layoutY="81.0" prefHeight="246.0" prefWidth="270.0" style="-fx-background-color: #548192;">
                <children>
                   <Label alignment="TOP_CENTER" style="-fx-background-color: #D3D3D3;" text="Total Employes">
                      <effect>

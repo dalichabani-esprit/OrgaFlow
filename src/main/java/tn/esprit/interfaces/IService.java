@@ -20,5 +20,5 @@ public interface IService<T> {
 
     List<Candidat> searchCandidatsByKeyword(String keyword);
 
-    List<Employes> searchEmployesByKeyword(String keyword);
+   List<Employes> searchEmployesByKeyword(String keyword);
 }

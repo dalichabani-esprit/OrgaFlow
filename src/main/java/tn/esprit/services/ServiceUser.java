@@ -1,19 +1,22 @@
 package tn.esprit.services;
 
+import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.interfaces.IService;
-import tn.esprit.models.*;
+import tn.esprit.models.Admin;
+import tn.esprit.models.Candidat;
+import tn.esprit.models.Employes;
+import tn.esprit.models.User;
 import tn.esprit.utils.MyDatabase;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class ServiceUser implements IService<User> {
     private final Connection cnx;
 
     public ServiceUser() {
         cnx = MyDatabase.getInstance().getCnx();
     }
-
     public boolean emailExiste(String email) {
         String qry = "SELECT COUNT(*) FROM utilisateur WHERE email = ?";
         try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
@@ -35,6 +38,7 @@ public class ServiceUser implements IService<User> {
             System.out.println("L'email " + user.getEmail() + " est déjà utilisé !");
             return;
         }
+        String hashedPassword = BCrypt.hashpw(user.getMotDePasse(), BCrypt.gensalt());
         String qry;
         if (user instanceof Employes) {
             qry = "INSERT INTO utilisateur (nom, prenom, email, motDePasse, role, salaire, departement, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
