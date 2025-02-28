@@ -13,6 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.User;
@@ -20,8 +21,11 @@ import tn.esprit.models.Candidat;
 import tn.esprit.services.ServiceUser;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 
 import java.util.List;
@@ -68,6 +72,8 @@ public class Gestioncandidat implements Initializable {
     @FXML
     private TextField statutcandidat;
 
+    @FXML
+    private Button CVpdf;
     @FXML
     private Button supprimercandidat;
 
@@ -173,5 +179,26 @@ public class Gestioncandidat implements Initializable {
         stage.setTitle("Modification et Suppression");
         stage.show();
 
+    }
+    @FXML
+    void Onclicinsererpdf(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers PDF", "*.pdf"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            File destinationDir = new File("C:/Users/Lenovo/IdeaProjects/Gestion_utilisateure/src/images");  // Modifiez ce chemin
+            if (!destinationDir.exists()) {
+                destinationDir.mkdirs();
+            }
+            File destinationFile = new File(destinationDir, selectedFile.getName());
+            try {
+                Files.copy(selectedFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                CVpdf.setText(destinationFile.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

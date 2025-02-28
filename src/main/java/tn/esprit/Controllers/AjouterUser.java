@@ -57,21 +57,18 @@ public class AjouterUser implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cbrole.setItems(FXCollections.observableArrayList("admin","employe"));
+        cbrole.setItems(FXCollections.observableArrayList("employe"));
 
     }
     @FXML
     public void Oncliclogup(ActionEvent event) {
-        if ("admin".equals(cbrole.getValue())) {
-            // Création de l'objet Admin
+       /* if ("admin".equals(cbrole.getValue())) {
             User user = new User();
             user.setEmail(tfemail.getText());
             user.setNom(tfnom.getText());
             user.setPrenom(tfprenom.getText());
             user.setRole(cbrole.getSelectionModel().getSelectedItem());
             user.setMotDePasse(pfmotdepasse.getText());
-
-            // Vérifier si l'email existe déjà
             if (serviceUser.emailExiste(user.getEmail())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur d'inscription");
@@ -94,8 +91,7 @@ public class AjouterUser implements Initializable {
                 System.out.println("Erreur lors du chargement de GestionAdmin.fxml : " + e.getMessage());
             }
 
-        } else if ("employe".equals(cbrole.getValue())) {
-            // Création de l'objet Employe
+        } else*/ if ("employe".equals(cbrole.getValue())) {
             Employes employe = new Employes();
             employe.setEmail(tfemail.getText());
             employe.setNom(tfnom.getText());

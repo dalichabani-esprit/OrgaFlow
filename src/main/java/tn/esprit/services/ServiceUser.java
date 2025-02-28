@@ -17,6 +17,7 @@ public class ServiceUser implements IService<User> {
     public ServiceUser() {
         cnx = MyDatabase.getInstance().getCnx();
     }
+
     public boolean emailExiste(String email) {
         String qry = "SELECT COUNT(*) FROM utilisateur WHERE email = ?";
         try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
@@ -228,6 +229,7 @@ public class ServiceUser implements IService<User> {
 
         return null;
     }
+
     public int getTotalCandidats() {
         String query = "SELECT COUNT(*) FROM utilisateur WHERE role = 'candidat'";
         try (PreparedStatement stmt = cnx.prepareStatement(query);
@@ -240,6 +242,7 @@ public class ServiceUser implements IService<User> {
         }
         return 0;
     }
+
     public int getTotalEmployes() {
         String query = "SELECT COUNT(*) FROM utilisateur WHERE role = 'employe'";
         try (PreparedStatement stmt = cnx.prepareStatement(query);
@@ -252,6 +255,7 @@ public class ServiceUser implements IService<User> {
         }
         return 0;
     }
+
     public List<Candidat> searchCandidatsByKeyword(String keyword) {
         List<Candidat> candidats = new ArrayList<>();
         String qry = "SELECT * FROM utilisateur WHERE role = 'candidat' AND (nom LIKE ? OR prenom LIKE ? OR email LIKE ?)";
@@ -322,4 +326,111 @@ public class ServiceUser implements IService<User> {
         );
     }
 
+    public User getByEmail(String email) {
+        String qry = "SELECT * FROM utilisateur WHERE email = ?";
+        User user = null;  // C'est cette variable qui sera retournée
+
+        try (PreparedStatement pstm = cnx.prepareStatement(qry)) {
+            pstm.setString(1, email);
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    String role = rs.getString("role"); // Supposons que tu as une colonne qui identifie le type d'utilisateur
+                    if ("candidat".equals(role)) {
+                        user = new Candidat(  // Assigner à `user`
+                                rs.getInt("iduser"),
+                                rs.getString("nom"),
+                                rs.getString("prenom"),
+                                rs.getString("email"),
+                                rs.getString("motDePasse"),
+                                rs.getDate("dateCandidature"),
+                                rs.getString("statutCandidat"),
+                                rs.getString("CvCandidat")
+                        );
+                    } else if ("employe".equals(role)) {
+                        user = new Employes(  // Assigner à `user`
+                                rs.getInt("iduser"),
+                                rs.getString("nom"),
+                                rs.getString("prenom"),
+                                rs.getString("email"),
+                                rs.getString("motDePasse"),
+                                rs.getString("salaire"),
+                                rs.getString("departement"),
+                                rs.getDate("dateEmbauche")
+                        );
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération de l'utilisateur par email : " + e.getMessage());
+        }
+
+        return user;  // Maintenant, `user` contient l'objet voulu
+    }
+
+
+
+
+    public boolean isMotDePasseCorrect(String email, String motDePasse) {
+        User user = getUserByEmail(email);
+
+        if (user == null) {
+            System.out.println("Utilisateur introuvable pour l'email : " + email);
+            return false;
+        }
+
+        if (user.getMotDePasse() == null) {
+            System.out.println("Le mot de passe est null pour l'utilisateur : " + email);
+            return false;
+        }
+
+        return user.getMotDePasse().equals(motDePasse);
+    }
+
+
+    public String getRoleByEmail(String email) {
+        String role = null;
+        String query = "SELECT role FROM utilisateur WHERE email = ?";
+
+        try (PreparedStatement pst = cnx.prepareStatement(query)) {
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                role = rs.getString("role");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return role;
+    }
+
+    public User getUserByEmail(String email) {
+        User user = null;
+        String query = "SELECT iduser, email, motDePasse FROM utilisateur WHERE email = ?";
+
+        try {
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {  // Vérifie si un résultat est trouvé
+                user = new User();
+                user.setIduser(rs.getInt("iduser"));  // Vérifie que la colonne 'id' existe
+                user.setEmail(rs.getString("email"));
+                user.setMotDePasse(rs.getString("motDePasse"));
+
+                System.out.println("Utilisateur trouvé : " + user.getEmail() + " - ID: " + user.getIduser());
+            } else {
+                System.out.println("Aucun utilisateur trouvé pour l'email : " + email);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération de l'utilisateur par email : " + e.getMessage());
+        }
+
+        return user;
+    }
+
+
 }
+

@@ -21,4 +21,10 @@ public interface IService<T> {
     List<Candidat> searchCandidatsByKeyword(String keyword);
 
    List<Employes> searchEmployesByKeyword(String keyword);
+
+    T getByEmail(String email);
+
+    boolean isMotDePasseCorrect(String email, String motDePasse);
+
+    String getRoleByEmail(String email);
 }

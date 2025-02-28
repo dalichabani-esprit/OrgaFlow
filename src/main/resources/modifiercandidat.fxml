@@ -31,66 +31,6 @@
          </children>
       </AnchorPane>
    </left>
-   <right>
-      <AnchorPane prefHeight="449.0" prefWidth="442.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="92.0" layoutY="72.0" text="Nom" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="91.0" layoutY="146.0" text="Email" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="78.0" layoutY="106.0" text="Prenom" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="19.0" layoutY="359.0" text="Mot de Passe" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="106.0" layoutY="188.0" text="Role" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfnom" layoutX="166.0" layoutY="73.0" prefHeight="32.0" prefWidth="181.0" promptText="Firstname" />
-            <TextField fx:id="tfprenom" layoutX="167.0" layoutY="110.0" prefHeight="30.0" prefWidth="181.0" promptText="Lastname" />
-            <TextField fx:id="tfemail" layoutX="164.0" layoutY="148.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
-            <PasswordField fx:id="pfmotdepasse" layoutX="167.0" layoutY="361.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
-            <ComboBox fx:id="cbrole" accessibleText="admin" layoutX="166.0" layoutY="191.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
-            <Label layoutX="5.0" layoutY="232.0" prefHeight="30.0" prefWidth="164.0" text="Date Candidature" textFill="DODGERBLUE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="statutcandidat" layoutX="167.0" layoutY="275.0" prefHeight="32.0" prefWidth="181.0" promptText="Stutut Candidat" />
-            <Label layoutX="5.0" layoutY="274.0" prefHeight="30.0" prefWidth="164.0" text="statut Candidat" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="36.0" layoutY="313.0" prefHeight="30.0" prefWidth="164.0" text="Cv Candidat" textFill="DODGERBLUE">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <TextField fx:id="cvcandidat" layoutX="167.0" layoutY="313.0" prefHeight="32.0" prefWidth="181.0" promptText="CV candidat" />
-            <DatePicker fx:id="datecandi" layoutX="168.0" layoutY="230.0" prefHeight="34.0" prefWidth="179.0" promptText="Date de Candidature" />
-            <Label layoutX="107.0" layoutY="29.0" text="ID" textFill="DODGERBLUE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
-            <TextField fx:id="idcandidat" layoutX="164.0" layoutY="31.0" prefHeight="32.0" prefWidth="181.0" promptText="ID Candidat" />
-         </children>
-      </AnchorPane>
-   </right>
    <bottom>
       <AnchorPane prefHeight="106.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
@@ -122,4 +62,58 @@
          </children>
       </AnchorPane>
    </bottom>
+   <center>
+      <AnchorPane prefHeight="382.0" prefWidth="391.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="92.0" layoutY="49.0" text="Nom" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="91.0" layoutY="129.0" text="Email" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="78.0" layoutY="89.0" text="Prenom" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="334.0" text="Mot de Passe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="97.0" layoutY="171.0" text="Role" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfnom" layoutX="164.0" layoutY="50.0" prefHeight="32.0" prefWidth="181.0" promptText="Firstname" />
+            <TextField fx:id="tfprenom" layoutX="166.0" layoutY="89.0" prefHeight="30.0" prefWidth="181.0" promptText="Lastname" />
+            <TextField fx:id="tfemail" layoutX="165.0" layoutY="131.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
+            <PasswordField fx:id="pfmotdepasse" layoutX="167.0" layoutY="333.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
+            <ComboBox fx:id="cbrole" accessibleText="admin" layoutX="163.0" layoutY="174.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
+            <Label layoutX="5.0" layoutY="217.0" prefHeight="30.0" prefWidth="164.0" text="Date Candidature" textFill="DODGERBLUE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="statutcandidat" layoutX="167.0" layoutY="258.0" prefHeight="32.0" prefWidth="181.0" promptText="Stutut Candidat" />
+            <Label layoutX="7.0" layoutY="257.0" prefHeight="30.0" prefWidth="164.0" text="statut Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="297.0" prefHeight="30.0" prefWidth="164.0" text="Cv Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datecandi" layoutX="165.0" layoutY="216.0" prefHeight="34.0" prefWidth="179.0" promptText="Date de Candidature" />
+            <Button fx:id="CVpdf" layoutX="167.0" layoutY="294.0" mnemonicParsing="false" onAction="#Onclicinsererpdf" prefHeight="34.0" prefWidth="181.0" text="Inserer Un cv PDF" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

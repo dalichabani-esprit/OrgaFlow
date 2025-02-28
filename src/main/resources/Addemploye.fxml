@@ -188,6 +188,16 @@
                   <DatePicker fx:id="dateembauche" layoutX="167.0" layoutY="314.0" prefHeight="34.0" prefWidth="182.0" promptText="Date Embauche" />
                </children>
             </AnchorPane>
+            <Button fx:id="supprimeremploye" layoutX="75.0" layoutY="528.0" mnemonicParsing="false" onAction="#Onclicksupprimeremploye" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: #D3D3D3;" text="Supprimer employe">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="modifieremploye" layoutX="277.0" layoutY="528.0" mnemonicParsing="false" onAction="#Onclickmodifieremploye" prefHeight="42.0" prefWidth="173.0" style="-fx-background-color: #D3D3D3;" text="Modifier employe">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>

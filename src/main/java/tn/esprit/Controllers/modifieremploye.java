@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,9 +17,11 @@ import tn.esprit.models.User;
 import tn.esprit.services.ServiceUser;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class modifieremploye {
+public class modifieremploye implements Initializable {
 
     @FXML
     private Button afficheremployes;
@@ -95,53 +98,67 @@ public class modifieremploye {
             Vbox.getChildren().add(noDataLabel);
         }
     }
+
     @FXML
     void Onclickmodifieremploye(ActionEvent event) {
         try {
-            if (idemploye.getText().isEmpty() || departement.getText().isEmpty() || salaire.getText().isEmpty()) {
+            if (tfemail.getText().isEmpty() || departement.getText().isEmpty() || salaire.getText().isEmpty()) {
                 System.out.println("Veuillez remplir tous les champs !");
                 return;
             }
-            int id = Integer.parseInt(idemploye.getText());
-            String nouveauStatut = departement.getText();
-            String nouveSalaire = salaire.getText();
-            Employes employe = (Employes) serviceUser.getByIduser(id);
+
+            String emailEmploye = tfemail.getText().trim();
+            String nouveauDepartement = departement.getText().trim();
+            String nouveauSalaire = salaire.getText().trim();  // Reste un String
+
+            // Récupération de l'employé par email
+            Employes employe = (Employes) serviceUser.getByEmail(emailEmploye);
             if (employe == null) {
-                System.out.println("Candidat non trouvé !");
+                System.out.println("Employé non trouvé avec l'email : " + emailEmploye);
                 return;
             }
-           employe.setDepartement(nouveauStatut);
-            employe.setSalaire(nouveSalaire);
+
+            // Mise à jour des informations
+            employe.setDepartement(nouveauDepartement);
+            employe.setSalaire(nouveauSalaire);  // Conserve String
+
             serviceUser.update(employe);
-            System.out.println("Mis à jour avec succès !");
-        } catch (NumberFormatException e) {
-            System.out.println("L'ID du employe doit être un nombre !");
+            System.out.println(" Mise à jour réussie pour l'employé : " + emailEmploye);
         } catch (Exception e) {
-            System.out.println("Erreur lors de la mise à jour : " + e.getMessage());
+            System.out.println(" Erreur lors de la mise à jour : " + e.getMessage());
         }
     }
+
     @FXML
     void Onclicksupprimeremploye(ActionEvent event) {
         try {
-            if (idemploye.getText().isEmpty()) {
-                System.out.println("Veuillez entrer l'ID du candidat à supprimer !");
+            if (tfemail.getText().isEmpty()) {
+                System.out.println(" Veuillez entrer l'email de l'employé à supprimer !");
                 return;
             }
-            int id = Integer.parseInt(idemploye.getText());
-            Employes  employe = (Employes) serviceUser.getByIduser(id);
+
+            String emailEmploye = tfemail.getText().trim();
+
+            // Récupération de l'employé par email
+            Employes employe = (Employes) serviceUser.getByEmail(emailEmploye);
             if (employe == null) {
-                System.out.println("Candidat non trouvé !");
+                System.out.println(" Aucun employé trouvé avec cet email !");
                 return;
             }
+
+            // Suppression de l'employé
             serviceUser.delete(employe);
-            System.out.println("Employe supprimé avec succès !");
-            idemploye.clear();
-        } catch (NumberFormatException e) {
-            System.out.println("L'ID du candidat doit être un nombre valide !");
+            System.out.println(" Employé supprimé avec succès : " + emailEmploye);
+
+            // Nettoyage des champs après suppression
+            tfemail.clear();
+            departement.clear();
+            salaire.clear();
         } catch (Exception e) {
             System.out.println("Erreur lors de la suppression : " + e.getMessage());
         }
     }
+
 
     @FXML
     void onclickLogout(ActionEvent event)throws IOException {
@@ -153,4 +170,8 @@ public class modifieremploye {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cbrole.getItems().addAll("employe");
+    }
 }

@@ -60,7 +60,10 @@ public class Addcandidat implements Initializable {
 
     @FXML
     private PasswordField pfmotdepasse;
-
+    @FXML
+    private Button supprimercandidat;
+    @FXML
+    private Button modifiercandidat;
     @FXML
     private TextField search;
 
@@ -169,6 +172,50 @@ cbrole.getItems().addAll("candidat");
         stage.setTitle("DashBoard");
         stage.show();
 
+    }
+
+    @FXML
+    void onclicmodifier(ActionEvent event) {
+        try {
+            if (tfemail.getText().isEmpty() || statutcandidat.getText().isEmpty()) {
+                System.out.println("Veuillez remplir tous les champs !");
+                return;
+            }
+            String email = tfemail.getText();
+            String nouveauStatut = statutcandidat.getText();
+            Candidat candidat = (Candidat) serviceUser.getByEmail(email);
+
+            if (candidat == null) {
+                System.out.println("Candidat non trouvé !");
+                return;
+            }
+            candidat.setStatutCandidat(nouveauStatut);
+            serviceUser.update(candidat);
+            System.out.println("Statut mis à jour avec succès !");
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la mise à jour : " + e.getMessage());
+        }
+    }
+
+    @FXML
+    void Onclicsupprimercandidat(ActionEvent event) {
+        try {
+            if (tfemail.getText().isEmpty()) {
+                System.out.println("Veuillez entrer l'email du candidat à supprimer !");
+                return;
+            }
+            String email = tfemail.getText();
+            Candidat candidat = (Candidat) serviceUser.getByEmail(email);
+            if (candidat == null) {
+                System.out.println("Candidat non trouvé !");
+                return;
+            }
+            serviceUser.delete(candidat);
+            System.out.println("Candidat supprimé avec succès !");
+            tfemail.clear();
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la suppression : " + e.getMessage());
+        }
     }
 
     @FXML

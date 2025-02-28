@@ -42,6 +42,10 @@ public class Addemploye implements Initializable {
 
     @FXML
     private TextField departement;
+    @FXML
+    private Button supprimeremploye;
+    @FXML
+    private Button modifieremploye;
 
     @FXML
     private Button home;
@@ -112,7 +116,65 @@ public class Addemploye implements Initializable {
         stage.setTitle("DashBoard");
         stage.show();
     }
+    @FXML
+    void Onclickmodifieremploye(ActionEvent event) {
+        try {
+            if (tfemail.getText().isEmpty() || departement.getText().isEmpty() || salaire.getText().isEmpty()) {
+                System.out.println("Veuillez remplir tous les champs !");
+                return;
+            }
 
+            String emailEmploye = tfemail.getText().trim();
+            String nouveauDepartement = departement.getText().trim();
+            String nouveauSalaire = salaire.getText().trim();  // Reste un String
+
+            // Récupération de l'employé par email
+            Employes employe = (Employes) serviceUser.getByEmail(emailEmploye);
+            if (employe == null) {
+                System.out.println("Employé non trouvé avec l'email : " + emailEmploye);
+                return;
+            }
+
+            // Mise à jour des informations
+            employe.setDepartement(nouveauDepartement);
+            employe.setSalaire(nouveauSalaire);  // Conserve String
+
+            serviceUser.update(employe);
+            System.out.println(" Mise à jour réussie pour l'employé : " + emailEmploye);
+        } catch (Exception e) {
+            System.out.println(" Erreur lors de la mise à jour : " + e.getMessage());
+        }
+    }
+
+    @FXML
+    void Onclicksupprimeremploye(ActionEvent event) {
+        try {
+            if (tfemail.getText().isEmpty()) {
+                System.out.println(" Veuillez entrer l'email de l'employé à supprimer !");
+                return;
+            }
+
+            String emailEmploye = tfemail.getText().trim();
+
+            // Récupération de l'employé par email
+            Employes employe = (Employes) serviceUser.getByEmail(emailEmploye);
+            if (employe == null) {
+                System.out.println(" Aucun employé trouvé avec cet email !");
+                return;
+            }
+
+            // Suppression de l'employé
+            serviceUser.delete(employe);
+            System.out.println(" Employé supprimé avec succès : " + emailEmploye);
+
+            // Nettoyage des champs après suppression
+            tfemail.clear();
+            departement.clear();
+            salaire.clear();
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la suppression : " + e.getMessage());
+        }
+    }
     @FXML
     void oncliclistecand(ActionEvent event) {
 
