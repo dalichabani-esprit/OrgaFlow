@@ -19,6 +19,17 @@ public class devis {
         this.statut = statut;
     }
 
+    public devis(int id_devis, float montant_estime, Date date_devis, String statut) {
+        this.id_devis = id_devis;
+        this.montant_estime = montant_estime;
+        this.date_devis = date_devis;
+        this.statut = statut;
+    }
+
+
+
+
+
     public int getId_devis() {
         return id_devis;
     }

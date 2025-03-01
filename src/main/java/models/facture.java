@@ -23,6 +23,39 @@ public class facture {
         this.destinataire_id = destinataire_id;
     }
 
+
+
+    public facture(int id_facture , float montant_final, Date date_facture, String statut) {
+        this.id_facture = id_facture;
+        this.id_devis = id_devis;
+        this.id_demande = id_demande;
+        this.montant_final = montant_final;
+        this.date_facture = date_facture;
+        this.statut = statut;
+        this.destinataire_id = destinataire_id;
+    }
+
+
+
+    public facture(int id_facture , float montant_final, Date date_facture, String statut , int destinataire_id) {
+        this.id_facture = id_facture;
+        this.id_devis = id_devis;
+        this.id_demande = id_demande;
+        this.montant_final = montant_final;
+        this.date_facture = date_facture;
+        this.statut = statut;
+        this.destinataire_id = destinataire_id;
+    }
+
+
+
+
+
+
+
+
+
+
     public int getId_facture() {
         return id_facture;
     }

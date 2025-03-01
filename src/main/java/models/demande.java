@@ -22,6 +22,42 @@ public class demande {
     }
 
 
+    public demande( String type, String description, int demandeur_id, Date date_demande, String statut) {
+
+        this.type = type;
+        this.description = description;
+        this.demandeur_id = demandeur_id;
+        this.date_demande = date_demande;
+        this.statut = statut;
+    }
+
+    public demande(int id_demande, String description , Date date_demande , String statut,String type) {
+        this.id_demande = id_demande;
+        this.description = description;
+        this.date_demande = date_demande;
+        this.statut = statut;
+        this.type = type;
+    }
+
+
+    public demande(int id_demande, String type , String description , Date date_demande , String statut) {
+        this.id_demande = id_demande;
+        this.description = description;
+        this.date_demande = date_demande;
+        this.statut = statut;
+        this.type = type;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public int getId_demande() {
         return id_demande;
     }

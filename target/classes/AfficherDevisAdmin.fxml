@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="AP" prefHeight="673.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherDevisAdmin">
+    <children>
+        <AnchorPane prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #d7d5d5; -fx-padding: 10;">
+            <children>
+                <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/logo1.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="75.0" layoutY="52.0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f96b7e;" text="Gestion des Devis" />
+                <Button fx:id="annulerButton" layoutX="1082.0" layoutY="29.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #f96b7e; -fx-border-color: #f96b7e; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+            </children>
+        </AnchorPane>
+
+        <VBox fx:id="vboxDevis" layoutX="65.0" layoutY="147.0" prefWidth="1000.0" spacing="10.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #696363; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
+            <HBox spacing="50" style="-fx-background-color: #d2d2d2; -fx-padding: 10; -fx-alignment: center;">
+                <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="ID" />
+                <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="Montant" />
+                <Label style="-fx-font-weight: bold;" text="DateDevis" />
+                <Label style="-fx-font-weight: bold;" text="Statut" />
+                <Label style="-fx-font-weight: bold;" text="Actions" />
+            </HBox>
+            <!-- Example of a row with an Edit button -->
+            <HBox spacing="50" style="-fx-padding: 10; -fx-alignment: center;">
+                <Label text="1" />
+                <Label text="Type A" />
+                <Label text="Description of Demande" />
+                <Label text="Demandeur 123" />
+                <Label text="2025-02-23" />
+                <Label text="Open" />
+                <Button text="Edit"  style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff;" />
+            </HBox>
+            <!-- Repeat similar HBox for additional rows -->
+        </VBox>
+    </children>
+</AnchorPane>

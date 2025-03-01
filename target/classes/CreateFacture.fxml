@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="611.0" prefWidth="1000" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateFacture">
+
+    <children>
+        <AnchorPane prefHeight="86.0" prefWidth="1000" style="-fx-background-color: #d7d5d5; -fx-padding: 10;">
+            <children>
+                <Text fill="#f96b7e" layoutX="81.0" layoutY="52.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #f96b7e;" text="Créer une Facture" />
+                <Button fx:id="annulerButton" layoutX="1048.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #f96b7e; -fx-border-color: #f96b7e; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+                <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/logo1.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+
+
+        <Text layoutX="1.0" layoutY="114.0" style="-fx-font-size: 16px; -fx-text-fill: #333333;" text="Bienvenue! Remplissez ce formulaire pour créer votre facture." textAlignment="CENTER" wrappingWidth="600.0" />
+
+        <Label layoutX="45.0" layoutY="129.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="ID Demande:" />
+        <ComboBox fx:id="comboBoxDemande" layoutX="45.0" layoutY="155.0" prefHeight="35.0" prefWidth="459.0" style="-fx-padding: 5px;" />
+
+        <Label layoutX="44.0" layoutY="207.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="ID Devis:" />
+        <ComboBox fx:id="comboBoxDevis" layoutX="44.0" layoutY="231.0" prefHeight="35.0" prefWidth="459.0" style="-fx-padding: 5px;" />
+
+        <Label layoutX="45.0" layoutY="281.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Montant:" />
+        <TextField fx:id="montant" layoutX="42.0" layoutY="304.0" prefHeight="35.0" prefWidth="459.0" style="-fx-padding: 5px;" />
+
+        <Label layoutX="43.0" layoutY="348.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Statut:" />
+        <ComboBox fx:id="statutComboBox" layoutX="42.0" layoutY="375.0" prefHeight="35.0" prefWidth="459.0" style="-fx-padding: 5px;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="VALIDE" />
+                    <String fx:value="EN ATTENTE" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label layoutX="48.0" layoutY="418.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="ID Destinataire" />
+        <ComboBox fx:id="comboBoxDestinataire" layoutX="44.0" layoutY="442.0" prefHeight="35.0" prefWidth="459.0" style="-fx-padding: 5px;" />
+
+
+        <Button layoutX="207.0" layoutY="508.0" onAction="#handleSubmit" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
+        <VBox fx:id="vboxDevis" layoutX="583.0" layoutY="98.0" prefWidth="560.0" spacing="10.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #696363; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
+            <HBox spacing="50" style="-fx-background-color: #d2d2d2; -fx-padding: 10; -fx-alignment: center;">
+                <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="ID" />
+                <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="Montant Estime" />
+
+                <Label style="-fx-font-weight: bold;" text="DateDevis" />
+                <Label style="-fx-font-weight: bold;" text="Statut" />
+
+            </HBox>
+            <!-- Rows will be dynamically added here -->
+        </VBox>
+    </children>
+</AnchorPane>

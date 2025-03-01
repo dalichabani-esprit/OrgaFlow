@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class MyDatabase {
     private static  MyDatabase instance  ;
 
-    private final String URL ="jdbc:mysql://localhost:3306/gestion_facturation";
+    private final String URL ="jdbc:mysql://localhost:3306/gestfacturation";
     private  final String USER="root";
     private final String PASSWORD="";
 

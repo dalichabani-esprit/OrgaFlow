@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane prefHeight="430.0" prefWidth="900.0" style="-fx-background-color: #548192;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RedirectionController">
+   <items>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="435.0" prefWidth="1005.0" style="-fx-background-color: #507B8B;">
+               <children>
+                  <Button fx:id="formation" layoutX="58.0" layoutY="33.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="268.0" style="-fx-background-color: #507B8B;" text="Gestion des Formations" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation11" layoutX="58.0" layoutY="110.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="268.0" style="-fx-background-color: #507B8B;" text="Gestion des Employés" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation1111" layoutX="58.0" layoutY="190.0" mnemonicParsing="false" onAction="#RedirectHome" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Facturations" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation1111111" layoutX="58.0" layoutY="257.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Projets" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation11111111" layoutX="65.0" layoutY="329.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Recrutements" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="247.0" fitWidth="296.0" layoutX="547.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logobg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="36.0" fitWidth="41.0" layoutX="42.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/fact.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </items>
+</SplitPane>
