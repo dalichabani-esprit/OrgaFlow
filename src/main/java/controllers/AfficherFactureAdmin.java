@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import models.facture;
-//blablala
+//blablala //hello
 public class AfficherFactureAdmin {
 
     private Stage stage;
