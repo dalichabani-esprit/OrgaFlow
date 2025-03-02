@@ -104,6 +104,14 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <ImageView fitHeight="144.0" fitWidth="121.0" onMouseClicked="#IAORGA" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="70.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@img/Création_sans_titre-removebg-preview.png" />
+                     </image>
+                  </ImageView>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />

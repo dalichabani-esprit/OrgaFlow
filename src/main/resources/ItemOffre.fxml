@@ -10,10 +10,6 @@
    <children>
       <VBox layoutX="43.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="id" text="id">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
             <Label fx:id="Titre" prefHeight="17.0" prefWidth="191.0" text="Titre">
                <font>
                   <Font size="18.0" />

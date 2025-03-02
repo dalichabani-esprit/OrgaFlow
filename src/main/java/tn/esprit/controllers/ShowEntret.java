@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -197,6 +198,26 @@ public class ShowEntret implements Initializable {
             stage.show();
         } catch (IOException e) {
             showError("Erreur", "Impossible de charger la fenêtre.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void IAORGA(MouseEvent event) throws IOException {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chatbot.fxml"));
+            Parent root1 = loader.load();
+
+            // Créer un nouveau stage pour la nouvelle fenêtre
+            Stage stage = new Stage();
+            stage.setTitle("Chatbot"); // Optionnel, pour définir un titre pour la fenêtre
+            stage.setScene(new Scene(root1));
+
+            // Afficher la nouvelle fenêtre
+            stage.show();
+        } catch (IOException e) {
+            showError("Erreur", "Impossible de charger le chatbot");
             e.printStackTrace();
         }
     }

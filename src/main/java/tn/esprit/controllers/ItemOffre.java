@@ -48,7 +48,7 @@ public class ItemOffre {
 
     public void setData(OffreEmploi offre) {
         this.offre = offre;
-        id.setText(String.valueOf(offre.getIdOffre()));
+        //id.setText(String.valueOf(offre.getIdOffre()));
         Titre.setText(offre.getTitreOffre());
         statut.setText(offre.getStatutOffre());
         departement.setText(offre.getDepartementOffre());

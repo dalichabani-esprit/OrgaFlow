@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.net.URI;
@@ -25,11 +26,12 @@ public class chatbot {
     @FXML
     private Button lenvoyer;
 
-    @FXML
-    private TextField lquestion;
 
     @FXML
-    private Label lreponse;
+    private TextArea lquestion;
+
+    @FXML
+    private TextArea lreponse;
 
     @FXML
     public void sendQuestion(ActionEvent event) {
