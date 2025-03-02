@@ -68,4 +68,8 @@ public class MenuProjets {
         changerScene(event, "/tn/esprit/test/chatbot.fxml");
     }
 
+    @FXML
+    public void ClientTCP(ActionEvent event) {
+        changerScene(event, "/tn/esprit/test/ClientTCP.fxml");
+    }
 }
