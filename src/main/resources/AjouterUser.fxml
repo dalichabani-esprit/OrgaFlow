@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="756.0" style="-fx-background-color: f1efe7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterUser">
    <left>
@@ -20,6 +21,7 @@
                   <Image url="@LOGOAPP.png" />
                </image>
             </ImageView>
+            <WebView fx:id="recaptchaWebView" layoutX="3.0" layoutY="2.0" prefHeight="200.0" prefWidth="400.0" />
          </children>
       </AnchorPane>
    </left>

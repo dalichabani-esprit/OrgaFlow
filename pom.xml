@@ -4,64 +4,123 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.5</version> <!-- Ensure the correct version -->
+        <relativePath/>
+    </parent>
+
     <groupId>tn.esprit</groupId>
-    <artifactId>Gestion_utilisateure</artifactId>
+    <artifactId>Gestion_utilisateur</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
+        <spring-boot.version>2.5.5</spring-boot.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
 
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.33</version>
-    </dependency>
+        <!-- JavaFX (Même version pour éviter les conflits) -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17</version>
+        </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>17.0.14</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>17.0.14</version>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>17</version>
+        </dependency>
 
-    </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>17</version>
+        </dependency>
 
-
+        <!-- Email (JavaMail API) -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+
+        <!-- BCrypt (Hashage de mot de passe) -->
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- Spring Boot Web Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Test Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
     </dependencies>
 
-<build>
-<plugins>
-    <plugin>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-maven-plugin</artifactId>
-        <version>0.0.8</version>
-        <configuration>
-            <mainClass>
-                tn.esprit.test.MainFX
-            </mainClass>
-        </configuration>
-    </plugin>
-</plugins>
-</build>
-        </project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>tn.esprit.test.MainFX</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -34,6 +34,7 @@ public class Addcandidat implements Initializable {
     @FXML
     private Button addcandidat;
 
+
     @FXML
     private Button addemployes;
 
@@ -152,6 +153,7 @@ cbrole.getItems().addAll("candidat");
             alert.showAndWait();
         }
     }
+
 
     @FXML
     void onclicaddemployes(ActionEvent event) {
