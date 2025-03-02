@@ -55,8 +55,14 @@
                   <Font size="14.0" />
                </font></Hyperlink>
             <Label fx:id="wrongpassword" layoutX="245.0" layoutY="182.0" />
-            <Label layoutX="14.0" layoutY="401.0" text="Don't have an account ? " />
-            <Hyperlink fx:id="logup" layoutX="143.0" layoutY="398.0" onAction="#Oncliclogup" text="Cliquer ICI" underline="true" />
+            <Label layoutX="2.0" layoutY="401.0" text="N'avez vous pas de compte?" />
+            <Hyperlink fx:id="logup" layoutX="149.0" layoutY="398.0" onAction="#Oncliclogup" text="Cliquer ICI" underline="true" />
+            <Label layoutX="218.0" layoutY="401.0" text="Connectez vous avec " />
+            <Hyperlink fx:id="loginwithgoogle" layoutX="330.0" layoutY="398.0" onAction="#Onclicloginwithgoogle" text="Google" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </AnchorPane>
    </right>
