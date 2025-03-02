@@ -5,8 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterDevis">
     <children>
         <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #F4C2C2;">
@@ -21,7 +19,7 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-              <Button fx:id="annulerButton" layoutX="482.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: f96b7e;" text="Retour" textFill="#efefef" />
+                <Button fx:id="annulerButton" layoutX="482.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: f96b7e;" text="Retour" textFill="#efefef" />
             </children>
         </AnchorPane>
 
@@ -38,15 +36,7 @@
         <DatePicker fx:id="datePicker" layoutX="317.0" layoutY="130.0" />
 
         <Label layoutX="323.0" layoutY="165.0" text="Statut:" />
-        <ComboBox fx:id="statutComboBox" layoutX="88.0" layoutY="288.0" prefHeight="27.0" prefWidth="400.0" style="-fx-padding: 5px;">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="VALIDE" />
-                    <String fx:value="EN ATTENTE" />
-                </FXCollections>
-            </items>
-        </ComboBox>
-
+        <TextField fx:id="statutField" layoutX="317.0" layoutY="196.0" prefHeight="26.0" prefWidth="163.0" />
 
         <Button fx:id="ajouterButton" layoutX="239.0" layoutY="344.0" mnemonicParsing="false" onAction="#ajouterDevis" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: f96b7e;" text="Ajouter" textFill="#efefef" />
     </children>

@@ -7,32 +7,22 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.demande;
-import models.facture;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.List;
 
 public class AfficherDemandeUser {
-
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-
-
     @FXML
-    private VBox vboxDemandes; // Updated to reference the VBox in FXML
-
-
+    private VBox vboxDemandes;
 
     private int demandeurId = 1;
 
@@ -40,8 +30,6 @@ public class AfficherDemandeUser {
     public void initialize() {
         loadFactures();
     }
-
-
 
     private void loadFactures() {
         String url = "jdbc:mysql://localhost:3306/gestfacturation";
@@ -63,37 +51,33 @@ public class AfficherDemandeUser {
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
+
                     new Label("Type"),
+                    new Label("Description"),
                     new Label("Date"),
                     new Label("Statut"),
-                    new Label("Description")
-
+                    new Label("Référence") // Ajout de l'en-tête pour la référence
             );
             vboxDemandes.getChildren().add(headerRow);
 
             // Iterate through the result set and create rows
             while (rs.next()) {
                 demande demande = new demande(
-
-                        rs.getInt("id_demande"),
                         rs.getString("type"),
+                        rs.getString("description"),
                         rs.getDate("date_demande"),
                         rs.getString("statut"),
-                        rs.getString("description")
-
-
+                        rs.getString("reference") // Récupération de la référence
                 );
 
                 HBox row = new HBox(50);
                 row.setStyle("-fx-padding: 10;");
                 row.getChildren().addAll(
-                        new Label(String.valueOf(demande.getId_demande())),
+                        new Label(String.valueOf(demande.getType())),
                         new Label(demande.getDescription()),
                         new Label(demande.getDate_demande().toString()),
                         new Label(demande.getStatut()),
-                        new Label(String.valueOf(demande.getType()))
-
+                        new Label(demande.getReference()) // Affichage de la référence
                 );
 
                 vboxDemandes.getChildren().add(row);
@@ -103,24 +87,16 @@ public class AfficherDemandeUser {
         }
     }
 
-
-
-
     @FXML
     private void Retour(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/home.fxml"));
         switchScene(event, root);
     }
 
-    // Méthode auxiliaire pour changer de scène
     private void switchScene(ActionEvent event, Parent root) {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
-
-
-
 }

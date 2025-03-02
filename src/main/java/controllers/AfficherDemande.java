@@ -52,10 +52,9 @@ public class AfficherDemande {
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
+                    new Label("Référence"), // Ajout de l'en-tête pour la référence
                     new Label("Type"),
                     new Label("Description"),
-                    new Label("Demandeur ID"),
                     new Label("Date Demande"),
                     new Label("Statut"),
                     new Label("Actions") // Add header for actions
@@ -65,12 +64,12 @@ public class AfficherDemande {
             // Iterate through the result set and create rows
             while (rs.next()) {
                 demande demande = new demande(
-                        rs.getInt("id_demande"),
+                        rs.getString("reference"), // Récupération de la référence
                         rs.getString("type"),
                         rs.getString("description"),
-                        rs.getInt("demandeur_id"),
                         rs.getDate("date_demande"),
                         rs.getString("statut")
+
                 );
 
                 addDemandeRow(demande);
@@ -82,12 +81,11 @@ public class AfficherDemande {
 
     private void addDemandeRow(demande demande) {
         HBox row = new HBox(50);
-        row.setStyle("-fx-padding: 0 0 0 10;");
+        row.setStyle("-fx-padding: 10;");
         row.getChildren().addAll(
-                new Label(String.valueOf(demande.getId_demande())),
+                new Label(demande.getReference()), // Affichage de la référence
                 new Label(demande.getType()),
                 new Label(demande.getDescription()),
-                new Label(String.valueOf(demande.getDemandeur_id())),
                 new Label(demande.getDate_demande().toString()),
                 new Label(demande.getStatut()),
                 createEditButton(demande), // Add the Edit button
@@ -174,7 +172,7 @@ public class AfficherDemande {
         String password = "";
 
         // Update SQL query to include all fields
-        String sqlQuery = "SELECT * FROM demande WHERE id_demande LIKE ? OR type LIKE ? OR description LIKE ? OR demandeur_id LIKE ? OR date_demande LIKE ? OR statut LIKE ?";
+        String sqlQuery = "SELECT * FROM demande WHERE id_demande LIKE ? OR type LIKE ? OR description LIKE ? OR demandeur_id LIKE ? OR date_demande LIKE ? OR statut LIKE ? OR reference LIKE ?"; // Ajout de la référence
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
@@ -185,6 +183,7 @@ public class AfficherDemande {
             stmt.setString(4, likeQuery);  // For Demandeur ID
             stmt.setString(5, likeQuery);  // For Date Demande
             stmt.setString(6, likeQuery);  // For Statut
+            stmt.setString(7, likeQuery);  // For Référence
 
             ResultSet rs = stmt.executeQuery();
 
@@ -201,6 +200,7 @@ public class AfficherDemande {
                     new Label("Demandeur ID"),
                     new Label("Date Demande"),
                     new Label("Statut"),
+                    new Label("Référence"), // Ajout de l'en-tête pour la référence
                     new Label("Actions") // Add header for actions
             );
             vboxDemandes.getChildren().add(headerRow);
@@ -213,7 +213,8 @@ public class AfficherDemande {
                         rs.getString("description"),
                         rs.getInt("demandeur_id"),
                         rs.getDate("date_demande"),
-                        rs.getString("statut")
+                        rs.getString("statut"),
+                        rs.getString("reference") // Récupération de la référence
                 );
 
                 addDemandeRow(demande);

@@ -11,7 +11,11 @@
 
         <VBox fx:id="vboxDemandes" layoutX="20.0" layoutY="70.0" prefWidth="560.0" spacing="10.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #696363; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
             <HBox spacing="50" style="-fx-background-color: #d2d2d2; -fx-padding: 10; -fx-alignment: center;">
-
+                <Label text="ID" style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" />
+                <Label text="Type" style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" />
+                <Label text="Description" style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" />
+                <Label text="DateDemande" style="-fx-font-weight: bold;" />
+                <Label text="Statut" style="-fx-font-weight: bold;" />
 
             </HBox>
             <!-- Rows will be dynamically added here -->

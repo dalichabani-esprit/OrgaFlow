@@ -31,7 +31,7 @@ public class EditDevisController {
     @FXML
     private TextField dateField;  // Field for date
     @FXML
-    private ComboBox<String> statutComboBox; // Updated to ComboBox
+    private ComboBox<String> statutComboBox; // ComboBox for statut
 
     private devis currentDevis;
 
@@ -42,7 +42,8 @@ public class EditDevisController {
 
             montantField.setText(String.valueOf(devis.getMontant_estime()));
             dateField.setText(devis.getDate_devis().toString());  // Adjust method as needed
-            statutComboBox.setValue(devis.getStatut());       }
+            statutComboBox.setValue(devis.getStatut()); // Set the selected value in ComboBox
+        }
     }
 
     @FXML
@@ -57,7 +58,7 @@ public class EditDevisController {
         String statut = statutComboBox.getValue(); // Get selected value from ComboBox
 
         // Validate input
-        if (montantStr.isEmpty() || dateDevisStr.isEmpty() || statut.isEmpty()) {
+        if (montantStr.isEmpty() || dateDevisStr.isEmpty() || statut == null) {
             showAlert("Input Error", "All fields must be filled out.");
             return;
         }

@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -15,6 +14,12 @@ import models.demande;
 import services.ServiceDemande;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Random;
 
 public class AjouterDemande {
 
@@ -23,11 +28,10 @@ public class AjouterDemande {
     private Parent root;
 
     @FXML
-    private ComboBox<String> typeComboBox; // Updated to ComboBox
+    private ComboBox<String> typeComboBox;
 
     @FXML
-    private ComboBox<String> statutComboBox; // Updated to ComboBox
-
+    private ComboBox<String> statutComboBox;
 
     @FXML
     private TextField descriptionField;
@@ -35,20 +39,24 @@ public class AjouterDemande {
     @FXML
     private TextField demandeurIdField;
 
-
-
     private ServiceDemande serviceDemande = new ServiceDemande();
+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/gestfacturation"; // Remplacez par votre URL
+    private static final String USER = "root"; // Remplacez par votre utilisateur
+    private static final String PASS = ""; // Remplacez par votre mot de passe
 
     @FXML
     private void ajouterDemande() {
         try {
-            // Récupérer les valeurs des champs
-            String type = typeComboBox.getValue(); // Get selected value from ComboBox
+            String type = typeComboBox.getValue();
             String description = descriptionField.getText();
             String demandeurIdText = demandeurIdField.getText();
-            String statut = statutComboBox.getValue(); // Get selected value from ComboBox
+            String statut = statutComboBox.getValue();
 
-            // Vérifier si tous les champs sont remplis
+            // Générer la référence automatiquement
+            String reference = generateUniqueReference();
+
+            // Vérification des champs
             if (type == null || type.isEmpty()) {
                 showAlert("Erreur", "Le champ 'Type' est vide.");
                 return;
@@ -61,55 +69,86 @@ public class AjouterDemande {
                 showAlert("Erreur", "Le champ 'Demandeur Id' est vide.");
                 return;
             }
-            if (statut.isEmpty()) {
+            if (statut == null || statut.isEmpty()) {
                 showAlert("Erreur", "Le champ 'Statut' est vide.");
                 return;
             }
 
-            int demandeurId = Integer.parseInt(demandeurIdText);
+            int demandeurId;
+            try {
+                demandeurId = Integer.parseInt(demandeurIdText);
+                if (demandeurId <= 0) {
+                    showAlert("Erreur", "L'ID du demandeur doit être un nombre positif.");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                showAlert("Erreur", "L'ID du demandeur doit être un nombre valide.");
+                return;
+            }
 
-            // Récupérer la date système (date actuelle)
             java.util.Date date = java.sql.Date.valueOf(java.time.LocalDate.now());
-
-            // Créer une nouvelle demande et l'ajouter via le service
-            demande demande = new demande(type, description, demandeurId, date, statut);
+            demande demande = new demande(type, description, demandeurId, date, statut, reference); // Passer la référence générée
             serviceDemande.add(demande);
-
-            // Réinitialiser les champs après l'ajout
             clearFields();
-
-            // Afficher un message de succès avec ID de la demande
             showAlert("Succès", "Demande ajoutée avec succès !");
         } catch (Exception e) {
             showAlert("Erreur", "Une erreur est survenue, veuillez réessayer.");
-            e.printStackTrace(); // Log the error for debugging
+            e.printStackTrace();
         }
     }
 
-    // Méthode pour réinitialiser les champs
-    private void clearFields() {
-        typeComboBox.getSelectionModel().clearSelection(); // Clear the ComboBox selection
-        descriptionField.clear();
-        demandeurIdField.clear();
+    private String generateUniqueReference() {
+        String reference;
+        do {
+            reference = generateReference(); // Générer une référence
+        } while (!isReferenceUnique(reference)); // Vérifier l'unicité
+        return reference;
     }
 
-    // Méthode pour afficher des alertes
+    private String generateReference() {
+        Random random = new Random();
+        int randomNumber = random.nextInt(10000); // Générer un nombre aléatoire
+        return "DM-" + randomNumber; // Formater la référence
+    }
+
+
+
+    private boolean isReferenceUnique(String reference) {
+        String query = "SELECT COUNT(*) FROM demande WHERE reference = ?"; // Assurez-vous que le nom de la colonne est correct
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, reference);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) == 0; // Retourne vrai si aucune référence correspondante n'est trouvée
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void clearFields() {
+        typeComboBox.getSelectionModel().clearSelection();
+        descriptionField.clear();
+        demandeurIdField.clear();
+        statutComboBox.getSelectionModel().clearSelection();
+    }
+
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    // Méthode pour "Retour"
     @FXML
     private void Retour(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/home.fxml"));
         switchScene(event, root);
     }
 
-    // Méthode auxiliaire pour changer de scène
     private void switchScene(ActionEvent event, Parent root) {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

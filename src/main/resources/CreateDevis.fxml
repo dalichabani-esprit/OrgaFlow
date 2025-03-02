@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="474.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateDevis">
+<AnchorPane prefHeight="474.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateDevis">
 
     <children>
 
@@ -29,14 +25,14 @@
 
         <Text layoutY="117.0" style="-fx-font-size: 16px; -fx-text-fill: #333333;" text="Bienvenue! Remplissez ce formulaire pour créer votre devis." textAlignment="CENTER" wrappingWidth="600.5999999999999" />
 
-        <Label layoutX="61.0" layoutY="140.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="ID Demande:" />
+        <Label layoutX="61.0" layoutY="140.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Reference Demande" />
         <ComboBox fx:id="comboBoxDemande" layoutX="61.0" layoutY="164.0" prefHeight="35.0" prefWidth="439.0" style="-fx-padding: 5px;" />
 
         <Label layoutX="62.0" layoutY="221.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Montant Estimé:" />
         <TextField fx:id="montantEstimeField" layoutX="61.0" layoutY="246.0" prefHeight="35.0" prefWidth="439.0" style="-fx-padding: 5px;" />
 
         <Label layoutX="66.0" layoutY="301.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Statut:" />
-        <ComboBox fx:id="statutComboBox" layoutX="66.0" layoutY="328.0" prefHeight="35.0" prefWidth="439.0" style="-fx-padding: 5px;">
+        <ComboBox fx:id="statutComboBox" layoutX="62.0" layoutY="328.0" prefHeight="35.0" prefWidth="439.0" style="-fx-padding: 5px;">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="VALIDE" />
@@ -44,7 +40,8 @@
                 </FXCollections>
             </items>
         </ComboBox>
-        <Button layoutX="254.0" layoutY="413.0" onAction="#handleSubmit" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
+
+        <Button layoutX="254.0" layoutY="413.0" onAction="#ajouterDevis" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
 
     </children>
 </AnchorPane>

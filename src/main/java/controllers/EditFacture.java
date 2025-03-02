@@ -31,7 +31,7 @@ public class EditFacture {
     @FXML
     private TextField dateField;  // Field for date
     @FXML
-    private ComboBox<String> statutComboBox;
+    private ComboBox<String> statutComboBox; // ComboBox for statut
 
     private facture currentFacture;
 
@@ -42,7 +42,7 @@ public class EditFacture {
 
             montantField.setText(String.valueOf(facture.getMontant_final()));  // Adjust according to your facture model
             dateField.setText(facture.getDate_facture().toString());  // Adjust method as needed
-            statutComboBox.setValue(facture.getStatut());
+            statutComboBox.setValue(facture.getStatut()); // Set the selected value in ComboBox
         }
     }
 
@@ -58,7 +58,7 @@ public class EditFacture {
         String statut = statutComboBox.getValue(); // Get selected value from ComboBox
 
         // Validate input
-        if (montantStr.isEmpty() || dateFactureStr.isEmpty() || statut.isEmpty()) {
+        if (montantStr.isEmpty() || dateFactureStr.isEmpty() || statut == null) {
             showAlert("Input Error", "All fields must be filled out.");
             return;
         }

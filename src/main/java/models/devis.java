@@ -8,28 +8,43 @@ public class devis {
     private float montant_estime;
     private Date date_devis;
     private String statut;
+    private String referenceDevis; // Ajout de l'attribut referenceDevis
 
     public devis() {}
 
-    public devis(int id_devis, int id_demande, float montant_estime, Date date_devis, String statut) {
+    public devis(int id_devis, int id_demande, float montant_estime, Date date_devis, String statut, String referenceDevis) {
         this.id_devis = id_devis;
         this.id_demande = id_demande;
         this.montant_estime = montant_estime;
         this.date_devis = date_devis;
         this.statut = statut;
+        this.referenceDevis = referenceDevis; // Initialisation de referenceDevis
     }
 
-    public devis(int id_devis, float montant_estime, Date date_devis, String statut) {
+    public devis(int id_devis, float montant_estime, Date date_devis, String statut, String referenceDevis) {
         this.id_devis = id_devis;
         this.montant_estime = montant_estime;
         this.date_devis = date_devis;
         this.statut = statut;
+        this.referenceDevis = referenceDevis; // Initialisation de referenceDevis
+    }
+
+
+    public devis(float montant_estime, Date date_devis, String statut) {
+
+        this.montant_estime = montant_estime;
+        this.date_devis = date_devis;
+        this.statut = statut;
+
     }
 
 
 
 
 
+
+
+    // Getters et Setters
     public int getId_devis() {
         return id_devis;
     }
@@ -65,6 +80,13 @@ public class devis {
         this.statut = statut;
     }
 
+    public String getReferenceDevis() {
+        return referenceDevis; // Getter pour referenceDevis
+    }
+    public void setReferenceDevis(String referenceDevis) {
+        this.referenceDevis = referenceDevis; // Setter pour referenceDevis
+    }
+
     @Override
     public String toString() {
         return "devis{" +
@@ -73,6 +95,7 @@ public class devis {
                 ", montant estime=" + montant_estime +
                 ", date devis=" + date_devis +
                 ", statut='" + statut + '\'' +
+                ", reference devis='" + referenceDevis + '\'' + // Ajout de referenceDevis
                 '}';
     }
 }

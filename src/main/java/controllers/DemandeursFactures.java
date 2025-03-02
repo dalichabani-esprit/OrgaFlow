@@ -56,7 +56,7 @@ public class DemandeursFactures {
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
+
                     new Label("Montant"),
                     new Label("Date"),
                     new Label("Statut")
@@ -67,7 +67,7 @@ public class DemandeursFactures {
             // Iterate through the result set and create rows
             while (rs.next()) {
                 facture facture = new facture(
-                        rs.getInt("id_facture"),
+
                         rs.getFloat("montant_final"),
                         rs.getDate("date_facture"),
                         rs.getString("statut")
@@ -76,7 +76,7 @@ public class DemandeursFactures {
                 HBox row = new HBox(50);
                 row.setStyle("-fx-padding: 10;");
                 row.getChildren().addAll(
-                        new Label(String.valueOf(facture.getId_facture())),
+
                         new Label(String.valueOf(facture.getMontant_final())),
                         new Label(facture.getDate_facture().toString()),
                         new Label(facture.getStatut())

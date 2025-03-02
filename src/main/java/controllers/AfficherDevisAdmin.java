@@ -50,7 +50,7 @@ public class AfficherDevisAdmin {
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
+                    new Label("Reference"),
                     new Label("Montant Estime"),
                     new Label("Date Devis"),
                     new Label("Statut"),
@@ -61,16 +61,17 @@ public class AfficherDevisAdmin {
             // Iterate through the result set and create rows
             while (rs.next()) {
                 devis devis = new devis(
-                        rs.getInt("id_devis"),
+                        rs.getInt("referenceDevis"),
                         rs.getFloat("montant_estime"),
                         rs.getDate("date_devis"),
-                        rs.getString("statut")
+                        rs.getString("statut"),
+                        rs.getString("referenceDevis")
                 );
 
                 HBox row = new HBox(50);
                 row.setStyle("-fx-padding: 10;");
                 row.getChildren().addAll(
-                        new Label(String.valueOf(devis.getId_devis())),
+                        new Label(String.valueOf(devis.getReferenceDevis())),
                         new Label(String.valueOf(devis.getMontant_estime())),
                         new Label(String.valueOf(devis.getDate_devis())),
                         new Label(devis.getStatut()),

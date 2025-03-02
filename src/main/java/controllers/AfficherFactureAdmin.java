@@ -50,11 +50,10 @@ public class AfficherFactureAdmin {
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
+                    new Label("Reference"),
                     new Label("Montant Final"),
                     new Label("Date Facture"),
                     new Label("Statut"),
-                    new Label("Destinataire ID"),
                     new Label("Actions") // Add header for actions
             );
             vboxDevis.getChildren().add(headerRow);
@@ -62,21 +61,20 @@ public class AfficherFactureAdmin {
             // Iterate through the result set and create rows
             while (rs.next()) {
                 facture facture = new facture(
-                        rs.getInt("id_facture"),
+                        rs.getString("refFacture"),
                         rs.getFloat("montant_final"),
                         rs.getDate("date_facture"),
-                        rs.getString("statut"),
-                        rs.getInt("destinataire_id")
+                        rs.getString("statut")
+
                 );
 
                 HBox row = new HBox(50);
                 row.setStyle("-fx-padding: 10;");
                 row.getChildren().addAll(
-                        new Label(String.valueOf(facture.getId_facture())),
+                        new Label(String.valueOf(facture.getRefFacture())),
                         new Label(String.valueOf(facture.getMontant_final())),
                         new Label(String.valueOf(facture.getDate_facture())),
                         new Label(facture.getStatut()),
-                        new Label(String.valueOf(facture.getDestinataire_id())),
                         createEditButton(facture), // Add the Edit button
                         createDeleteButton(facture.getId_facture()) // Add the Delete button
                 );

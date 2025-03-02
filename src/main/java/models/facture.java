@@ -10,6 +10,7 @@ public class facture {
     private Date date_facture;
     private String statut;
     private int destinataire_id;
+    private String refFacture;
 
     public facture() {}
 
@@ -49,10 +50,24 @@ public class facture {
 
 
 
+    public facture( String refFacture,float montant_final, Date date_facture, String statut  ) {
+        this.refFacture=refFacture;
+        this.montant_final = montant_final;
+        this.date_facture = date_facture;
+        this.statut = statut;
+
+    }
 
 
 
 
+    public facture(float montant_final, Date date_facture, String statut  ) {
+
+        this.montant_final = montant_final;
+        this.date_facture = date_facture;
+        this.statut = statut;
+
+    }
 
 
 
@@ -97,6 +112,17 @@ public class facture {
     public void setStatut(String statut) {
         this.statut = statut;
     }
+
+    public String getRefFacture() {
+        return refFacture;
+    }
+    public void setRefFacture(String refFacture) {
+        this.refFacture = refFacture;
+    }
+
+
+
+
 
     public int getDestinataire_id() {
         return destinataire_id;

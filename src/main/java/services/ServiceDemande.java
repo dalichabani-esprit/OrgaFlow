@@ -15,7 +15,7 @@ public class ServiceDemande implements IService<demande> {
     }
 
     public void add(demande demande) {
-        String query = "INSERT INTO demande (type, description, demandeur_id, date_demande, statut) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO demande (type, description, demandeur_id, date_demande, statut, reference) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstm = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, demande.getType());
@@ -23,6 +23,7 @@ public class ServiceDemande implements IService<demande> {
             pstm.setInt(3, demande.getDemandeur_id());
             pstm.setDate(4, new java.sql.Date(demande.getDate_demande().getTime()));
             pstm.setString(5, demande.getStatut());
+            pstm.setString(6, demande.getReference()); // Ajout de reference
 
             pstm.executeUpdate();
             ResultSet rs = pstm.getGeneratedKeys();
@@ -49,7 +50,8 @@ public class ServiceDemande implements IService<demande> {
                         rs.getString("description"),
                         rs.getInt("demandeur_id"),
                         rs.getDate("date_demande"),
-                        rs.getString("statut")
+                        rs.getString("statut"),
+                        rs.getString("reference") // Ajout de reference
                 );
                 demandes.add(d);
             }
@@ -60,7 +62,7 @@ public class ServiceDemande implements IService<demande> {
     }
 
     public void update(demande demande) {
-        String query = "UPDATE demande SET type=?, description=?, demandeur_id=?, date_demande=?, statut=? WHERE id_demande=?";
+        String query = "UPDATE demande SET type=?, description=?, demandeur_id=?, date_demande=?, statut=?, reference=? WHERE id_demande=?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(query);
             pstm.setString(1, demande.getType());
@@ -68,7 +70,8 @@ public class ServiceDemande implements IService<demande> {
             pstm.setInt(3, demande.getDemandeur_id());
             pstm.setDate(4, new java.sql.Date(demande.getDate_demande().getTime()));
             pstm.setString(5, demande.getStatut());
-            pstm.setInt(6, demande.getId_demande());
+            pstm.setString(6, demande.getReference()); // Ajout de reference
+            pstm.setInt(7, demande.getId_demande());
 
             int rowsUpdated = pstm.executeUpdate();
             if (rowsUpdated > 0) {

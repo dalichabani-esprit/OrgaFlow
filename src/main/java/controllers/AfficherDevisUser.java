@@ -44,7 +44,7 @@ public class AfficherDevisUser {
     @FXML
     private VBox vboxDevis; // Updated to reference the VBox in FXML
 
-    private int demandeID = 35;
+    private int demandeID = 8;
 
 
 
@@ -75,7 +75,6 @@ public class AfficherDevisUser {
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
                     new Label("Montant Estime"),
                     new Label("Date Devis"),
                     new Label("Statut")
@@ -86,11 +85,10 @@ public class AfficherDevisUser {
             // Iterate through the result set and create rows
             while (rs.next()) {
                 devis devis = new devis(
-
-                        rs.getInt("id_devis"),
                         rs.getFloat("montant_estime"),
                         rs.getDate("date_devis"),
                         rs.getString("statut")
+
 
 
                 );
@@ -98,7 +96,6 @@ public class AfficherDevisUser {
                 HBox row = new HBox(50);
                 row.setStyle("-fx-padding: 10;");
                 row.getChildren().addAll(
-                        new Label(String.valueOf(devis.getId_devis())),
                         new Label(String.valueOf(devis.getMontant_estime())),
                         new Label(devis.getDate_devis().toString()),
                         new Label(devis.getStatut())

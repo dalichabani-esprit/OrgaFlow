@@ -21,8 +21,8 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-      
-              <Button fx:id="annulerButton" layoutX="493.0" layoutY="33.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #f96b7e;" text="Retour" textFill="WHITE" />
+
+                <Button fx:id="annulerButton" layoutX="493.0" layoutY="33.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #f96b7e;" text="Retour" textFill="WHITE" />
             </children>
         </AnchorPane>
 
