@@ -7,7 +7,7 @@ import tn.esprit.models.Candidat;
 import tn.esprit.models.Employes;
 import tn.esprit.models.User;
 import tn.esprit.utils.MyDatabase;
-
+import tn.esprit.utils.PasswordHasher;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,13 @@ public class ServiceUser implements IService<User> {
             System.out.println("L'email " + user.getEmail() + " est déjà utilisé !");
             return;
         }
-        String hashedPassword = BCrypt.hashpw(user.getMotDePasse(), BCrypt.gensalt());
+
+        // Vérifie si le mot de passe est déjà haché (éviter le double hachage)
+        String hashedPassword = user.getMotDePasse();
+        if (!hashedPassword.startsWith("$2a$")) {  // BCrypt haché commence toujours par "$2a$"
+            hashedPassword = PasswordHasher.hashPassword(user.getMotDePasse());
+        }
+
         String qry;
         if (user instanceof Employes) {
             qry = "INSERT INTO utilisateur (nom, prenom, email, motDePasse, role, salaire, departement, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -53,12 +59,12 @@ public class ServiceUser implements IService<User> {
             pstm.setString(1, user.getNom());
             pstm.setString(2, user.getPrenom());
             pstm.setString(3, user.getEmail());
-            pstm.setString(4, user.getMotDePasse());
+            pstm.setString(4, hashedPassword);  // ✅ Enregistre le mot de passe haché
             pstm.setString(5, user.getRole());
 
             if (user instanceof Employes) {
                 Employes employe = (Employes) user;
-                pstm.setString(6, employe.getSalaire());  // Remplacer par un double pour le salaire
+                pstm.setString(6, employe.getSalaire());
                 pstm.setString(7, employe.getDepartement());
                 pstm.setDate(8, employe.getDateEmbauche());
             } else if (user instanceof Candidat) {
@@ -67,12 +73,13 @@ public class ServiceUser implements IService<User> {
                 pstm.setString(7, candidat.getStatutCandidat());
                 pstm.setString(8, candidat.getCvCandidat());
             }
+
             int rowsAffected = pstm.executeUpdate();
             if (rowsAffected > 0) {
                 try (ResultSet generatedKeys = pstm.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                         int generatedId = generatedKeys.getInt(1);
-                        System.out.println("Utilisateur ajouté avec succès avec ID généré : " + generatedId);
+                        System.out.println("Utilisateur ajouté avec succès avec ID : " + generatedId);
                     }
                 }
             }
@@ -80,6 +87,7 @@ public class ServiceUser implements IService<User> {
             System.out.println("Erreur lors de l'ajout de l'utilisateur : " + e.getMessage());
         }
     }
+
 
     @Override
     public List<User> getAll() {
@@ -364,10 +372,17 @@ public class ServiceUser implements IService<User> {
             System.out.println("Erreur lors de la récupération de l'utilisateur par email : " + e.getMessage());
         }
 
-        return user;  // Maintenant, `user` contient l'objet voulu
+        return user;
     }
 
 
+    public void registerUser(String nom, String motDepasse) {
+        String hashedPassword = PasswordHasher.hashPassword(motDepasse);
+    }
+
+    public boolean authenticateUser(String nom, String enteredmotDepasse, String storedHashedmotDepasse) {
+        return PasswordHasher.verifyPassword(enteredmotDepasse, storedHashedmotDepasse);
+    }
 
 
     public boolean isMotDePasseCorrect(String email, String motDePasse) {
@@ -383,8 +398,9 @@ public class ServiceUser implements IService<User> {
             return false;
         }
 
-        return user.getMotDePasse().equals(motDePasse);
+        return PasswordHasher.verifyPassword(motDePasse, user.getMotDePasse());
     }
+
 
 
     public String getRoleByEmail(String email) {
@@ -431,6 +447,16 @@ public class ServiceUser implements IService<User> {
         return user;
     }
 
+    public boolean authenticateUser(String email, String enteredPassword) {
+        User user = getUserByEmail(email);
+
+        if (user == null) {
+            System.out.println("Utilisateur introuvable !");
+            return false;
+        }
+
+        return PasswordHasher.verifyPassword(enteredPassword, user.getMotDePasse());
+    }
 
 }
 
