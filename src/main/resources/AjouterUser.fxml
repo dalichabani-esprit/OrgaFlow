@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.web.WebView?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="756.0" style="-fx-background-color: f1efe7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterUser">
    <left>
@@ -21,7 +20,6 @@
                   <Image url="@LOGOAPP.png" />
                </image>
             </ImageView>
-            <WebView fx:id="recaptchaWebView" layoutX="3.0" layoutY="2.0" prefHeight="200.0" prefWidth="400.0" />
          </children>
       </AnchorPane>
    </left>
@@ -48,7 +46,7 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Label layoutX="17.0" layoutY="320.0" text="Mot de Passe" textFill="DODGERBLUE">
+            <Label layoutX="17.0" layoutY="318.0" text="Mot de Passe" textFill="DODGERBLUE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -66,11 +64,18 @@
             <TextField fx:id="tfnom" layoutX="164.0" layoutY="154.0" prefHeight="32.0" prefWidth="181.0" promptText="Firstname" />
             <TextField fx:id="tfprenom" layoutX="164.0" layoutY="196.0" prefHeight="30.0" prefWidth="181.0" promptText="Lastname" />
             <TextField fx:id="tfemail" layoutX="164.0" layoutY="236.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
-            <PasswordField fx:id="pfmotdepasse" layoutX="164.0" layoutY="320.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
+            <PasswordField fx:id="pfmotdepasse" layoutX="164.0" layoutY="318.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
             <ComboBox fx:id="cbrole" accessibleRoleDescription="admin&#10;employe&#10;candidat" layoutX="164.0" layoutY="278.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
-            <Button fx:id="btcreercompte" layoutX="186.0" layoutY="378.0" mnemonicParsing="false" onAction="#Oncliclogup" prefHeight="38.0" prefWidth="140.0" text="Créer un compte" textFill="DODGERBLUE" />
-            <Label layoutX="84.0" layoutY="443.0" text="Already have an account ?" />
-            <Button fx:id="btidentifier" layoutX="221.0" layoutY="438.0" mnemonicParsing="false" onAction="#Onclicloginpage" prefHeight="28.0" prefWidth="106.0" style="-fx-background-color: #f1efe7;" text="S'identifier" textFill="DODGERBLUE" underline="true" />
+            <Button fx:id="btcreercompte" layoutX="186.0" layoutY="427.0" mnemonicParsing="false" onAction="#Oncliclogup" prefHeight="38.0" prefWidth="140.0" text="Créer un compte" textFill="DODGERBLUE" />
+            <Label layoutX="84.0" layoutY="475.0" text="Avez-vous déjà un compte?" />
+            <Button fx:id="btidentifier" layoutX="226.0" layoutY="467.0" mnemonicParsing="false" onAction="#Onclicloginpage" prefHeight="28.0" prefWidth="106.0" style="-fx-background-color: #f1efe7;" text="S'identifier" textFill="DODGERBLUE" underline="true" />
+            <Label layoutX="72.0" layoutY="381.0" text="captcha" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="captchaTextField" layoutX="164.0" layoutY="378.0" prefHeight="34.0" prefWidth="179.0" promptText="Saisir le code CAPTCHA" />
+            <Label fx:id="captchaLabel" layoutX="163.0" layoutY="354.0" text="Captcha:" />
          </children>
       </AnchorPane>
    </right>

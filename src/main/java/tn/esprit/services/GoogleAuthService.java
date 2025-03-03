@@ -19,7 +19,6 @@ public class GoogleAuthService {
     private static final String SCOPE = "email profile openid";
 
     private static ExecutorService executor = Executors.newSingleThreadExecutor();
-
     public static void authenticateUser(Stage primaryStage) {
         try {
             String url = AUTH_URL +
@@ -37,8 +36,6 @@ public class GoogleAuthService {
             e.printStackTrace();
         }
     }
-
-
     private static void startHttpServer(Stage primaryStage) {
         try (ServerSocket serverSocket = new ServerSocket(5000)) {
             System.out.println("En attente de l'autorisation Google...");
@@ -52,15 +49,13 @@ public class GoogleAuthService {
                     break;
                 }
             }
-
             if (authCode != null) {
                 System.out.println("Code reçu : " + authCode);
                 String accessToken = getAccessToken(authCode);
                 if (accessToken != null) {
                     JSONObject userInfo = getUserInfo(accessToken);
-                    // Utiliser une instance de logginUser pour appeler processGoogleLogin
                     logginUser logginUserInstance = new logginUser();
-                    logginUserInstance.processGoogleLogin(userInfo, primaryStage);  // Passer primaryStage ici
+                    logginUserInstance.processGoogleLogin(userInfo, primaryStage);
                 }
             }
             OutputStream outputStream = clientSocket.getOutputStream();

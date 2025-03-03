@@ -27,8 +27,6 @@ public class MyDatabase {
         }
         return instance;
     }
-
-    // Méthode pour obtenir la connexion
     public Connection getCnx() {
         try {
             if (cnx == null || cnx.isClosed()) {
@@ -40,8 +38,6 @@ public class MyDatabase {
         }
         return cnx;
     }
-
-    // Méthode pour fermer la connexion
     public void closeConnection() {
         try {
             if (cnx != null && !cnx.isClosed()) {
