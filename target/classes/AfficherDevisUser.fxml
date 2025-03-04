@@ -9,8 +9,8 @@
     <children>
         <Text layoutX="14.0" layoutY="46.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Mes Devis" />
 
-        <VBox fx:id="vboxDevis" layoutX="20.0" layoutY="70.0" prefWidth="560.0" spacing="10.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #696363; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
-            <HBox spacing="50" style="-fx-background-color: #d2d2d2; -fx-padding: 10; -fx-alignment: center;">
+        <VBox fx:id="vboxDevis" layoutX="20.0" layoutY="70.0" prefWidth="560.0" spacing="10.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #507b8b; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
+            <HBox spacing="50" style="-fx-background-color: #507b8b; -fx-padding: 10; -fx-alignment: center;">
                 <Label text="ID" style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" />
                 <Label text="Montant Estime" style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" />
 
@@ -21,6 +21,6 @@
             <!-- Rows will be dynamically added here -->
         </VBox>
 
-        <Button layoutX="457.0" layoutY="23.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #f96b7e; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" textFill="WHITE" />
+        <Button layoutX="457.0" layoutY="23.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #507b8b; -fx-font-weight: bold; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" textFill="WHITE" />
     </children>
 </AnchorPane>

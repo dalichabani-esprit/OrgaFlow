@@ -7,15 +7,15 @@
 
 <AnchorPane fx:id="AP" prefHeight="673.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherDevisAdmin">
     <children>
-        <AnchorPane prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #d7d5d5; -fx-padding: 10;">
+        <AnchorPane prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #507b8b; -fx-padding: 10;">
             <children>
                 <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/logo1.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="75.0" layoutY="52.0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f96b7e;" text="Gestion des Devis" />
-                <Button fx:id="annulerButton" layoutX="1082.0" layoutY="29.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #f96b7e; -fx-border-color: #f96b7e; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+                <Text layoutX="75.0" layoutY="52.0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #507b8b;" text="Gestion des Devis" />
+                <Button fx:id="annulerButton" layoutX="1082.0" layoutY="29.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #507b8b; -fx-border-color: #507b8b; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
             </children>
         </AnchorPane>
 
@@ -35,7 +35,7 @@
                 <Label text="Demandeur 123" />
                 <Label text="2025-02-23" />
                 <Label text="Open" />
-                <Button text="Edit"  style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff;" />
+                <Button text="Edit"  style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff;" />
             </HBox>
             <!-- Repeat similar HBox for additional rows -->
         </VBox>

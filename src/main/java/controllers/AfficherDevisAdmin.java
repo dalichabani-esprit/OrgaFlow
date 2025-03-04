@@ -89,17 +89,24 @@ public class AfficherDevisAdmin {
         Button editButton = new Button("Edit");
         editButton.setOnAction(event -> {
             try {
+                // Load the FXML for the Edit Devis interface
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditDevis.fxml"));
                 Parent editRoot = loader.load();
 
+                // Get the controller for the Edit Devis interface
                 EditDevisController editController = loader.getController();
-                editController.initialize(devis);
+                editController.initialize(devis); // Pass the devis to the controller
 
+                // Get the current stage from the button event
+                Stage stage = (Stage) editButton.getScene().getWindow();
+
+                // Create a new scene with the loaded FXML
                 Scene editScene = new Scene(editRoot);
-                Stage editStage = new Stage();
-                editStage.setScene(editScene);
-                editStage.setTitle("Edit Devis");
-                editStage.show();
+
+                // Set the new scene to the current stage
+                stage.setScene(editScene);
+                stage.setTitle("Edit Devis"); // Optionally set the title
+                stage.show(); // Show the updated stage
             } catch (IOException e) {
                 e.printStackTrace();
             }

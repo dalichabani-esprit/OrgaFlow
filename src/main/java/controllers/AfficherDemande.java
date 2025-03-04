@@ -94,17 +94,24 @@ public class AfficherDemande {
         Button editButton = new Button("Edit");
         editButton.setOnAction(event -> {
             try {
+                // Load the FXML for the Edit Demande interface
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditDemande.fxml"));
                 Parent editRoot = loader.load();
 
+                // Get the controller for the Edit Demande interface
                 EditDemandeController editController = loader.getController();
-                editController.initialize(demande);
+                editController.initialize(demande); // Pass the demande to the controller
 
+                // Get the current stage from the button event
+                Stage stage = (Stage) editButton.getScene().getWindow();
+
+                // Create a new scene with the loaded FXML
                 Scene editScene = new Scene(editRoot);
-                Stage editStage = new Stage();
-                editStage.setScene(editScene);
-                editStage.setTitle("Edit Demande");
-                editStage.show();
+
+                // Set the new scene to the current stage
+                stage.setScene(editScene);
+                stage.setTitle("Edit Demande"); // Optionally set the title
+                stage.show(); // Show the updated stage
             } catch (IOException e) {
                 e.printStackTrace();
             }

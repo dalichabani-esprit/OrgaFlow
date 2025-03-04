@@ -20,6 +20,7 @@ public class AfficherDemandeUser {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    //juste njareb fel git
 
     @FXML
     private VBox vboxDemandes;
