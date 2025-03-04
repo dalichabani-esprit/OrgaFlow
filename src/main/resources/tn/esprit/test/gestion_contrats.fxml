@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.contratsController">
+    <left>
+        <fx:include source="sidebar.fxml" />
+    </left>
+   <center>
+      <AnchorPane prefHeight="560.0" prefWidth="1114.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="14.0" layoutY="34.0" prefHeight="485.0" prefWidth="365.0" spacing="20.0" stylesheets="@styles.css">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+              <!-- Formulaire de saisie -->
+              <GridPane hgap="10" prefHeight="113.0" prefWidth="763.0" vgap="10">
+                <Label text="ID Contrat:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                   <Label text="Type de Contrat:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="typeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                   <Label text="Date de Début:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <DatePicker fx:id="dateDebutPicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                   <Label text="Date de Fin:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <DatePicker fx:id="dateFinPicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                   <Label text="Période d'Essai:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <CheckBox fx:id="periodeEssaiCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                   <Label text="Renouvelable:" GridPane.rowIndex="5" />
+                <CheckBox fx:id="renouvelableCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                   <Label text="Salaire:" GridPane.rowIndex="6" />
+                <TextField fx:id="salaireField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                   <Label text="Statut:" GridPane.rowIndex="7" />
+                <ComboBox fx:id="statutComboBox" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+              </GridPane>
+
+              <!-- Boutons d'action -->
+              <HBox spacing="10">
+                <Button fx:id="addButton" onAction="#handleAddButton" text="Ajouter" />
+                <Button fx:id="updateButton" onAction="#handleUpdateButton" text="Modifier" />
+                <Button fx:id="deleteButton" onAction="#handleDeleteButton" text="Supprimer" />
+              </HBox>
+
+              <!-- Message pour l'utilisateur -->
+              <Label fx:id="messageLabel" style="-fx-text-fill: red;" />
+            </VBox>
+             <ListView fx:id="contratsListView" layoutX="387.0" layoutY="92.0" prefHeight="281.0" prefWidth="349.0" />
+             <HBox layoutX="387.0" layoutY="50.0" spacing="10">
+
+                <!-- Liste des contrats -->
+              <Label prefHeight="41.0" prefWidth="150.0" text="Liste des Contrats:" />
+                 <TextField fx:id="searchField" prefHeight="25.0" prefWidth="149.0" promptText="Rechercher un contrat..." />
+             </HBox>
+            <Button layoutX="668.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #507b8b;" text="Refresh" textFill="WHITE" />
+
+                <Label layoutX="412.0" layoutY="-1.0" prefHeight="29.0" prefWidth="114.0" styleClass="label-title" text="Gestion des Contrats" />
+              <Button layoutX="542.0" layoutY="383.0" onAction="#rechercherContrat" style="-fx-background-color: #507b8b;" text=" Rechercher" textFill="WHITE" />
+              <Button layoutX="379.0" layoutY="383.0" onAction="#trierContratsParType" text=" Trier par Type" />
+             <Button layoutX="379.0" layoutY="383.0" onAction="#trierContratsParDateDebut" style="-fx-background-color: #507b8b;" text=" Trier par DateDebut" textFill="WHITE" />
+            <Button layoutX="443.0" layoutY="472.0" mnemonicParsing="false" onAction="#generateQrCode" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #507b8b;" text="QR" textFill="WHITE" />
+            <Button layoutX="557.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleExportToExcel" style="-fx-background-color: #507b8b;" text="exporter vers excel" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

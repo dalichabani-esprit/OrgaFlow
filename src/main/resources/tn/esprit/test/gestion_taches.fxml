@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TachesController">
+   <left>
+      <fx:include source="sidebar.fxml" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="734.0" prefWidth="1187.0">
+         <children>
+            <VBox layoutX="64.0" layoutY="49.0" prefHeight="367.0" prefWidth="236.0">
+               <children>
+                  <Label text="Nom" textFill="#507b8b" />
+                  <TextField fx:id="tfNom" />
+                  <Label text="description" textFill="#507b8b" />
+                  <TextField fx:id="tfDesc" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="date début" textFill="#507b8b" />
+                  <DatePicker fx:id="dpDateDebut" stylesheets="@button_style.css" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="date fin" textFill="#507b8b" />
+                  <DatePicker fx:id="dpDateFin" stylesheets="@button_style.css" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="Statut" textFill="#507b8b" />
+                  <TextField fx:id="tfStatut" />
+                  <Label prefHeight="18.0" prefWidth="98.0" text="Nom Projet" textFill="#507b8b" />
+                  <TextField fx:id="tfNomProjet" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#ajouterTache" prefHeight="58.0" prefWidth="208.0" style="-fx-background-color: #507B8B;" text="Ajouter" textAlignment="JUSTIFY" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <ListView fx:id="lvTaches" layoutX="375.0" layoutY="65.0" prefHeight="433.0" prefWidth="723.0" />
+            <Label layoutX="65.0" layoutY="437.0" prefHeight="18.0" prefWidth="112.0" text="Supprimer (Nom)" textFill="#507b8b" />
+            <TextField fx:id="tfNomDel" layoutX="182.0" layoutY="433.0" prefHeight="18.0" prefWidth="84.0" />
+            <Button alignment="CENTER" layoutX="57.0" layoutY="464.0" mnemonicParsing="false" onAction="#supprimerTache" prefHeight="41.0" prefWidth="213.0" style="-fx-background-color: #507B8B;" text="Supprimer" textAlignment="JUSTIFY" textFill="WHITE" />
+            <ChoiceBox fx:id="choiceBoxTri" layoutX="383.0" layoutY="582.0" prefHeight="34.0" prefWidth="150.0" />
+            <Label layoutX="414.0" layoutY="548.0" prefHeight="20.0" prefWidth="88.0" text="Trier selon" textFill="#507b8b">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="383.0" layoutY="628.0" mnemonicParsing="false" onAction="#trierLvTaches" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #507b8b;" text="Trier" textFill="WHITE" />
+            <Button layoutX="782.0" layoutY="597.0" mnemonicParsing="false" onAction="#exportPDF" prefHeight="63.0" prefWidth="165.0" style="-fx-background-color: #507b8b;" text="Exporter en PDF" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,62 @@
+/* Couleurs principales */
+.root {
+    -fx-background-color: #D3D3D3; /* Silver */
+}
+
+.label-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #548192; /* Blue Grey */
+}
+
+/* Styles pour les boutons */
+.button {
+    -fx-background-color: #548192; /* Blue Grey */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #456B7A; /* Une teinte plus foncée de Blue Grey */
+}
+
+/* Styles pour les champs de saisie */
+.text-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #548192; /* Blue Grey */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #456B7A; /* Une teinte plus foncée de Blue Grey */
+}
+
+/* Styles pour les ListView */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #548192; /* Blue Grey */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.list-cell {
+    -fx-padding: 10px;
+    -fx-background-color: white;
+    -fx-border-color: #D3D3D3; /* Silver */
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #548192; /* Blue Grey */
+    -fx-text-fill: white;
+}
+
+/* Styles pour les messages */
+.label-message {
+    -fx-text-fill: #548192; /* Blue Grey */
+    -fx-font-weight: bold;
+}
