@@ -2,7 +2,6 @@ module tn.esprit.test {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.zxing;
-    requires spire.barcode.free;
     requires org.apache.poi.ooxml;
     requires java.desktop;
     requires layout;

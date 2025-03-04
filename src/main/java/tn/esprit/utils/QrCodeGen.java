@@ -1,10 +1,11 @@
 package tn.esprit.utils;
-
+/*
 import com.spire.barcode.BarCodeGenerator;
 import com.spire.barcode.BarCodeType;
 import com.spire.barcode.BarcodeSettings;
 import com.spire.barcode.QRCodeECL;
 
+ */
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,7 +13,9 @@ import java.io.IOException;
 
 
 public class QrCodeGen {
+
     public static void GenerateQrCode() throws IOException {
+        /*
         //Instantiate a BarcodeSettings object
         BarcodeSettings settings = new BarcodeSettings();
         //Set barcode type
@@ -44,6 +47,8 @@ public class QrCodeGen {
         BufferedImage bufferedImage = barCodeGenerator.generateImage();
         //save the image to a .png file
         ImageIO.write(bufferedImage,"png",new File("C:\\Users\\HP\\OneDrive - ESPRIT\\Bureau\\QR_Codes\\qrcode.png"));
+
+         */
     }
 
 }

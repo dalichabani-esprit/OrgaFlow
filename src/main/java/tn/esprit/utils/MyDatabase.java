@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class MyDatabase {
     private static MyDatabase instance;
-    private final String URL ="jdbc:mysql://127.0.0.1:3306/gestion_employe";
-    private final String USERNAME ="root";
-    private final String PASSWORD = "";
+    private final String URL ="jdbc:mysql://127.0.0.1:3306/orgaflowdb";
+    private final String USERNAME ="dali";
+    private final String PASSWORD = "dali1234";
     private Connection  cnx;
 
     private MyDatabase() {
