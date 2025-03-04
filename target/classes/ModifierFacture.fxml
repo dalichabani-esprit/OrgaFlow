@@ -19,7 +19,7 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-              <Button fx:id="annulerButton" layoutX="491.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #f96b7e;" text="Retour" textFill="#f4f4f4" />
+                <Button fx:id="annulerButton" layoutX="491.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #f96b7e;" text="Retour" textFill="#f4f4f4" />
             </children>
         </AnchorPane>
 

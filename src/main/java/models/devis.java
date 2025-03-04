@@ -38,7 +38,13 @@ public class devis {
 
     }
 
+    public devis(float montant_estime, Date date_devis, String statut, String referenceDevis) {
 
+        this.montant_estime = montant_estime;
+        this.date_devis = date_devis;
+        this.statut = statut;
+        this.referenceDevis = referenceDevis; // Initialisation de referenceDevis
+    }
 
 
 

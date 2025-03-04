@@ -25,15 +25,13 @@ public class EditDemandeController {
     private Parent root;
 
     @FXML
-    private ComboBox<String> typeComboBox; // Updated to ComboBox
+    private ComboBox<String> typeComboBox;
     @FXML
     private TextField descriptionField;
     @FXML
-    private TextField demandeurIdField;
-    @FXML
     private TextField dateDemandeField;
     @FXML
-    private ComboBox<String> statutComboBox; // Updated to ComboBox
+    private ComboBox<String> statutComboBox;
 
     private demande currentDemande;
 
@@ -41,11 +39,10 @@ public class EditDemandeController {
     public void initialize(demande demande) {
         if (demande != null) {
             currentDemande = demande;
-            typeComboBox.setValue(demande.getType()); // Set selected value for ComboBox
+            typeComboBox.setValue(demande.getType());
             descriptionField.setText(demande.getDescription());
-            demandeurIdField.setText(String.valueOf(demande.getDemandeur_id()));
             dateDemandeField.setText(demande.getDate_demande().toString());
-            statutComboBox.setValue(demande.getStatut()); // Set selected value for ComboBox
+            statutComboBox.setValue(demande.getStatut());
         }
     }
 
@@ -55,47 +52,40 @@ public class EditDemandeController {
         String user = "root";
         String password = "";
 
-        // Retrieve updated values from the fields
-        String type = typeComboBox.getValue(); // Get selected value from ComboBox
+        String type = typeComboBox.getValue();
         String description = descriptionField.getText().trim();
-        String demandeurIdStr = demandeurIdField.getText().trim();
         String dateDemandeStr = dateDemandeField.getText().trim();
-        String statut = statutComboBox.getValue(); // Get selected value from ComboBox
+        String statut = statutComboBox.getValue();
 
         // Validate input
-        if (type == null || description.isEmpty() || demandeurIdStr.isEmpty() || dateDemandeStr.isEmpty() || statut == null) {
+        if (type == null || description.isEmpty() || dateDemandeStr.isEmpty() || statut == null) {
             showAlert("Input Error", "All fields must be filled out.");
             return;
         }
 
         try {
-            int demandeurId = Integer.parseInt(demandeurIdStr);
-
             // Prepare the SQL update statement
-            String query = "UPDATE demande SET type = ?, description = ?, demandeur_id = ?, date_demande = ?, statut = ? WHERE id_demande = ?";
+            String query = "UPDATE demande SET type = ?, description = ?, date_demande = ?, statut = ? WHERE reference = ?"; // Updated to remove demandeur_id
 
             try (Connection conn = DriverManager.getConnection(url, user, password);
                  PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setString(1, type);
                 stmt.setString(2, description);
-                stmt.setInt(3, demandeurId);
-                stmt.setDate(4, java.sql.Date.valueOf(dateDemandeStr)); // Ensure the date format is correct
-                stmt.setString(5, statut);
-                stmt.setInt(6, currentDemande.getId_demande());
+                stmt.setDate(3, java.sql.Date.valueOf(dateDemandeStr));
+                stmt.setString(4, statut);
+                stmt.setString(5, currentDemande.getReference()); // Use reference for the update
 
                 // Execute the update
                 int rowsUpdated = stmt.executeUpdate();
                 if (rowsUpdated > 0) {
                     System.out.println("Demande updated successfully!");
                 } else {
-                    showAlert("Update Error", "No demande found with the specified ID.");
+                    showAlert("Update Error", "No demande found with the specified reference.");
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert("Database Error", "Failed to update demande: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            showAlert("Input Error", "Demandeur ID must be a valid number.");
         } catch (IllegalArgumentException e) {
             showAlert("Input Error", "Date must be in the format YYYY-MM-DD.");
         }

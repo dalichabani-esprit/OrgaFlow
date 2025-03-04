@@ -25,8 +25,6 @@ public class EditDevisController {
     private Parent root;
 
     @FXML
-    private TextField idField;  // Assuming you have an ID field for the devis
-    @FXML
     private TextField montantField;  // Field for montant
     @FXML
     private TextField dateField;  // Field for date
@@ -67,21 +65,21 @@ public class EditDevisController {
             double montant = Double.parseDouble(montantStr); // Convert montant to double
 
             // Prepare the SQL update statement
-            String query = "UPDATE devis SET montant_estime = ?, date_devis = ?, statut = ? WHERE id_devis = ?";
+            String query = "UPDATE devis SET montant_estime = ?, date_devis = ?, statut = ? WHERE referenceDevis = ?"; // Updated to use referenceDevis
 
             try (Connection conn = DriverManager.getConnection(url, user, password);
                  PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setDouble(1, montant);
                 stmt.setDate(2, java.sql.Date.valueOf(dateDevisStr)); // Ensure the date format is correct
                 stmt.setString(3, statut);
-                stmt.setInt(4, currentDevis.getId_devis());  // Assuming you have this method
+                stmt.setString(4, currentDevis.getReferenceDevis()); // Use referenceDevis for the update
 
                 // Execute the update
                 int rowsUpdated = stmt.executeUpdate();
                 if (rowsUpdated > 0) {
                     System.out.println("Devis updated successfully!");
                 } else {
-                    showAlert("Update Error", "No devis found with the specified ID.");
+                    showAlert("Update Error", "No devis found with the specified reference.");
                 }
             }
         } catch (SQLException e) {

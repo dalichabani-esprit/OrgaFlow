@@ -65,7 +65,6 @@ public class AfficherFactureAdmin {
                         rs.getFloat("montant_final"),
                         rs.getDate("date_facture"),
                         rs.getString("statut")
-
                 );
 
                 HBox row = new HBox(50);
@@ -76,7 +75,7 @@ public class AfficherFactureAdmin {
                         new Label(String.valueOf(facture.getDate_facture())),
                         new Label(facture.getStatut()),
                         createEditButton(facture), // Add the Edit button
-                        createDeleteButton(facture.getId_facture()) // Add the Delete button
+                        createDeleteButton(facture.getRefFacture()) // Updated to use refFacture
                 );
 
                 vboxDevis.getChildren().add(row);
@@ -108,11 +107,11 @@ public class AfficherFactureAdmin {
         return editButton;
     }
 
-    private Button createDeleteButton(int factureId) {
+    private Button createDeleteButton(String refFacture) { // Updated to use String refFacture
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(event -> {
             try {
-                deleteFacture(factureId);
+                deleteFacture(refFacture); // Updated to use refFacture
                 loadFactures(); // Refresh the list after deletion
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -122,16 +121,16 @@ public class AfficherFactureAdmin {
         return deleteButton;
     }
 
-    private void deleteFacture(int factureId) throws SQLException {
+    private void deleteFacture(String refFacture) throws SQLException { // Updated to use String refFacture
         String url = "jdbc:mysql://localhost:3306/gestfacturation";
         String user = "root";
         String password = "";
 
-        String query = "DELETE FROM facture WHERE id_facture = ?";
+        String query = "DELETE FROM facture WHERE refFacture = ?"; // Updated query to use refFacture
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, factureId);
+            stmt.setString(1, refFacture); // Set refFacture
             stmt.executeUpdate();
             System.out.println("Facture deleted successfully!");
         }

@@ -61,11 +61,10 @@ public class AfficherDevisAdmin {
             // Iterate through the result set and create rows
             while (rs.next()) {
                 devis devis = new devis(
-                        rs.getInt("referenceDevis"),
                         rs.getFloat("montant_estime"),
                         rs.getDate("date_devis"),
                         rs.getString("statut"),
-                        rs.getString("referenceDevis")
+                        rs.getString("referenceDevis") // Assuming this is the unique identifier
                 );
 
                 HBox row = new HBox(50);
@@ -76,7 +75,7 @@ public class AfficherDevisAdmin {
                         new Label(String.valueOf(devis.getDate_devis())),
                         new Label(devis.getStatut()),
                         createEditButton(devis), // Add the Edit button
-                        createDeleteButton(devis.getId_devis()) // Add the Delete button
+                        createDeleteButton(devis.getReferenceDevis()) // Updated to use referenceDevis
                 );
 
                 vboxDevis.getChildren().add(row);
@@ -108,11 +107,11 @@ public class AfficherDevisAdmin {
         return editButton;
     }
 
-    private Button createDeleteButton(int devisId) {
+    private Button createDeleteButton(String referenceDevis) { // Updated to use String referenceDevis
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(event -> {
             try {
-                deleteDevis(devisId);
+                deleteDevis(referenceDevis); // Updated to use referenceDevis
                 loadDevis(); // Refresh the list after deletion
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -122,16 +121,16 @@ public class AfficherDevisAdmin {
         return deleteButton;
     }
 
-    private void deleteDevis(int devisId) throws SQLException {
+    private void deleteDevis(String referenceDevis) throws SQLException { // Updated to use String referenceDevis
         String url = "jdbc:mysql://localhost:3306/gestfacturation";
         String user = "root";
         String password = "";
 
-        String query = "DELETE FROM devis WHERE id_devis = ?";
+        String query = "DELETE FROM devis WHERE referenceDevis = ?"; // Updated query to use referenceDevis
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, devisId);
+            stmt.setString(1, referenceDevis); // Set referenceDevis
             stmt.executeUpdate();
             System.out.println("Devis deleted successfully!");
         }

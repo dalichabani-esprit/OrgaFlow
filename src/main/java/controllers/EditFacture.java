@@ -25,8 +25,6 @@ public class EditFacture {
     private Parent root;
 
     @FXML
-    private TextField idField;  // Field for ID of the facture
-    @FXML
     private TextField montantField;  // Field for montant
     @FXML
     private TextField dateField;  // Field for date
@@ -40,8 +38,9 @@ public class EditFacture {
         if (facture != null) {
             currentFacture = facture;
 
-            montantField.setText(String.valueOf(facture.getMontant_final()));  // Adjust according to your facture model
-            dateField.setText(facture.getDate_facture().toString());  // Adjust method as needed
+            // Set values for the fields
+            montantField.setText(String.valueOf(facture.getMontant_final()));
+            dateField.setText(facture.getDate_facture().toString());
             statutComboBox.setValue(facture.getStatut()); // Set the selected value in ComboBox
         }
     }
@@ -67,21 +66,21 @@ public class EditFacture {
             double montant = Double.parseDouble(montantStr); // Convert montant to double
 
             // Prepare the SQL update statement
-            String query = "UPDATE facture SET montant_final = ?, date_facture = ?, statut = ? WHERE id_facture = ?";
+            String query = "UPDATE facture SET montant_final = ?, date_facture = ?, statut = ? WHERE refFacture = ?"; // Use refFacture for the WHERE clause
 
             try (Connection conn = DriverManager.getConnection(url, user, password);
                  PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setDouble(1, montant);
                 stmt.setDate(2, java.sql.Date.valueOf(dateFactureStr)); // Ensure the date format is correct
                 stmt.setString(3, statut);
-                stmt.setInt(4, currentFacture.getId_facture());  // Assuming you have this method
+                stmt.setString(4, currentFacture.getRefFacture()); // Use the current refFacture for the update
 
                 // Execute the update
                 int rowsUpdated = stmt.executeUpdate();
                 if (rowsUpdated > 0) {
                     System.out.println("Facture updated successfully!");
                 } else {
-                    showAlert("Update Error", "No facture found with the specified ID.");
+                    showAlert("Update Error", "No facture found with the specified reference.");
                 }
             }
         } catch (SQLException e) {

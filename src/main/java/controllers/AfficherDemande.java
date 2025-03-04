@@ -24,13 +24,13 @@ public class AfficherDemande {
     private Parent root;
 
     @FXML
-    private VBox vboxDemandes; // Updated to reference the VBox in FXML
+    private VBox vboxDemandes;
     @FXML
-    private TextField searchField; // Reference to the search TextField
+    private TextField searchField;
 
     @FXML
     public void initialize() {
-        loadDemandes(); // Load demandes initially
+        loadDemandes();
     }
 
     private void loadDemandes() {
@@ -44,32 +44,27 @@ public class AfficherDemande {
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             ResultSet rs = stmt.executeQuery();
-
-            // Clear existing entries in the VBox
             vboxDemandes.getChildren().clear();
 
-            // Create header row
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("Référence"), // Ajout de l'en-tête pour la référence
+                    new Label("Référence"),
                     new Label("Type"),
                     new Label("Description"),
                     new Label("Date Demande"),
                     new Label("Statut"),
-                    new Label("Actions") // Add header for actions
+                    new Label("Actions")
             );
             vboxDemandes.getChildren().add(headerRow);
 
-            // Iterate through the result set and create rows
             while (rs.next()) {
                 demande demande = new demande(
-                        rs.getString("reference"), // Récupération de la référence
+                        rs.getString("reference"),
                         rs.getString("type"),
                         rs.getString("description"),
                         rs.getDate("date_demande"),
                         rs.getString("statut")
-
                 );
 
                 addDemandeRow(demande);
@@ -83,13 +78,13 @@ public class AfficherDemande {
         HBox row = new HBox(50);
         row.setStyle("-fx-padding: 10;");
         row.getChildren().addAll(
-                new Label(demande.getReference()), // Affichage de la référence
+                new Label(demande.getReference()),
                 new Label(demande.getType()),
                 new Label(demande.getDescription()),
                 new Label(demande.getDate_demande().toString()),
                 new Label(demande.getStatut()),
-                createEditButton(demande), // Add the Edit button
-                createDeleteButton(demande.getId_demande()) // Add the Delete button
+                createEditButton(demande),
+                createDeleteButton(demande.getReference()) // Updated to use reference
         );
 
         vboxDemandes.getChildren().add(row);
@@ -117,12 +112,12 @@ public class AfficherDemande {
         return editButton;
     }
 
-    private Button createDeleteButton(int demandeId) {
+    private Button createDeleteButton(String reference) { // Use String reference instead of int
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(event -> {
             try {
-                deleteDemande(demandeId);
-                loadDemandes(); // Refresh the list after deletion
+                deleteDemande(reference); // Updated to use reference
+                loadDemandes();
             } catch (SQLException e) {
                 e.printStackTrace();
                 showAlert("Database Error", "Failed to delete demande: " + e.getMessage());
@@ -131,16 +126,16 @@ public class AfficherDemande {
         return deleteButton;
     }
 
-    private void deleteDemande(int demandeId) throws SQLException {
+    private void deleteDemande(String reference) throws SQLException { // Use String reference
         String url = "jdbc:mysql://localhost:3306/gestfacturation";
         String user = "root";
         String password = "";
 
-        String query = "DELETE FROM demande WHERE id_demande = ?";
+        String query = "DELETE FROM demande WHERE reference = ?"; // Updated query to use reference
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, demandeId);
+            stmt.setString(1, reference); // Set reference
             stmt.executeUpdate();
             System.out.println("Demande deleted successfully!");
         }
@@ -171,50 +166,40 @@ public class AfficherDemande {
         String user = "root";
         String password = "";
 
-        // Update SQL query to include all fields
-        String sqlQuery = "SELECT * FROM demande WHERE id_demande LIKE ? OR type LIKE ? OR description LIKE ? OR demandeur_id LIKE ? OR date_demande LIKE ? OR statut LIKE ? OR reference LIKE ?"; // Ajout de la référence
+        String sqlQuery = "SELECT * FROM demande WHERE reference LIKE ? OR type LIKE ? OR description LIKE ? OR demandeur_id LIKE ? OR date_demande LIKE ? OR statut LIKE ?"; // Removed id_demande
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(sqlQuery)) {
             String likeQuery = "%" + query + "%";
-            stmt.setString(1, likeQuery);  // For ID
-            stmt.setString(2, likeQuery);  // For Type
-            stmt.setString(3, likeQuery);  // For Description
-            stmt.setString(4, likeQuery);  // For Demandeur ID
-            stmt.setString(5, likeQuery);  // For Date Demande
-            stmt.setString(6, likeQuery);  // For Statut
-            stmt.setString(7, likeQuery);  // For Référence
+            stmt.setString(1, likeQuery);
+            stmt.setString(2, likeQuery);
+            stmt.setString(3, likeQuery);
+            stmt.setString(4, likeQuery);
+            stmt.setString(5, likeQuery);
+            stmt.setString(6, likeQuery);
 
             ResultSet rs = stmt.executeQuery();
-
-            // Clear existing entries in the VBox
             vboxDemandes.getChildren().clear();
 
-            // Create header row
             HBox headerRow = new HBox(50);
             headerRow.setStyle("-fx-background-color: #d2d2d2; -fx-padding: 10;");
             headerRow.getChildren().addAll(
-                    new Label("ID"),
+                    new Label("Référence"),
                     new Label("Type"),
                     new Label("Description"),
-                    new Label("Demandeur ID"),
                     new Label("Date Demande"),
                     new Label("Statut"),
-                    new Label("Référence"), // Ajout de l'en-tête pour la référence
-                    new Label("Actions") // Add header for actions
+                    new Label("Actions")
             );
             vboxDemandes.getChildren().add(headerRow);
 
-            // Iterate through the result set and create rows
             while (rs.next()) {
                 demande demande = new demande(
-                        rs.getInt("id_demande"),
+                        rs.getString("reference"),
                         rs.getString("type"),
                         rs.getString("description"),
-                        rs.getInt("demandeur_id"),
                         rs.getDate("date_demande"),
-                        rs.getString("statut"),
-                        rs.getString("reference") // Récupération de la référence
+                        rs.getString("statut")
                 );
 
                 addDemandeRow(demande);
@@ -225,7 +210,6 @@ public class AfficherDemande {
         }
     }
 
-    // Method to switch scenes
     private void switchScene(ActionEvent event, Parent root) {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -233,7 +217,6 @@ public class AfficherDemande {
         stage.show();
     }
 
-    // Method to show alerts
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);

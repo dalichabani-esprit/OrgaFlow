@@ -46,7 +46,7 @@
             </HBox>
             <!-- Repeat similar HBox for additional rows -->
         </VBox>
-         <Button layoutX="996.0" layoutY="119.0" onAction="#searchDemandes" prefHeight="41.0" prefWidth="62.0" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Search" />
-         <TextField fx:id="searchField" layoutX="670.0" layoutY="127.0" prefWidth="300.0" promptText="Search by All Fields" />
+        <Button layoutX="996.0" layoutY="119.0" onAction="#searchDemandes" prefHeight="41.0" prefWidth="62.0" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Search" />
+        <TextField fx:id="searchField" layoutX="670.0" layoutY="127.0" prefWidth="300.0" promptText="Search by All Fields" />
     </children>
 </AnchorPane>
