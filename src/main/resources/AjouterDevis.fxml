@@ -7,14 +7,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterDevis">
     <children>
-        <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #F4C2C2;">
+        <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #92b1bc;">
             <children>
                 <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="36.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/logo1.png" />
                     </image>
                 </ImageView>
-                <Text fill="#f96b7e" layoutX="98.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Un Devis">
+                <Text fill="#507b8b" layoutX="98.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Un Devis">
                     <font>
                         <Font size="18.0" />
                     </font>

@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherDevis">
     <children>
-        <AnchorPane prefHeight="400.0" prefWidth="656.0" style="-fx-background-color: #F4C2C2;">
+        <AnchorPane prefHeight="400.0" prefWidth="656.0" style="-fx-background-color: #92b1bc;">
             <children>
-                <AnchorPane prefHeight="400.0" prefWidth="222.0" style="-fx-background-color: #f96b7e;">
+                <AnchorPane prefHeight="400.0" prefWidth="222.0" style="-fx-background-color: #507b8b;">
                     <children>
                         <Text fill="#f7f7f7" layoutX="27.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OrgaFlow">
                             <font>
@@ -21,7 +21,7 @@
                                 <Image url="@img/logo.png" />
                             </image>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Des Devis" textAlignment="CENTER" wrappingWidth="186.0">
+                        <Text fill="#507b8b" layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Des Devis" textAlignment="CENTER" wrappingWidth="186.0">
                             <font>
                                 <Font name="System Bold" size="19.0" />
                             </font>

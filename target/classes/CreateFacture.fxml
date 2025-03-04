@@ -12,8 +12,8 @@
     <children>
         <AnchorPane prefHeight="84.0" prefWidth="744.0" style="-fx-background-color: #d7d5d5; -fx-padding: 10;">
             <children>
-                <Text fill="#f96b7e" layoutX="81.0" layoutY="52.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #f96b7e;" text="Créer une Facture" />
-                <Button fx:id="annulerButton" layoutX="625.0" layoutY="27.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #f96b7e; -fx-border-color: #f96b7e; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+                <Text fill="#507b8b" layoutX="81.0" layoutY="52.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #507b8b;" text="Créer une Facture" />
+                <Button fx:id="annulerButton" layoutX="625.0" layoutY="27.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #507b8b; -fx-border-color: #507b8b; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
                 <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/logo1.png" />
@@ -48,7 +48,7 @@
         <ComboBox fx:id="comboBoxDestinataire" layoutX="44.0" layoutY="442.0" prefHeight="35.0" prefWidth="459.0" style="-fx-padding: 5px;" />
 
 
-        <Button layoutX="207.0" layoutY="508.0" onAction="#handleSubmit" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
+        <Button layoutX="207.0" layoutY="508.0" onAction="#handleSubmit" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
 
 
 

@@ -8,7 +8,7 @@
 
     <children>
         <fx:include source="sidebar.fxml" />
-        <AnchorPane layoutX="407.0" prefHeight="430.0" prefWidth="638.0" style="-fx-background-color: #F4C2C2;">
+        <AnchorPane layoutX="407.0" prefHeight="430.0" prefWidth="638.0" style="-fx-background-color: #92b1bc;">
             <children>
                 <Text fill="WHITE" layoutX="70.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For Administration">
                     <font>
@@ -27,18 +27,18 @@
                 </Text>
 
                 <!-- Buttons for Demande, Devis, and Facture -->
-                <Button layoutX="145.0" layoutY="136.0" mnemonicParsing="false" onAction="#ajouterDemande" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #f96b7e;" text="Add Demande" textFill="WHITE" />
+                <Button layoutX="145.0" layoutY="136.0" mnemonicParsing="false" onAction="#ajouterDemande" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #507b8b;" text="Add Demande" textFill="WHITE" />
 
-                <Button layoutX="377.0" layoutY="289.0" mnemonicParsing="false" onAction="#AfficheFactureAdmin" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #f96b7e;" text="Display Facture" textFill="WHITE" />
+                <Button layoutX="377.0" layoutY="289.0" mnemonicParsing="false" onAction="#AfficheFactureAdmin" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #507b8b;" text="Display Facture" textFill="WHITE" />
 
-                <Button layoutX="236.0" layoutY="316.0" mnemonicParsing="false" onAction="#afficherDevisAdmin" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #f96b7e;" text="Display Devis" textFill="WHITE" />
-                <Button layoutX="232.0" layoutY="256.0" mnemonicParsing="false" onAction="#afficherDemande" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #f96b7e;" text="Display Demande" textFill="WHITE" />
+                <Button layoutX="236.0" layoutY="316.0" mnemonicParsing="false" onAction="#afficherDevisAdmin" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #507b8b;" text="Display Devis" textFill="WHITE" />
+                <Button layoutX="232.0" layoutY="256.0" mnemonicParsing="false" onAction="#afficherDemande" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #507b8b;" text="Display Demande" textFill="WHITE" />
 
 
 
-                <Button layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#afficherFactureDemandeur" prefHeight="26.0" prefWidth="155.0" style="-fx-background-color: #f96b7e;" text="Display Facture " textFill="WHITE" />
-                <Button layoutX="145.0" layoutY="174.0" mnemonicParsing="false" onAction="#afficherDemandeDemandeur" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #f96b7e;" text="Display Demande" textFill="WHITE" />
-                <Button layoutX="309.0" layoutY="174.0" mnemonicParsing="false" onAction="#afficherDevisUser" prefHeight="26.0" prefWidth="155.0" style="-fx-background-color: #f96b7e;" text="Display Devis User" textFill="WHITE" />
+                <Button layoutX="308.0" layoutY="135.0" mnemonicParsing="false" onAction="#afficherFactureDemandeur" prefHeight="26.0" prefWidth="155.0" style="-fx-background-color: #507b8b;" text="Display Facture " textFill="WHITE" />
+                <Button layoutX="145.0" layoutY="174.0" mnemonicParsing="false" onAction="#afficherDemandeDemandeur" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #507b8b;" text="Display Demande" textFill="WHITE" />
+                <Button layoutX="309.0" layoutY="174.0" mnemonicParsing="false" onAction="#afficherDevisUser" prefHeight="26.0" prefWidth="155.0" style="-fx-background-color: #507b8b;" text="Display Devis User" textFill="WHITE" />
             </children>
         </AnchorPane>
     </children>

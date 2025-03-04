@@ -7,19 +7,19 @@
 
 <AnchorPane prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierFacture">
     <children>
-        <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #F4C2C2;">
+        <AnchorPane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #92b1bc;">
             <children>
                 <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="36.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/logo1.png" />
                     </image>
                 </ImageView>
-                <Text fill="#f96b7e" layoutX="98.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Une Facture">
+                <Text fill="#507b8b" layoutX="98.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Une Facture">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Button fx:id="annulerButton" layoutX="491.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #f96b7e;" text="Retour" textFill="#f4f4f4" />
+                <Button fx:id="annulerButton" layoutX="491.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #507b8b;" text="Retour" textFill="#f4f4f4" />
             </children>
         </AnchorPane>
 
@@ -44,6 +44,6 @@
         <Label layoutX="89.0" layoutY="302.0" text="Destinataire Id:" />
         <TextField fx:id="destinataireIdField" layoutX="88.0" layoutY="337.0" />
 
-        <Button fx:id="modifierButton" layoutX="262.0" layoutY="379.0" mnemonicParsing="false" onAction="#modifierFacture" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #f96b7e;" text="Modifier" textFill="#f4f4f4" />
+        <Button fx:id="modifierButton" layoutX="262.0" layoutY="379.0" mnemonicParsing="false" onAction="#modifierFacture" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #507b8b;" text="Modifier" textFill="#f4f4f4" />
     </children>
 </AnchorPane>

@@ -7,25 +7,25 @@
 
 <AnchorPane fx:id="AP" prefHeight="673.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherDemande">
     <children>
-        <AnchorPane prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #d7d5d5; -fx-padding: 10;">
+        <AnchorPane prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #507b8b; -fx-padding: 10;">
             <children>
                 <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/logo1.png" />
                     </image>
                 </ImageView>
-                <Text layoutX="75.0" layoutY="52.0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f96b7e;" text="Gestion des Demandes" />
-                <Button fx:id="annulerButton" layoutX="1082.0" layoutY="29.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #f96b7e; -fx-border-color: #f96b7e; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+                <Text layoutX="75.0" layoutY="52.0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #507b8b;" text="Gestion des Demandes" />
+                <Button fx:id="annulerButton" layoutX="1082.0" layoutY="29.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #507b8b; -fx-border-color: #507b8b; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
             </children>
         </AnchorPane>
 
-        <Button layoutX="65.0" layoutY="95.0" onAction="#CreateDevis" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Créer Devis" />
-        <Button layoutX="172.0" layoutY="95.0" onAction="#CreateFacture" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Créer Facture" />
+        <Button layoutX="65.0" layoutY="95.0" onAction="#CreateDevis" style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Créer Devis" />
+        <Button layoutX="172.0" layoutY="95.0" onAction="#CreateFacture" style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Créer Facture" />
 
         <HBox layoutX="65.0" layoutY="130.0" spacing="10" />
 
         <VBox fx:id="vboxDemandes" layoutX="65.0" layoutY="170.0" prefWidth="1000.0" spacing="10.0" style="-fx-background-color: #f9f9f9; -fx-padding: 10; -fx-border-color: #696363; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
-            <HBox spacing="50" style="-fx-background-color: #d2d2d2; -fx-padding: 10; -fx-alignment: center;">
+            <HBox spacing="50" style="-fx-background-color: #507b8b; -fx-padding: 10; -fx-alignment: center;">
                 <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="ID" />
                 <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="Type" />
                 <Label style="-fx-font-weight: bold; -fx-padding: 0 20 0 0;" text="Description" />
@@ -42,11 +42,11 @@
                 <Label text="Demandeur 123" />
                 <Label text="2025-02-23" />
                 <Label text="Open" />
-                <Button style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff;" text="Edit" />
+                <Button style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff;" text="Edit" />
             </HBox>
             <!-- Repeat similar HBox for additional rows -->
         </VBox>
-        <Button layoutX="996.0" layoutY="119.0" onAction="#searchDemandes" prefHeight="41.0" prefWidth="62.0" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Search" />
+        <Button layoutX="996.0" layoutY="119.0" onAction="#searchDemandes" prefHeight="41.0" prefWidth="62.0" style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 5;" text="Search" />
         <TextField fx:id="searchField" layoutX="670.0" layoutY="127.0" prefWidth="300.0" promptText="Search by All Fields" />
     </children>
 </AnchorPane>

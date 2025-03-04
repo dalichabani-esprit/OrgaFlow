@@ -13,8 +13,8 @@
 
         <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #d7d5d5; -fx-padding: 10;">
             <children>
-                <Text fill="#f96b7e" layoutX="80.0" layoutY="51.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #f96b7e;" text="Créer un Devis" />
-                <Button fx:id="annulerButton" layoutX="480.0" layoutY="30.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #f96b7e; -fx-border-color: #f96b7e; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+                <Text fill="#507b8b" layoutX="80.0" layoutY="51.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #507b8b;" text="Créer un Devis" />
+                <Button fx:id="annulerButton" layoutX="480.0" layoutY="30.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #507b8b; -fx-border-color: #507b8b; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
                 <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@img/logo1.png" />
@@ -41,7 +41,7 @@
             </items>
         </ComboBox>
 
-        <Button layoutX="254.0" layoutY="413.0" onAction="#ajouterDevis" style="-fx-background-color: #f96b7e; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
+        <Button layoutX="254.0" layoutY="413.0" onAction="#ajouterDevis" style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-padding: 10px; -fx-background-radius: 5;" text="Soumettre" />
 
     </children>
 </AnchorPane>
