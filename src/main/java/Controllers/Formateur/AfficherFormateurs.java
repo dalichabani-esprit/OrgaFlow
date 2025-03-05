@@ -62,7 +62,7 @@ public class AfficherFormateurs implements Initializable {
             Formateur selectedFormateur = formateurs.get(selectedIndex);
             int FormateurId = selectedFormateur.getIdFormateur();
             prefs.putInt("selectedFormateurId", FormateurId);
-            System.out.println(FormateurId+"--------------------------");
+
 
         });
     }

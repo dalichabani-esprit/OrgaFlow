@@ -57,6 +57,15 @@
             <version>1.6.2</version>
         </dependency>
 
+
+            <dependency>
+                <groupId>com.twilio.sdk</groupId>
+                <artifactId>twilio</artifactId>
+                <version>9.1.1</version>
+            </dependency>
+
+
+
         <!-- Supprimer les dépendances redondantes pour javafx -->
     </dependencies>
 
