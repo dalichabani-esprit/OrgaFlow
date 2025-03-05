@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.Formation.ModifierFormation"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <!-- Titre -->
+        <Label text="Modifier une Formation" layoutX="20" layoutY="20" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <!-- Champs de modification -->
+        <Label text="Nom :" layoutX="20" layoutY="60"/>
+        <TextField fx:id="nomField" layoutX="100" layoutY="60" prefWidth="250"/>
+
+        <Label text="Catégorie :" layoutX="20" layoutY="100"/>
+        <TextField fx:id="categorieField" layoutX="100" layoutY="100" prefWidth="250"/>
+        <Label text="Description :" layoutX="20" layoutY="260"/>
+        <TextArea fx:id="descriptionArea" layoutX="100" layoutY="260" prefWidth="300" prefHeight="80"/>
+
+
+        <Label text="Durée (jours) :" layoutX="20" layoutY="140"/>
+        <TextField fx:id="dureeField" layoutX="100" layoutY="140" prefWidth="250"/>
+
+        <Label text="Date Début :" layoutX="20" layoutY="180"/>
+        <DatePicker fx:id="dateDebutPicker" layoutX="100" layoutY="180"/>
+
+        <Label text="Date Fin :" layoutX="20" layoutY="220"/>
+        <DatePicker fx:id="dateFinPicker" layoutX="100" layoutY="220"/>
+
+
+        <!-- Boutons -->
+
+        <Button layoutX="346.0" layoutY="404.0" mnemonicParsing="false" onAction="#modifierFormation" text="Modifier" />
+        <Button layoutX="217.0" layoutY="404.0" mnemonicParsing="false" onAction="#SupprimerFormation" text="Supprimer" />
+    </children>
+</AnchorPane>

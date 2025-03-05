@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\Controllers\Addcandidat.java
 C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\Controllers\Addemploye.java
 C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\Controllers\AjouterUser.java
@@ -25,3 +26,23 @@ C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\utils\
 C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\utils\MyDatabase.java
 C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\utils\PasswordHasher.java
 C:\Users\Lenovo\IdeaProjects\Gestion_utilisateure\src\main\java\tn\esprit\utils\PasswordResetDAO.java
+=======
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formateur\AfficherFormateurs.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formateur\AjouterFormateur.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formateur\ListFormateursCell.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formateur\ModifierFormateur.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formation\AfficherFormations.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formation\AjouterFormation.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formation\ListFormationCell.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\Formation\ModifierFormation.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\Controllers\MenuBarController\Menu.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\interfaces\IService.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\models\Formateur.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\models\Formation.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\services\ServiceFormateur.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\services\ServiceFormation.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\test\Main.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\test\MainFx.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\utils\EmailAPI.java
+C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\utils\MyDatabase.java
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1

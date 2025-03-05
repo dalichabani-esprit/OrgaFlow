@@ -3,15 +3,19 @@
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
       <option name="id" value="central" />
+<<<<<<< HEAD
       <option name="name" value="central" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
+=======
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+<<<<<<< HEAD
       <option name="id" value="google-api-repo" />
       <option name="name" value="google-api-repo" />
       <option name="url" value="https://maven.google.com/" />
@@ -22,6 +26,8 @@
       <option name="url" value="https://maven.google.com/" />
     </remote-repository>
     <remote-repository>
+=======
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />

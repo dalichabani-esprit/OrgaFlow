@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="71305b55-d217-4641-b4b0-163c486bbc6f" name="Changes" comment="" />
+=======
+    <list default="true" id="48be5ebc-0989-470e-ae32-f2ade923983f" name="Changes" comment="" />
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +17,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="Interface" />
+=======
+        <option value="JavaFXApplication" />
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -22,6 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -29,10 +38,24 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2tAqpYASWd16bx9u61iLR2oUD2M" />
+=======
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2so3XPTiR2P4j6bY5iBwx2BQtoG" />
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
@@ -69,12 +92,95 @@
       <set>
         <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
         <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MainFx.executor": "Run",
+    "Maven.gestion_Rh [clean].executor": "Run",
+    "Maven.gestion_Rh [compile].executor": "Run",
+    "Maven.gestion_Rh [install].executor": "Run",
+    "Maven.gestion_Rh [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.gestion_Rh [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor": "Run",
+    "Maven.gestion_Rh [org.openjfx:javafx-maven-plugin:0.0.1:run].executor": "Run",
+    "Maven.gestion_Rh [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "Maven.gestion_Rh [test].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Gestion__Formation",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/yassi/OneDrive/Bureau/pidev/gestion_Rh/src/main/java/tn/esprit/Controllers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java\tn\esprit\Controllers" />
+      <recent name="C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\resources\img" />
+      <recent name="C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\resources\Menu" />
+      <recent name="C:\Users\yassi\OneDrive\Bureau\pidev\gestion_Rh\src\main\resources\Formateurs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainFx">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.Main" />
+      <module name="gestion_Rh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainFx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.MainFx" />
+      <module name="gestion_Rh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainFx" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="71305b55-d217-4641-b4b0-163c486bbc6f" name="Changes" comment="" />
       <created>1739805410581</created>
       <option name="number" value="Default" />
@@ -94,12 +200,38 @@
       <workItem from="1740998975637" duration="3642000" />
       <workItem from="1741003096529" duration="386000" />
       <workItem from="1741130525998" duration="4298000" />
+=======
+      <changelist id="48be5ebc-0989-470e-ae32-f2ade923983f" name="Changes" comment="" />
+      <created>1739108141586</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739108141586</updated>
+      <workItem from="1739108142812" duration="5566000" />
+      <workItem from="1739399210881" duration="5663000" />
+      <workItem from="1739618240594" duration="10830000" />
+      <workItem from="1739831220194" duration="7140000" />
+      <workItem from="1739883262209" duration="1289000" />
+      <workItem from="1739885101264" duration="661000" />
+      <workItem from="1739886773218" duration="1746000" />
+      <workItem from="1739902852149" duration="14268000" />
+      <workItem from="1739978622183" duration="13000" />
+      <workItem from="1739979066486" duration="21242000" />
+      <workItem from="1740042328174" duration="4236000" />
+      <workItem from="1740233253417" duration="3389000" />
+      <workItem from="1740318615154" duration="17369000" />
+      <workItem from="1740607819582" duration="618000" />
+      <workItem from="1740608490005" duration="300000" />
+      <workItem from="1740643555997" duration="2075000" />
+      <workItem from="1741109430592" duration="592000" />
+      <workItem from="1741128734543" duration="6253000" />
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -111,4 +243,6 @@
       </map>
     </option>
   </component>
+=======
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
 </project>

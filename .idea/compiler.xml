@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
         <module name="Gestion_utilisateure" />
       </profile>
     </annotationProcessing>
@@ -15,4 +16,10 @@
       <module name="Gestion_utilisateure" options="-parameters" />
     </option>
   </component>
+=======
+        <module name="gestion_Rh" />
+      </profile>
+    </annotationProcessing>
+  </component>
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
 </project>

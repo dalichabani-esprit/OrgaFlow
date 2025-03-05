@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tn\esprit\services\CvUploadService.class
 tn\esprit\Controllers\GestionAdmin.class
 tn\esprit\Controllers\AjouterUser.class
@@ -15,3 +16,26 @@ tn\esprit\models\User.class
 tn\esprit\utils\PasswordResetDAO.class
 tn\esprit\Controllers\modifiercandidat.class
 tn\esprit\utils\EmailAPI$CodeGenerator.class
+=======
+models\Formateur.class
+utils\EmailAPI$1.class
+Controllers\MenuBarController\Menu.class
+test\Main.class
+utils\MyDatabase.class
+Controllers\Formateur\ListFormateursCell.class
+Controllers\Formateur\ModifierFormateur.class
+services\ServiceFormateur.class
+Controllers\Formation\AfficherFormations.class
+services\ServiceFormation.class
+Controllers\Formateur\AjouterFormateur.class
+Controllers\Formation\AjouterFormation$2.class
+interfaces\IService.class
+Controllers\Formation\ListFormationCell.class
+utils\EmailAPI.class
+Controllers\Formation\ModifierFormation.class
+Controllers\Formateur\AfficherFormateurs.class
+Controllers\Formation\AjouterFormation.class
+test\MainFx.class
+models\Formation.class
+Controllers\Formation\AjouterFormation$1.class
+>>>>>>> a84bafcbd2a2c5f7f6cf17cc1a991d6b03bd7ed1
