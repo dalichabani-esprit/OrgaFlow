@@ -90,7 +90,7 @@ public class AfficherFormateurs implements Initializable {
     @FXML
     private void ajouterFormateur(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormateur.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Formateurs/ajouterFormateur.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();

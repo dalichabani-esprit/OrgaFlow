@@ -58,7 +58,7 @@ public class EmailAPI {
                     "Nous comptons sur votre expertise pour assurer le bon déroulement de cette formation. " +
                     "N’hésitez pas à nous contacter si vous avez besoin de plus d’informations.\n\n" +
                     "Cordialement,\n" +
-                    "[Votre Nom / Votre Organisation]";
+                    "[Administration / OrgaFlow]";
 
             messageBodyPart.setText(msg);
             multipart.addBodyPart(messageBodyPart);

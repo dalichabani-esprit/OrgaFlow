@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class MyDatabase {
     private static  MyDatabase instance  ;
 
-    private final String URL ="jdbc:mysql://localhost:3306/gestion_formation";
+    private final String URL ="jdbc:mysql://localhost:3306/orgaflowdb";
     private  final String USER="root";
     private final String PASSWORD="";
 
