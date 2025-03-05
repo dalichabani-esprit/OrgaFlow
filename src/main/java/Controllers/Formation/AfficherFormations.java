@@ -1,0 +1,209 @@
+package Controllers.Formation;
+
+import Controllers.Formateur.AfficherFormateurs;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import models.Formateur;
+import models.Formation;
+import services.ServiceFormateur;
+import services.ServiceFormation;
+
+import java.util.Comparator;
+import java.util.logging.Level;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
+import java.util.stream.Collectors;
+
+public class AfficherFormations implements Initializable {
+    @FXML
+    private TextField searchField;
+    ServiceFormation sf = new ServiceFormation();
+
+    private ObservableList<Formation> formationsList;
+
+    @FXML
+    private ListView<Formation> formationsListView;
+    Preferences prefs = Preferences.userNodeForPackage(AfficherFormations.class);
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+
+
+
+
+        formationsListView.setCellFactory(param -> new ListFormationCell());
+        ServiceFormation serviceFormation = new ServiceFormation();
+        List<Formation> formations = serviceFormation.getAll();
+
+        formationsList = FXCollections.observableArrayList(formations);
+
+        ObservableList<Formation> items = FXCollections.observableArrayList(formations);
+        formationsListView.setItems(items);
+        formationsListView.setItems(items);
+        // 2. Créez une ArrayList de maps pour stocker les attributs de chaque formation
+        formationsListView.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            // Récupérer l'index de l'élément sélectionné
+            int selectedIndex = newValue.intValue();
+            // Récupérer l'objet formation correspondant à cet index
+            Formation selectedFormation = formations.get(selectedIndex);
+            // Récupérer l'ID de la formation
+            int FormationId = selectedFormation.getIdFormation();
+            prefs.putInt("selectedFormationId", FormationId);
+            System.out.println(FormationId+"--------------------------");
+
+        });
+    }
+
+    //recherche :
+    @FXML
+    private void rechercherFormation() {
+        String searchText = searchField.getText().toLowerCase();
+
+        // Filtrer les formations
+        List<Formation> filteredList = formationsList.stream()
+                .filter(f -> f.getNom().toLowerCase().contains(searchText) ||
+                        f.getCategorie().toLowerCase().contains(searchText))
+                .collect(Collectors.toList());
+
+        // Mettre à jour la ListView
+        if (filteredList.isEmpty()) {
+            System.out.println("Aucune formation trouvée !");
+        } else {
+            formationsListView.setItems(FXCollections.observableArrayList(filteredList));
+        }
+        // Rafraîchir la ListView
+
+        formationsListView.refresh();
+    }
+
+
+
+
+
+    @FXML
+    private void ajouterFormation(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterFormation.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+            rafraichirListeFormations() ;
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherFormations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }
+    @FXML
+    private void modifierFormation(MouseEvent event) {
+        Formation selectedFormation = formationsListView.getSelectionModel().getSelectedItem();
+        Formation r1 = new Formation();
+        ServiceFormation rs = new ServiceFormation();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierFormation.fxml"));
+            Parent root = loader.load();
+            ModifierFormation modifierReservationController = loader.getController();
+            r1=selectedFormation;
+            modifierReservationController.ModifyData(r1);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+            rafraichirListeFormations() ;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }}
+
+    // Ajouter une méthode pour recharger la liste des Formateurs
+    private void rafraichirListeFormations() {
+        ServiceFormation serviceFormation = new ServiceFormation();
+        List<Formation> ReflechedListFormation = serviceFormation.getAll();
+        ObservableList<Formation> items = FXCollections.observableArrayList(ReflechedListFormation);
+        formationsListView.setItems(items);
+    }
+
+    @FXML
+    private void GoToTheMenu(ActionEvent event) {
+        try {
+            // Charger la nouvelle scène
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu/Menu.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre (stage)
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre actuelle
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            // Rafraîchir la liste des formateurs (si nécessaire)
+            rafraichirListeFormations();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherFormateurs.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    //***************************trier par Nom  :
+    @FXML
+    private void trierFormateursParNom(ActionEvent event) {
+        // Récupérer la liste des formateurs depuis la source de données (par exemple, un champ ou une base de données)
+        List<Formation> formationsList = sf.getAll();  // Assurez-vous que cette méthode vous renvoie la liste de formateurs
+
+        // Trier la liste des formateurs par nom en utilisant Stream
+        List<Formation> sortedFormateurs = formationsList.stream()
+                .sorted(Comparator.comparing(Formation::getNom))  // Trie par nom
+                .collect(Collectors.toList());  // Collecte les résultats dans une nouvelle liste
+
+        // Mettre à jour la ListView avec la liste triée
+        if (sortedFormateurs.isEmpty()) {
+            System.out.println("Aucun formation trouvé !");
+        } else {
+            formationsListView.setItems(FXCollections.observableArrayList(sortedFormateurs));
+        }
+
+        // Rafraîchir la ListView
+        formationsListView.refresh();
+    }
+
+    //***************************trier par Specialite :
+    @FXML
+    private void trierFormateursParCategorie(ActionEvent event) {
+        // Récupérer la liste des formateurs depuis la source de données (par exemple, un champ ou une base de données)
+        List<Formation> formationsList = sf.getAll();  // Assurez-vous que cette méthode vous renvoie la liste de formateurs
+
+        // Trier la liste des formateurs par nom en utilisant Stream
+        List<Formation> sortedFormateurs = formationsList.stream()
+                .sorted(Comparator.comparing(Formation::getCategorie))  // Trie par nom
+                .collect(Collectors.toList());  // Collecte les résultats dans une nouvelle liste
+
+        // Mettre à jour la ListView avec la liste triée
+        if (sortedFormateurs.isEmpty()) {
+            System.out.println("Aucun formation trouvé !");
+        } else {
+            formationsListView.setItems(FXCollections.observableArrayList(sortedFormateurs));
+        }
+
+        // Rafraîchir la ListView
+        formationsListView.refresh();
+    }
+}

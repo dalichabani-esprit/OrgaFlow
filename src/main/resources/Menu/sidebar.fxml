@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane prefHeight="429.0" prefWidth="406.0" style="-fx-background-color: #548192;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuBarController.Menu">
+   <items>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="624.0" prefWidth="404.0" style="-fx-background-color: 507B8B;">
+               <children>
+                  <Button fx:id="formation" layoutX="58.0" layoutY="33.0" mnemonicParsing="false" onAction="#GoToMenu" prefHeight="43.0" prefWidth="268.0" style="-fx-background-color: #507B8B;" text="Gestion des Formations" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation11" layoutX="58.0" layoutY="110.0" mnemonicParsing="false" onAction="#GoToAffciherFormations" prefHeight="43.0" prefWidth="268.0" style="-fx-background-color: #507B8B;" text="Gestion des Employés" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation1111" layoutX="58.0" layoutY="190.0" mnemonicParsing="false" onAction="#GoToAffciherFormations" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Facturations" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation1111111" layoutX="58.0" layoutY="257.0" mnemonicParsing="false" onAction="#GoToAffciherFormations" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Projets" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="formation11111111" layoutX="55.0" layoutY="328.0" mnemonicParsing="false" onAction="#GoToAffciherFormations" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #507B8B;" text="Gestion des Recrutements" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </items>
+</SplitPane>
