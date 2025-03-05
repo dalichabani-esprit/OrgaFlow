@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Addcandidat">
+   <left>
+      <AnchorPane prefHeight="607.0" prefWidth="234.0" style="-fx-background-color: #548192;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="106.0" layoutX="46.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@R.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dashboard.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="dashboard" layoutX="65.0" layoutY="184.0" mnemonicParsing="false" onAction="#onclicdashboard" prefHeight="40.0" prefWidth="143.0" style="-fx-background-color: #D3D3D3;" text="DashBoard">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="home" layoutX="67.0" layoutY="254.0" mnemonicParsing="false" onAction="#onclichome" prefHeight="42.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Home">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="addcandidat" layoutX="67.0" layoutY="499.0" mnemonicParsing="false" onAction="#onclicaddcandidat" prefHeight="37.0" prefWidth="142.0" style="-fx-background-color: #D3D3D3;" text="Ajouter Candidat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="listcandidat" layoutX="66.0" layoutY="325.0" mnemonicParsing="false" onAction="#oncliclistecand" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Liste Candidat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@graduation.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="listeemp" layoutX="66.0" layoutY="389.0" mnemonicParsing="false" onAction="#oncliclisteemplo" prefHeight="39.0" prefWidth="137.0" style="-fx-background-color: #D3D3D3;" text="Liste Employés">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@employment.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="logout" layoutX="65.0" layoutY="572.0" mnemonicParsing="false" onAction="#oncliclogout" prefHeight="37.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Se deconnecter">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="77.0" layoutY="141.0" text="SARA">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="21.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-logout.png" />
+               </image>
+            </ImageView>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" style="-fx-background-color: #D3D3D3;" text="AdminDashBoard" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="addemployes" layoutX="67.0" layoutY="440.0" mnemonicParsing="false" onAction="#onclicaddemployes" prefHeight="43.0" prefWidth="136.0" style="-fx-background-color: #D3D3D3;" text="Ajouter Employes">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@add_10023914.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@add_10023914.png" />
+               </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="13.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="682.0">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <children>
+                  <Label layoutX="21.0" layoutY="25.0" text="DashBoard" textFill="#7c8184">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="search" layoutX="423.0" layoutY="16.0" onAction="#onclicsearch" prefHeight="30.0" prefWidth="184.0" promptText="Search">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="17.0" fitWidth="23.0" layoutX="570.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@search-interface-symbol.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label layoutX="24.0" layoutY="86.0" />
+            <AnchorPane layoutX="12.0" layoutY="75.0" prefHeight="382.0" prefWidth="391.0">
+               <children>
+                  <Label layoutX="92.0" layoutY="49.0" text="Nom" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="91.0" layoutY="129.0" text="Email" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="78.0" layoutY="89.0" text="Prenom" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="17.0" layoutY="334.0" text="Mot de Passe" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="97.0" layoutY="171.0" text="Role" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfnom" layoutX="164.0" layoutY="50.0" prefHeight="32.0" prefWidth="181.0" promptText="Firstname" />
+                  <TextField fx:id="tfprenom" layoutX="166.0" layoutY="89.0" prefHeight="30.0" prefWidth="181.0" promptText="Lastname" />
+                  <TextField fx:id="tfemail" layoutX="165.0" layoutY="131.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
+                  <PasswordField fx:id="pfmotdepasse" layoutX="167.0" layoutY="333.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
+                  <ComboBox fx:id="cbrole" accessibleText="admin" layoutX="163.0" layoutY="174.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
+                  <Label layoutX="5.0" layoutY="217.0" prefHeight="30.0" prefWidth="164.0" text="Date Candidature" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="statutcandidat" layoutX="167.0" layoutY="258.0" prefHeight="32.0" prefWidth="181.0" promptText="Stutut Candidat" />
+                  <Label layoutX="7.0" layoutY="257.0" prefHeight="30.0" prefWidth="164.0" text="statut Candidat" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="36.0" layoutY="297.0" prefHeight="30.0" prefWidth="164.0" text="Cv Candidat" textFill="DODGERBLUE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="datecandi" layoutX="165.0" layoutY="216.0" prefHeight="34.0" prefWidth="179.0" promptText="Date de Candidature" />
+                  <Button fx:id="CVpdf" layoutX="167.0" layoutY="294.0" mnemonicParsing="false" onAction="#Onclicinsererpdf" prefHeight="34.0" prefWidth="181.0" text="Inserer Un cv PDF" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="supprimercandidat" layoutX="65.0" layoutY="518.0" mnemonicParsing="false" onAction="#Onclicsupprimercandidat" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: #D3D3D3;" text="Supprimer Candidat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="modifiercandidat" layoutX="267.0" layoutY="518.0" mnemonicParsing="false" onAction="#onclicmodifier" prefHeight="42.0" prefWidth="173.0" style="-fx-background-color: #D3D3D3;" text="Modifier Candidat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

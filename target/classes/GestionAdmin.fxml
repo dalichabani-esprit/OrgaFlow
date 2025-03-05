@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.GestionAdmin">
+   <left>
+      <AnchorPane prefHeight="607.0" prefWidth="234.0" style="-fx-background-color: #548192;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="106.0" layoutX="46.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@R.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@dashboard.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="dashboard" layoutX="65.0" layoutY="184.0" mnemonicParsing="false" onAction="#onclicdashboard" prefHeight="40.0" prefWidth="143.0" style="-fx-background-color: #D3D3D3;" text="DashBoard">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="home" layoutX="67.0" layoutY="254.0" mnemonicParsing="false" onAction="#onclichome" prefHeight="42.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Home">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="addcandidat" layoutX="67.0" layoutY="499.0" mnemonicParsing="false" onAction="#onclicaddcandidat" prefHeight="37.0" prefWidth="142.0" style="-fx-background-color: #D3D3D3;" text="Ajouter Candidat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="listcandidat" layoutX="66.0" layoutY="325.0" mnemonicParsing="false" onAction="#oncliclistecand" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Liste Candidat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="19.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@graduation.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="listeemp" layoutX="66.0" layoutY="389.0" mnemonicParsing="false" onAction="#oncliclisteemplo" prefHeight="39.0" prefWidth="137.0" style="-fx-background-color: #D3D3D3;" text="Liste Employés">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@employment.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="logout" layoutX="65.0" layoutY="572.0" mnemonicParsing="false" onAction="#oncliclogout" prefHeight="37.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Se deconnecter">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="77.0" layoutY="141.0" text="SARA">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="21.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@user-logout.png" />
+               </image>
+            </ImageView>
+            <Label contentDisplay="CENTER" layoutX="38.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" style="-fx-background-color: #D3D3D3;" text="AdminDashBoard" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="addemployes" layoutX="67.0" layoutY="443.0" mnemonicParsing="false" onAction="#onclicaddemployes" prefHeight="39.0" prefWidth="138.0" style="-fx-background-color: #D3D3D3;" text="Ajouter Employes">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@add_10023914.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="14.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #FFFFFF;">
+               <image>
+                  <Image url="@add_10023914.png" />
+               </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="13.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="682.0" style="-fx-background-color: #FFFFFF;">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <children>
+                  <Label layoutX="21.0" layoutY="25.0" text="DashBoard" textFill="#7c8184">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="search" layoutX="423.0" layoutY="16.0" onAction="#onclicsearch" prefHeight="30.0" prefWidth="184.0" promptText="Search">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="17.0" fitWidth="23.0" layoutX="570.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@search-interface-symbol.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label layoutX="24.0" layoutY="86.0" />
+            <VBox alignment="TOP_CENTER" layoutX="24.0" layoutY="81.0" prefHeight="246.0" prefWidth="270.0" style="-fx-background-color: #548192;">
+               <children>
+                  <Label alignment="TOP_CENTER" style="-fx-background-color: #D3D3D3;" text="Total Employes">
+                     <effect>
+                        <DropShadow height="10.0" radius="4.5" width="10.0">
+                           <color>
+                              <Color red="0.31220272183418274" green="0.3660103976726532" blue="0.9578947424888611" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox fx:id="totalemployes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="350.0" layoutY="81.0" prefHeight="246.0" prefWidth="270.0" style="-fx-background-color: #548192;">
+               <children>
+                  <Label alignment="TOP_CENTER" style="-fx-background-color: #D3D3D3;" text="Total Candidat">
+                     <effect>
+                        <DropShadow height="10.0" radius="4.5" width="10.0">
+                           <color>
+                              <Color red="0.31220272183418274" green="0.3660103976726532" blue="0.9578947424888611" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox fx:id="totalcandidats" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <GridPane fx:id="gridpane" layoutX="24.0" layoutY="337.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="670.0" stylesheets="@style.css">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
