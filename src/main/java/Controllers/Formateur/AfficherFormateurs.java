@@ -42,8 +42,6 @@ public class AfficherFormateurs implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
 
         formateursListView.setCellFactory(param -> new ListFormateursCell() );
         ServiceFormateur serviceFormateur = new ServiceFormateur();
