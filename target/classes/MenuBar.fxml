@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="448.0" fx:id="contenuAnchorPane">
+
+       <children>
+             <Button layoutX="18.0" layoutY="84.0" mnemonicParsing="false" onAction="#afficherFormations" style="-fx-background-color: #548192;" text="Gérer les formations" />
+
+             <Button layoutX="14.0" layoutY="142.0" mnemonicParsing="false" onAction="#afficherFormateurs" style="-fx-background-color: #548192;" text="Gérer les formateurs" />
+
+             <Text layoutX="39.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Formation" />
+         </children>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="448.0" />
+   </items>
+</SplitPane>
