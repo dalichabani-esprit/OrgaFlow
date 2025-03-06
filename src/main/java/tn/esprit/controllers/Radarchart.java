@@ -25,7 +25,7 @@ public class Radarchart {
 
         int numAxes = 5;
         double[] data = {0.8, 0.6, 0.9, 0.7, 0.5};
-        String[] axisNames = {"Axe 1", "Axe 2", "Axe 3", "Axe 4", "Axe 5"}; // Noms des axes
+        String[] axisNames = {"age", "Compétences", "coordonnées", "Interêts", "qualité du cv"}; // Noms des axes
 
         gc.setStroke(Color.GRAY);
         gc.setFont(Font.font(12)); // Définir une police pour le texte

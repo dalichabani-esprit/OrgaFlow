@@ -74,10 +74,11 @@ public class Candidat {
     }
 
 
-}/*
-package tn.esprit.models;
+}
 
-import java.sql.Date;
+//package tn.esprit.models;
+
+/*import java.sql.Date;
 
 public class Candidat extends User {
     private Date dateCandidature;
@@ -86,7 +87,7 @@ public class Candidat extends User {
 
     //  Constructeur pour la création
     public Candidat(String nom, String prenom, String email, String motDePasse, Date dateCandidature, String statutCandidat,String CvCandidat) {
-        super(nom, prenom, email, motDePasse, "CANDIDAT", "candidat");
+        super(nom, prenom, email, motDePasse,  "candidat");
         this.dateCandidature = dateCandidature;
         this.statutCandidat = statutCandidat;
         this.CvCandidat = CvCandidat;
@@ -94,10 +95,14 @@ public class Candidat extends User {
 
     //  Constructeur pour la récupération depuis la BDD
     public Candidat(int iduser, String nom, String prenom, String email, String motDePasse, Date dateCandidature, String statutCandidat,String CvCandidat) {
-        super(iduser, nom, prenom, email, motDePasse, "CANDIDAT", "candidat", null);
+        super(iduser, nom, prenom, email, motDePasse, "candidat");
         this.dateCandidature = dateCandidature;
         this.statutCandidat = statutCandidat;
         this.CvCandidat = CvCandidat;
+    }
+
+    public Candidat() {
+
     }
 
     public Date getDateCandidature() {

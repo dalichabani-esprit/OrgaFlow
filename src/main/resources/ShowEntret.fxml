@@ -40,6 +40,8 @@
                                 <Button mnemonicParsing="false" onAction="#refresh" styleClass="bt" text="Rafraichir" />
                         <ComboBox fx:id="cbtrier" prefWidth="150.0" promptText="Trier" styleClass="bt" />
                         <ComboBox fx:id="Detail" prefWidth="150.0" promptText="détail" styleClass="bt2" />
+                        <Button fx:id="calendrier" mnemonicParsing="false" onAction="#sceneCal" styleClass="bt" text="Calendrier" />
+                        <Button mnemonicParsing="false" onAction="#sceneQ" styleClass="bt" text="Questionnaire" />
                             </children>
                         </VBox>
                     </children>

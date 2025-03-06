@@ -160,6 +160,11 @@ public class ShowEntret implements Initializable {
     }
 
     @FXML
+    void sceneCal(ActionEvent event) {
+        loadPopupScene("/ShowCal.fxml", "Calendrier");
+    }
+
+    @FXML
     void sceneModify(ActionEvent event) throws IOException {
         loadScene(event, "/ModifyEntret.fxml");
     }
@@ -167,6 +172,11 @@ public class ShowEntret implements Initializable {
     @FXML
     void sceneadd(ActionEvent event) throws IOException {
         loadScene(event, "/AddEntret.fxml");
+    }
+
+    @FXML
+    void sceneQ(ActionEvent event) {
+        loadPopupScene("/ShowQuestionnaire.fxml", "Questions");
     }
 
     @FXML
