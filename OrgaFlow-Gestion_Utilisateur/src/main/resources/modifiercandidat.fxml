@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="746.0" style="-fx-background-color: f1efe7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.modifiercandidat">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="12.0" layoutY="135.0" text="Gestion Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="102.0" fitWidth="101.0" layoutX="35.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@recruitment.png" />
+               </image>
+            </ImageView>
+            <VBox fx:id="Vbox" layoutY="172.0" prefHeight="261.0" prefWidth="374.0" />
+         </children>
+      </AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="106.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="modifiercandidat" layoutX="373.0" layoutY="17.0" mnemonicParsing="false" onAction="#onclicmodifier" text="Modifier Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="51.0" fitWidth="55.0" layoutX="55.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-logout.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="logout" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#oncliclogout" prefHeight="38.0" prefWidth="133.0" text="Retour" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="supprimercandidat" layoutX="531.0" layoutY="17.0" mnemonicParsing="false" onAction="#Onclicsupprimercandidat" text="Supprimer Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="affichercandidat" layoutX="459.0" layoutY="65.0" mnemonicParsing="false" onAction="#onclicaffiche" text="Afficher Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="382.0" prefWidth="391.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="92.0" layoutY="49.0" text="Nom" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="91.0" layoutY="129.0" text="Email" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="78.0" layoutY="89.0" text="Prenom" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="334.0" text="Mot de Passe" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="97.0" layoutY="171.0" text="Role" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfnom" layoutX="164.0" layoutY="50.0" prefHeight="32.0" prefWidth="181.0" promptText="Firstname" />
+            <TextField fx:id="tfprenom" layoutX="166.0" layoutY="89.0" prefHeight="30.0" prefWidth="181.0" promptText="Lastname" />
+            <TextField fx:id="tfemail" layoutX="165.0" layoutY="131.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Email Address" />
+            <PasswordField fx:id="pfmotdepasse" layoutX="167.0" layoutY="333.0" prefHeight="31.0" prefWidth="181.0" promptText="Password" />
+            <ComboBox fx:id="cbrole" accessibleText="admin" layoutX="163.0" layoutY="174.0" prefHeight="28.0" prefWidth="182.0" promptText="Role" />
+            <Label layoutX="5.0" layoutY="217.0" prefHeight="30.0" prefWidth="164.0" text="Date Candidature" textFill="DODGERBLUE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="statutcandidat" layoutX="167.0" layoutY="258.0" prefHeight="32.0" prefWidth="181.0" promptText="Stutut Candidat" />
+            <Label layoutX="7.0" layoutY="257.0" prefHeight="30.0" prefWidth="164.0" text="statut Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="297.0" prefHeight="30.0" prefWidth="164.0" text="Cv Candidat" textFill="DODGERBLUE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datecandi" layoutX="165.0" layoutY="216.0" prefHeight="34.0" prefWidth="179.0" promptText="Date de Candidature" />
+            <Button fx:id="CVpdf" layoutX="167.0" layoutY="294.0" mnemonicParsing="false" onAction="#Onclicinsererpdf" prefHeight="34.0" prefWidth="181.0" text="Inserer Un cv PDF" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="474.0" prefWidth="600.0" style="-fx-background-color: #92b1bc;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterDemande">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #507b8b; -fx-padding: 10;">
+         <children>
+            <Text fill="#b3b3bc" layoutX="88.0" layoutY="53.0" strokeWidth="5.0" text="Ajouter Une Demande">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="annulerButton" layoutX="480.0" layoutY="30.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-text-fill: #507b8b; -fx-border-color: #507b8b; -fx-border-radius: 5; -fx-background-radius: 5;" text="Retour" />
+            <ImageView fitHeight="42.0" fitWidth="69.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+
+      <Text layoutX="53.0" layoutY="116.0" style="-fx-font-size: 16px; -fx-text-fill: #130909;" text="Bienvenue! Remplissez ce formulaire pour exprimer votre demande." />
+
+      <Label layoutX="88.0" layoutY="130.0" style="-fx-font-size: 14px; -fx-text-fill: #130909;" text="Type:" />
+      <ComboBox fx:id="typeComboBox" layoutX="88.0" layoutY="160.0" prefWidth="400.0" style="-fx-padding: 5px;">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Service" />
+               <String fx:value="Matériel" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <Label layoutX="88.0" layoutY="200.0" style="-fx-font-size: 14px; -fx-text-fill: #130909;" text="Description:" />
+      <TextField fx:id="descriptionField" layoutX="88.0" layoutY="230.0" prefWidth="400.0" style="-fx-padding: 5px;" />
+
+      <Label layoutX="88.0" layoutY="333.0" style="-fx-font-size: 14px; -fx-text-fill: #130909;" text="Demandeur Id:" />
+      <TextField fx:id="demandeurIdField" layoutX="88.0" layoutY="355.0" prefHeight="27.0" prefWidth="400.0" style="-fx-padding: 5px;" />
+
+      <Label layoutX="84.0" layoutY="262.0" style="-fx-font-size: 14px; -fx-text-fill: #130909;" text="Statut:" />
+      <ComboBox fx:id="statutComboBox" layoutX="88.0" layoutY="288.0" prefHeight="27.0" prefWidth="400.0" style="-fx-padding: 5px;">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="VALIDE" />
+               <String fx:value="EN ATTENTE" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Button layoutX="225.0" layoutY="405.0" mnemonicParsing="false" onAction="#ajouterDemande" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: #507b8b; -fx-text-fill: #ffffff; -fx-padding: 10px; -fx-font-size: 16px; -fx-background-radius: 5;" text="Ajouter" />
+   </children>
+</AnchorPane>

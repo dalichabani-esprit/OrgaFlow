@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="366.0" prefWidth="489.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditFacture">
+    <children>
+        <Text layoutX="15.0" layoutY="41.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Edit Facture" />
+
+        <VBox layoutX="15.0" layoutY="83.0" prefHeight="134.0" prefWidth="367.0" spacing="10">
+
+            <HBox spacing="10">
+                <Label text="Montant:" />
+                <TextField fx:id="montantField" prefWidth="200.0" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Date Devis:" />
+                <TextField fx:id="dateField" prefWidth="200.0" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Statut:" />
+                <ComboBox fx:id="statutComboBox" prefWidth="200.0">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="EN-ATTENTE" />
+                            <String fx:value="VALIDE" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+
+        </VBox>
+
+        <HBox alignment="CENTER_RIGHT" layoutX="15.0" layoutY="240.0" spacing="10" />
+        <Button layoutX="157.0" layoutY="328.0" onAction="#saveFacture" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Save" />
+        <Button layoutX="259.0" layoutY="326.0" onAction="#Retour" style="-fx-background-color: #507b8b; -fx-text-fill: white; -fx-font-weight: bold;" text="Retour" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,118 @@
+package tn.esprit.Controllers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import tn.esprit.models.facture;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class EditFacture {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    @FXML
+    private TextField montantField;  // Field for montant
+    @FXML
+    private TextField dateField;  // Field for date
+    @FXML
+    private ComboBox<String> statutComboBox; // ComboBox for statut
+
+    private facture currentFacture;
+
+    // This method is called to initialize the controller with a facture
+    public void initialize(facture facture) {
+        if (facture != null) {
+            currentFacture = facture;
+
+            // Set values for the fields
+            montantField.setText(String.valueOf(facture.getMontant_final()));
+            dateField.setText(facture.getDate_facture().toString());
+            statutComboBox.setValue(facture.getStatut()); // Set the selected value in ComboBox
+        }
+    }
+
+    @FXML
+    private void saveFacture() {
+        String url = "jdbc:mysql://localhost:3306/orgaflowdb";
+        String user = "root";
+        String password = "";
+
+        // Retrieve updated values from the text fields
+        String montantStr = montantField.getText().trim();
+        String dateFactureStr = dateField.getText().trim();
+        String statut = statutComboBox.getValue(); // Get selected value from ComboBox
+
+        // Validate input
+        if (montantStr.isEmpty() || dateFactureStr.isEmpty() || statut == null) {
+            showAlert("Input Error", "All fields must be filled out.");
+            return;
+        }
+
+        try {
+            double montant = Double.parseDouble(montantStr); // Convert montant to double
+
+            // Prepare the SQL update statement
+            String query = "UPDATE facture SET montant_final = ?, date_facture = ?, statut = ? WHERE refFacture = ?"; // Use refFacture for the WHERE clause
+
+            try (Connection conn = DriverManager.getConnection(url, user, password);
+                 PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setDouble(1, montant);
+                stmt.setDate(2, java.sql.Date.valueOf(dateFactureStr)); // Ensure the date format is correct
+                stmt.setString(3, statut);
+                stmt.setString(4, currentFacture.getRefFacture()); // Use the current refFacture for the update
+
+                // Execute the update
+                int rowsUpdated = stmt.executeUpdate();
+                if (rowsUpdated > 0) {
+                    System.out.println("Facture updated successfully!");
+                } else {
+                    showAlert("Update Error", "No facture found with the specified reference.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Database Error", "Failed to update facture: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            showAlert("Input Error", "Montant must be a valid number.");
+        } catch (IllegalArgumentException e) {
+            showAlert("Input Error", "Date must be in the format YYYY-MM-DD.");
+        }
+    }
+
+    @FXML
+    private void Retour(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/AdminCrud.fxml")); // Adjust the FXML file as needed
+        switchScene(event, root);
+    }
+
+    // Method to switch scenes
+    private void switchScene(ActionEvent event, Parent root) {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // Method to show alerts
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}

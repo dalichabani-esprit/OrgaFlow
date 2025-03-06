@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Formation.AjouterFormation">
+
+    <VBox alignment="CENTER" layoutX="10" layoutY="10" prefWidth="580" spacing="10">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Ajouter une Formation" />
+
+        <GridPane alignment="CENTER" hgap="10" vgap="10">
+            <Label text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="tfNom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Description :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextArea fx:id="tfDescription" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Durée (jours) :" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="tfDuree" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Date début :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <DatePicker fx:id="dpDateDebut" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="Date fin :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dpDateFin" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            <Label text="Catégorie :" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField fx:id="tfCategorie" GridPane.columnIndex="1" GridPane.rowIndex="5" /> <!-- Remplacé ComboBox par TextField -->
+
+            <Label text="Formateur :" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <ComboBox fx:id="cbFormateur" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <Button fx:id="btnAjouter" onAction="#ajouterFormation" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter Formation" />
+    </VBox>
+</AnchorPane>
