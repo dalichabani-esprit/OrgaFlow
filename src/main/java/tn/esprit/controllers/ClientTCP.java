@@ -17,15 +17,19 @@ public class ClientTCP {
     private TextArea taMessage;
     @FXML
     private TextField tfNickname;
+    @FXML
+    private TextField tfIP;
 
 
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
 
-    public void initialize() {
+    @FXML
+    public void connect() {
         try {
-            clientSocket = new Socket("localhost", 9999);
+            String serverIP = tfIP.getText().trim();
+            clientSocket = new Socket(serverIP, 9999);
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 

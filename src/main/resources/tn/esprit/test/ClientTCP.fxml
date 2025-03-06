@@ -29,12 +29,19 @@
                </font>
             </Label>
             <Button layoutX="557.0" layoutY="146.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="75.0" prefWidth="128.0" style="-fx-background-color: #507b8b;" text="Envoyer" textFill="WHITE" />
-            <TextField fx:id="tfNickname" layoutX="170.0" layoutY="36.0" prefHeight="26.0" prefWidth="253.0" />
-            <Label layoutX="48.0" layoutY="31.0" prefHeight="18.0" prefWidth="149.0" text="Surnom" textFill="#507b8b">
+            <TextField fx:id="tfNickname" layoutX="154.0" layoutY="67.0" prefHeight="26.0" prefWidth="253.0" />
+            <Label layoutX="38.0" layoutY="62.0" prefHeight="18.0" prefWidth="149.0" text="Surnom" textFill="#507b8b">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label layoutX="38.0" layoutY="15.0" prefHeight="35.0" prefWidth="146.0" text="\@IP Serveur" textFill="#507b8b">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfIP" layoutX="195.0" layoutY="20.0" prefHeight="26.0" prefWidth="253.0" />
+            <Button layoutX="482.0" layoutY="20.0" mnemonicParsing="false" onAction="#connect" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #507b8b;" text="Se connecter" textFill="WHITE" />
          </children></AnchorPane>
    </center>
 </BorderPane>
