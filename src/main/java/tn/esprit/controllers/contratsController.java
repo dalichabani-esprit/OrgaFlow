@@ -3,9 +3,11 @@ package tn.esprit.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.DirectoryChooser;
 import tn.esprit.models.Contrat;
 import tn.esprit.services.ServiceContrat;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -14,6 +16,7 @@ import java.util.ResourceBundle;
 import java.util.Comparator;
 
 import tn.esprit.utils.ExcelExport;
+import tn.esprit.utils.PdfGen;
 import tn.esprit.utils.QrCodeGen;
 
 import javafx.collections.FXCollections;
@@ -196,10 +199,21 @@ public class contratsController implements Initializable {
     private void handleExportToExcel() {
         try {
             List<Contrat> contrats = sc.getAll();
-            String filePath = "contrats_export.xlsx";
-            ExcelExport.exportContratsToExcel(contrats, filePath);
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(null);
 
-            messageLabel.setText("Exportation réussie : " + filePath);
+            if (selectedDirectory != null) {
+                // Construct the full path for the PDF file (in the selected directory)
+                String dest = selectedDirectory.getAbsolutePath() + File.separator + "contats_export.xlsx";
+                ExcelExport.exportContratsToExcel(contrats, dest);
+                messageLabel.setText("Exportation réussie : " + dest);
+
+                //PdfGen.generateProjetPdf(dest);
+            }
+            //String filePath = "C:\\Users\\HP\\OneDrive - ESPRIT\\Bureau\\excel_integration\\contrats_export.xlsx";
+            //ExcelExport.exportContratsToExcel(contrats, filePath);
+
+            //messageLabel.setText("Exportation réussie : " + filePath);
         } catch (Exception e) {
             messageLabel.setText("Erreur lors de l'exportation vers Excel.");
             e.printStackTrace();

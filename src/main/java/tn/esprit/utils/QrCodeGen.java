@@ -10,18 +10,22 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.Inet4Address;
 
 
 public class QrCodeGen {
 
     public static void GenerateQrCode() throws IOException {
+        //String ip = Inet4Address.getLocalHost().getHostAddress();
+        //String port = "9090";
+
         /*
         //Instantiate a BarcodeSettings object
         BarcodeSettings settings = new BarcodeSettings();
         //Set barcode type
         settings.setType(BarCodeType.QR_Code);
         //Set barcode data
-        String data = "https://stackoverflow.com/";
+        String data = "http://" + ip + ":" + port + "/";
         settings.setData(data);
         //Set barcode module width
         settings.setX(2);
@@ -46,7 +50,7 @@ public class QrCodeGen {
         //Generate QR code image
         BufferedImage bufferedImage = barCodeGenerator.generateImage();
         //save the image to a .png file
-        ImageIO.write(bufferedImage,"png",new File("C:\\Users\\HP\\OneDrive - ESPRIT\\Bureau\\QR_Codes\\qrcode.png"));
+        ImageIO.write(bufferedImage,"png",new File("C:\\Users\\HP\\OneDrive - ESPRIT\\Bureau\\QR_Codes\\contrats.png"));
 
          */
     }
