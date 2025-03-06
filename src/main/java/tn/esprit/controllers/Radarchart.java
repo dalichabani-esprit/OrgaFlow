@@ -10,12 +10,27 @@ public class Radarchart {
 
     @FXML
     private Canvas radarCanvas;
+    private double[] data;
+    private String[] axisNames = {"age", "Compétences", "coordonnées", "Interêts", "qualité du cv"};
+
+    public void setRadarCanvas(Canvas radarCanvas) {
+        this.radarCanvas = radarCanvas;
+    }
+
+    public void setData(double[] data) {
+        this.data = data;
+    }
 
     public void initialize() {
-        drawRadarChart();
+        if (data != null) {
+            drawRadarChart();
+        }
     }
 
     private void drawRadarChart() {
+        if (radarCanvas == null || data == null) {
+            return;
+        }
         GraphicsContext gc = radarCanvas.getGraphicsContext2D();
         double width = radarCanvas.getWidth();
         double height = radarCanvas.getHeight();
@@ -23,12 +38,10 @@ public class Radarchart {
         double centerY = height / 2;
         double radius = Math.min(centerX, centerY) * 0.8;
 
-        int numAxes = 5;
-        double[] data = {0.8, 0.6, 0.9, 0.7, 0.5};
-        String[] axisNames = {"age", "Compétences", "coordonnées", "Interêts", "qualité du cv"}; // Noms des axes
+        int numAxes = data.length;
 
         gc.setStroke(Color.GRAY);
-        gc.setFont(Font.font(12)); // Définir une police pour le texte
+        gc.setFont(Font.font(12));
 
         for (int i = 0; i < numAxes; i++) {
             double angle = 2 * Math.PI * i / numAxes;
@@ -36,8 +49,7 @@ public class Radarchart {
             double y = centerY + radius * Math.sin(angle);
             gc.strokeLine(centerX, centerY, x, y);
 
-            // Ajouter le nom de l'axe
-            double textX = centerX + (radius + 10) * Math.cos(angle); // Ajuster la position du texte
+            double textX = centerX + (radius + 10) * Math.cos(angle);
             double textY = centerY + (radius + 10) * Math.sin(angle);
             gc.fillText(axisNames[i], textX, textY);
         }

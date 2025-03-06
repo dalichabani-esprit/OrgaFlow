@@ -187,6 +187,20 @@ public class ShowCandidature implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void sceneNote(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/PDFViewer.fxml"));
+            Parent root1 = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setTitle("note");
+            stage.show();
+        } catch (IOException e) {
+            showError("Erreur", "Impossible de charger");
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void retourEntretien(ActionEvent event) throws IOException {

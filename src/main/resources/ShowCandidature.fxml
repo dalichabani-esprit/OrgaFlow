@@ -108,6 +108,7 @@
                                 <Button fx:id="btnStat_Cdtr" mnemonicParsing="false" styleClass="bt" text="Statistiques" />
                         <ComboBox fx:id="cbtrier" prefWidth="150.0" promptText="Trier" styleClass="bt" />
                         <ComboBox fx:id="Détail" prefWidth="150.0" promptText="Détail" styleClass="bt3" />
+                        <Button mnemonicParsing="false" onAction="#sceneNote" styleClass="bt" text="Note CV" />
                             </children>
                         </VBox>
                     </children>
