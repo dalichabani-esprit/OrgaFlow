@@ -17,7 +17,7 @@ public class ServiceReclamation implements IService<Reclamation> {
 
     @Override
     public void add(Reclamation reclamation) {
-        String qry = "INSERT INTO `reclamations`(`sujet`, `description`, `date_creation`, `statut`, `idcontrat`) VALUES (?, ?, ?, ?, ?)";
+        String qry = "INSERT INTO `reclamation`(`sujet`, `description`, `date_soumission`, `statut`, `contrat_id`) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setString(1, reclamation.getSujet());
@@ -37,7 +37,7 @@ public class ServiceReclamation implements IService<Reclamation> {
     @Override
     public List<Reclamation> getAll() {
         List<Reclamation> reclamations = new ArrayList<>();
-        String qry = "SELECT * FROM `reclamations`";
+        String qry = "SELECT * FROM `reclamation`";
 
         try {
             Statement stm = cnx.createStatement();
@@ -45,12 +45,12 @@ public class ServiceReclamation implements IService<Reclamation> {
 
             while (rs.next()) {
                 Reclamation reclamation = new Reclamation();
-                reclamation.setIdReclamation(rs.getInt("id_reclamation"));
+                reclamation.setIdReclamation(rs.getInt("id"));
                 reclamation.setSujet(rs.getString("sujet"));
                 reclamation.setDescription(rs.getString("description"));
-                reclamation.setDateSoumission(rs.getDate("date_creation"));
+                reclamation.setDateSoumission(rs.getDate("date_soumission"));
                 reclamation.setStatut(rs.getString("statut"));
-                reclamation.setIdContrat(rs.getInt("idcontrat"));
+                reclamation.setIdContrat(rs.getInt("contrat_id"));
 
                 reclamations.add(reclamation);
             }
@@ -63,7 +63,7 @@ public class ServiceReclamation implements IService<Reclamation> {
 
     @Override
     public void update(Reclamation reclamation) {
-        String qry = "UPDATE `reclamations` SET `sujet`=?, `description`=?, `date_creation`=?, `statut`=?, `idcontrat` = ? WHERE `id_reclamation`=?";
+        String qry = "UPDATE `reclamation` SET `sujet`=?, `description`=?, `date_soumission`=?, `statut`=?, `contrat_id` = ? WHERE `id`=?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setString(1, reclamation.getSujet());
@@ -82,7 +82,7 @@ public class ServiceReclamation implements IService<Reclamation> {
 
     @Override
     public void delete(Reclamation reclamation) {
-        String qry = "DELETE FROM `reclamations` WHERE `id_reclamation`=?";
+        String qry = "DELETE FROM `reclamation` WHERE `id`=?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setInt(1, reclamation.getIdReclamation());

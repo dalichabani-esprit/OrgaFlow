@@ -17,7 +17,7 @@ public class ServiceContrat {
 
     // Ajouter un contrat
     public void add(Contrat contrat) {
-        String qry = "INSERT INTO contrats (type_contrat, date_debut, date_fin, periode_essai, renouvelable, salaire, statut) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String qry = "INSERT INTO contrat (type_contrat, date_debut, date_fin, periode_essai, renouvlable, salaire, statut) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setString(1, contrat.getTypeContrat());
@@ -38,18 +38,18 @@ public class ServiceContrat {
     // Récupérer tous les contrats
     public static List<Contrat> getAll() {
         List<Contrat> contrats = new ArrayList<>();
-        String qry = "SELECT * FROM contrats";
+        String qry = "SELECT * FROM contrat";
         try {
             Statement stm = cnx.createStatement();
             ResultSet rs = stm.executeQuery(qry);
             while (rs.next()) {
                 Contrat contrat = new Contrat();
-                contrat.setIdContrat(rs.getInt("id_contrat"));
+                contrat.setIdContrat(rs.getInt("id"));
                 contrat.setTypeContrat(rs.getString("type_contrat"));
                 contrat.setDateDebut(rs.getDate("date_debut"));
                 contrat.setDateFin(rs.getDate("date_fin"));
                 contrat.setPeriodeEssai(rs.getBoolean("periode_essai"));
-                contrat.setRenouvelable(rs.getBoolean("renouvelable"));
+                contrat.setRenouvelable(rs.getBoolean("renouvlable"));
                 contrat.setSalaire(rs.getDouble("salaire"));
                 contrat.setStatut(rs.getString("statut"));
 
@@ -63,7 +63,7 @@ public class ServiceContrat {
 
     // Mettre à jour un contrat
     public void update(Contrat contrat) {
-        String qry = "UPDATE contrats SET type_contrat = ?, date_debut = ?, date_fin = ?, periode_essai = ?, renouvelable = ?, salaire = ?, statut = ? WHERE id_contrat = ?";
+        String qry = "UPDATE contrat SET type_contrat = ?, date_debut = ?, date_fin = ?, periode_essai = ?, renouvlable = ?, salaire = ?, statut = ? WHERE id = ?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setString(1, contrat.getTypeContrat());
@@ -84,7 +84,7 @@ public class ServiceContrat {
 
     // Supprimer un contrat
     public void delete(Contrat contrat) {
-        String qry = "DELETE FROM contrats WHERE id_contrat = ?";
+        String qry = "DELETE FROM contrat WHERE id = ?";
         try {
             PreparedStatement pstm = cnx.prepareStatement(qry);
             pstm.setInt(1, contrat.getIdContrat());
